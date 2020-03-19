@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="myFirstBlog, 不完美也ok">
+    <meta name="keywords" content="搭建酷炫的个人博客, 不完美也ok">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>myFirstBlog | 不完美也ok</title>
+    <title>搭建酷炫的个人博客 | 不完美也ok</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -295,12 +295,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://tva1.sinaimg.cn/large/00831rSTly1gczetv15pkj30zk0mvn4t.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">myFirstBlog</h1>
+                    <h1 class="description center-align post-title">搭建酷炫的个人博客</h1>
                 </div>
             </div>
         </div>
@@ -422,6 +422,15 @@
                 </div>
                 <div class="col s5 right-align">
                     
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
+                            </a>
+                        
+                    </div>
+                    
                 </div>
             </div>
 
@@ -438,14 +447,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7
+                    763
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -461,7 +470,73 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>我的第一个博客</p>
+                <h2 id="搭建酷炫免费的个人博客"><a href="#搭建酷炫免费的个人博客" class="headerlink" title="搭建酷炫免费的个人博客"></a>搭建酷炫免费的个人博客</h2><p><strong>我的博客地址</strong>：<a href="https://cyh756085049.github.io/">Ramona-Chen’s Blog</a></p>
+<h3 id="一、在Github上创建个人仓库"><a href="#一、在Github上创建个人仓库" class="headerlink" title="一、在Github上创建个人仓库"></a>一、在<code>Github</code>上创建个人仓库</h3><p>1、登录<code>GitHub</code> ，如果没有 <code>GitHub</code> 帐号，请自己注册<a href="https://github.com" target="_blank" rel="noopener">GitHub</a> 帐号。</p>
+<p>2、登录成功之后，点击 <code>GitHub</code> 中的 <code>New repository</code> 创建新仓库，仓库名应该为：<strong>用户名</strong>.github.io 。这里<strong>用户名</strong>使用你的<code>GitHub</code>帐号名称代替，这是固定写法。</p>
+<p>3、在<code>Github</code>上进行配置，以及<code>SSH</code>的配置，然后进行测试：</p>
+<pre class=" language-yaml"><code class="language-yaml">ssh <span class="token punctuation">-</span>T git@github.com</code></pre>
+<ul>
+<li>出现如下图所示，即表示测试成功：</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gczb7fgwd0j30va02imxf.jpg" alt="测试成功图片"></p>
+<p><em>因为之前已经完成上边的所有步骤，所以在此不再赘述，如有不理解的地方可参考：<a href="https://mp.weixin.qq.com/s/uxt3NX760gdNN-xld7fmZA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/uxt3NX760gdNN-xld7fmZA</a></em></p>
+<h3 id="二、Hero的安装及使用"><a href="#二、Hero的安装及使用" class="headerlink" title="二、Hero的安装及使用"></a>二、Hero的安装及使用</h3><p>1、Hero安装</p>
+<pre class=" language-yml"><code class="language-yml">npm install -g hexo-cli</code></pre>
+<p>2、初始化Hero博客</p>
+<ul>
+<li>首先初始化</li>
+</ul>
+<pre class=" language-yml"><code class="language-yml">hexo init myBlog</code></pre>
+<ul>
+<li>进入所创建的文件夹<code>myBlog</code>下，运行：</li>
+</ul>
+<pre class=" language-yml"><code class="language-yml">hexo s</code></pre>
+<ul>
+<li>在浏览器输入如下网址查看：</li>
+</ul>
+<pre><code>localhost:4000</code></pre><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gczbhuvoe0j30u00hdwff.jpg" alt="hexo初始化博客界面"></p>
+<p>3、如果看到上述运行界面，说明初始博客搭建完成。</p>
+<h3 id="三、编写文章"><a href="#三、编写文章" class="headerlink" title="三、编写文章"></a>三、编写文章</h3><p>1、接下来就可以编写文章了。首先进入文件夹<code>myBlog</code>下，创建博客文章，然后生成网页，并启动服务器预览。对应的命令如下：</p>
+<pre><code>hexo new &quot;新建博客文章&quot; #新建文章
+1hexo generate #生成网页
+1hexo server #启动服务预览</code></pre><p>2、也可以把自己之前的以<code>md</code>为后缀名的文章放入文件夹<code>myBlog/source/_post</code>下，注意要在文章头加入（因为我是用<code>Typora</code>软件编写的文章，没有加配置报错）：</p>
+<pre><code>title: myFirstBlog
+date: 2020-03-19 10:10:16</code></pre><p>示例如下：</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gczc83anwmj318c0a6q3l.jpg" alt="博客文章内容界面"></p>
+<p>3、当编写完成后可以把文章部署到服务器上。</p>
+<ul>
+<li>在部署前首先需要先配置一下本地<code>myBlog</code>文件夹下的<code>_config.yml</code>配置文件，可以先配置以下的基本信息：</li>
+</ul>
+<pre><code>url: https://cyh756085049.github.io  # github访问域名
+
+# Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git  #将 Hexo 与 GitHub 进行关
+  repo: https://github.com/cyh756085049/cyh756085049.github.io.git  # 自己的github地址
+  branch: master  # guthub分支</code></pre><ul>
+<li>关联好github之后直接运行<code>hexo d</code>会提示<code>deploy not found: git</code>，需要加加入如下指令：  </li>
+</ul>
+<pre><code>npm install --save hexo-deployer-git</code></pre><ul>
+<li>然后进行部署：</li>
+</ul>
+<pre><code>hexo d</code></pre><p>4、部署成功之后输入你的域名浏览：</p>
+<pre><code>https://xxx.github.io</code></pre><p>结果同本地测试运行结果一致，免费博客搭建完成。</p>
+<h3 id="四、优化Hexo博客界面"><a href="#四、优化Hexo博客界面" class="headerlink" title="四、优化Hexo博客界面"></a>四、优化Hexo博客界面</h3><p>hexo 默认的主题比较简单，你可以在 <a href="https://hexo.io/themes/index.html" target="_blank" rel="noopener">Hexo主题模版</a>进行主题的挑选更换。将下好的主题安放在<code>themes</code>文件夹内，同时在<code>_config.yml</code>中进行主题修改。</p>
+<p><strong><em>注意：</em></strong></p>
+<p><strong><em>当文章编写完要重新上传时，需要执行以下命令更新：</em></strong></p>
+<pre><code>hexo clean
+hexo g
+hexo d</code></pre><p><a href="https://blinkfox.github.io/2018/09/28/qian-duan/hexo-bo-ke-zhu-ti-zhi-hexo-theme-matery-de-jie-shao/" target="_blank" rel="noopener">我选择的主题</a>，通过文档说明进行配置，也可以查看该作者<a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md" target="_blank" rel="noopener">Github</a>上的详细文档说明进行配置即可得到如下效果：</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gczct2l69xj31eg0u0kjo.jpg" alt="Ramona-Chen的博客"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gczcu6g33uj31ix0u0kjl.jpg" alt="文章详情"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gczd3b5wj4j31mc0u04qq.jpg" alt="文章列表"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gczd4cxnj9j31m70u0e0u.jpg" alt="标签页"></p>
+<blockquote>
+<p>参考：</p>
+<p>1、五分钟学算法：<a href="https://mp.weixin.qq.com/s/uxt3NX760gdNN-xld7fmZA" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/uxt3NX760gdNN-xld7fmZA</a></p>
+<p>2、hexo-theme-matery主题：<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank" rel="noopener">https://github.com/blinkfox/hexo-theme-matery</a></p>
+</blockquote>
 
             </div>
             <hr/>
@@ -487,7 +562,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://cyh756085049.github.io/2020/03/19/myfirstblog/">https://cyh756085049.github.io/2020/03/19/myfirstblog/</a>
+                    <a href="https://cyh756085049.github.io/2020/03/19/da-jian-ku-xuan-de-ge-ren-bo-ke/">https://cyh756085049.github.io/2020/03/19/da-jian-ku-xuan-de-ge-ren-bo-ke/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -563,28 +638,70 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/03/19/spring-cloud-wei-fu/">
+                <a href="/2020/03/19/da-jian-ku-xuan-de-ge-ren-bo-ke/">
                     <div class="card-image">
                         
-                        <img src="https://tva1.sinaimg.cn/large/00831rSTly1gczebx3jygj30zk0k00vz.jpg" class="responsive-img" alt="Spring Cloud微服务">
+                        <img src="https://tva1.sinaimg.cn/large/00831rSTly1gczetv15pkj30zk0mvn4t.jpg" class="responsive-img" alt="搭建酷炫的个人博客">
                         
-                        <span class="card-title">Spring Cloud微服务</span>
+                        <span class="card-title">搭建酷炫的个人博客</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Spring Cloud微服务学习
+                            搭建个人博客
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    工具
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/19/java-duo-xian-cheng-yu-bing-fa/">
+                    <div class="card-image">
+                        
+                        <img src="https://tva1.sinaimg.cn/large/00831rSTly1gcze23l6wjj30zk0k0mzz.jpg" class="responsive-img" alt="Java多线程与并发">
+                        
+                        <span class="card-title">Java多线程与并发</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            java面试复习
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -600,53 +717,15 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Spring-Cloud/">
-                        <span class="chip bg-color">Spring Cloud</span>
+                    <a href="/tags/%E7%BA%BF%E7%A8%8B/">
+                        <span class="chip bg-color">线程</span>
                     </a>
                     
-                    <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">
-                        <span class="chip bg-color">微服务</span>
+                    <a href="/tags/%E5%B9%B6%E5%8F%91/">
+                        <span class="chip bg-color">并发</span>
                     </a>
                     
                 </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/03/19/myfirstblog/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="myFirstBlog">
-                        
-                        <span class="card-title">myFirstBlog</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            测试博客
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            cyh
-                            
-                        </span>
-                    </div>
-                </div>
-
                 
             </div>
         </div>
