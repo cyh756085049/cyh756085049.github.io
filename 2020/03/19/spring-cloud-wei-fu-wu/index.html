@@ -455,14 +455,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.4k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    13 分
                 </div>
                 
 
@@ -478,8 +478,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Spring-Cloud微服务"><a href="#Spring-Cloud微服务" class="headerlink" title="Spring Cloud微服务"></a>Spring Cloud微服务</h3><h5 id="Spring-Cloud是一个快速构建分布式应用的工具集"><a href="#Spring-Cloud是一个快速构建分布式应用的工具集" class="headerlink" title="Spring Cloud是一个快速构建分布式应用的工具集"></a>Spring Cloud是一个快速构建分布式应用的工具集</h5><h4 id="一、构建分布式应用"><a href="#一、构建分布式应用" class="headerlink" title="一、构建分布式应用"></a>一、构建分布式应用</h4><p>1、<strong>服务提供者和服务消费者的定义</strong></p>
-<table>
+                <h5 id="Spring-Cloud是一个快速构建分布式应用的工具集"><a href="#Spring-Cloud是一个快速构建分布式应用的工具集" class="headerlink" title="Spring Cloud是一个快速构建分布式应用的工具集"></a>Spring Cloud是一个快速构建分布式应用的工具集</h5><blockquote>
+<p>Spring Cloud微服务学习示例代码：<a href="https://github.com/cyh756085049/spring-cloud-study" target="_blank" rel="noopener">https://github.com/cyh756085049/spring-cloud-study</a></p>
+</blockquote>
+<h3 id="一、构建分布式应用"><a href="#一、构建分布式应用" class="headerlink" title="一、构建分布式应用"></a>一、构建分布式应用</h3><h4 id="1、服务提供者和服务消费者的定义"><a href="#1、服务提供者和服务消费者的定义" class="headerlink" title="1、服务提供者和服务消费者的定义"></a>1、服务提供者和服务消费者的定义</h4><table>
 <thead>
 <tr>
 <th>名词</th>
@@ -495,8 +497,7 @@
 <td>服务的调用方（依赖其他服务的服务）</td>
 </tr>
 </tbody></table>
-<p>2、<strong>搭建</strong>Spring Cloud<strong>框架</strong></p>
-<p>（1）先创建一个Maven项目</p>
+<h4 id="2、搭建Spring-Cloud框架"><a href="#2、搭建Spring-Cloud框架" class="headerlink" title="2、搭建Spring Cloud框架"></a>2、搭建<strong><code>Spring Cloud</code></strong>框架</h4><p>（1）先创建一个Maven项目</p>
 <p>（2）在该Maven下新建一个Module，选择Spring Initializr，创建SpringBoot项目<img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz2tdaigrj31cm0u0q7t.jpg" alt="image-20191009092353372"></p>
 <p>（3）应用开发，遵循三步：加依赖；加注解；写配置</p>
 <ul>
@@ -576,8 +577,7 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">></span></span>
 </code></pre>
 <ul>
-<li>加注解（一般常用注解）：</li>
-</ul>
+<li><p>加注解（一般常用注解）：</p>
 <table>
 <thead>
 <tr>
@@ -586,98 +586,100 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>@Table</td>
+<td><code>@Table</code></td>
 <td>声明此对象映射到数据库的数据表</td>
 </tr>
 <tr>
-<td>@Entity</td>
+<td><code>@Entity</code></td>
 <td>对实体注释</td>
 </tr>
 <tr>
-<td>@Id</td>
+<td><code>@Id</code></td>
 <td>声明此属性为主键</td>
 </tr>
 <tr>
-<td>@GeneratedValue(strategy = GenerationType.AUTO)</td>
+<td><code>@GeneratedValue(strategy = GenerationType.AUTO)</code></td>
 <td>指定主键的生成策略：<br>TABLE：使用一个特定的数据库表格来保存主键。<br>SEQUENCE：根据底层数据库的序列来生成主键，条件是数据库支持序列。IDENTITY：主键由数据库自动生成（主要是自动增长型）。<br>AUTO：主键由程序控制。</td>
 </tr>
 <tr>
-<td>@Column</td>
+<td><code>@Column</code></td>
 <td>声明该属性与数据库字段的映射关系</td>
 </tr>
 <tr>
-<td>@Data</td>
+<td><code>@Data</code></td>
 <td>用来指定实体对象的Getter和Setter方法</td>
 </tr>
 <tr>
-<td>@AllArgsConstructor</td>
+<td><code>@AllArgsConstructor</code></td>
 <td>用来指定全参数构造器</td>
 </tr>
 <tr>
-<td>@NoArgsConstructor</td>
+<td><code>@NoArgsConstructor</code></td>
 <td>用来指定无参构造器</td>
 </tr>
 <tr>
-<td>@Repository</td>
+<td><code>@Repository</code></td>
 <td>用来表明该类是用来执行与数据库相关的操作（即dao对象）,作用于持久层</td>
 </tr>
 <tr>
-<td>@Service</td>
+<td><code>@Service</code></td>
 <td>作用于业务逻辑层</td>
 </tr>
 <tr>
-<td>@Component</td>
+<td><code>@Component</code></td>
 <td>是通用注解，当组件不好归类的时候，我们就可以用这个注解进行标注</td>
 </tr>
 <tr>
-<td>@Controller</td>
+<td><code>@Controller</code></td>
 <td>是spring-mvc的注解，具有将请求进行转发，重定向的功能。返回的是字符串，或者是字符串匹配的模板名称，即直接渲染视图，与html页面配合使用的，返回到指定页面。</td>
 </tr>
 <tr>
-<td>@RestController</td>
-<td>相当于@ResponseBody ＋ @Controller合在一起的作用。是将方法返回的对象直接在浏览器上展示成json格式</td>
+<td><code>@RestController</code></td>
+<td>相当于<code>@ResponseBody ＋ @Controller</code>合在一起的作用。是将方法返回的对象直接在浏览器上展示成json格式</td>
 </tr>
 <tr>
-<td>@RequestMapping</td>
-<td>用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径；用于方法上，表示在类的父路径下追加方法上注解中的地址将会访问到该方法，例如：@RequestMapping(value = “/selectByCondition”,method = RequestMethod.<em>GET</em>)</td>
+<td><code>@RequestMapping</code></td>
+<td>用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径；用于方法上，表示在类的父路径下追加方法上注解中的地址将会访问到该方法，例如：<code>@RequestMapping(value = &quot;/selectByCondition&quot;,method = RequestMethod.*GET*)</code></td>
 </tr>
 <tr>
-<td>@RequestParam</td>
-<td>配合 @RequestMapping 一起使用，可以将请求的参数同处理方法的参数绑定在一起，例如：@RequestParam(value = “nowPage”, defaultValue = “1”，required = false)required 这个参数定义了参数值是否是必须要传的</td>
+<td><code>@RequestParam</code></td>
+<td>配合 @RequestMapping 一起使用，可以将请求的参数同处理方法的参数绑定在一起，例如：<code>@RequestParam(value = &quot;nowPage&quot;, defaultValue = &quot;1&quot;，required = false)</code>required 这个参数定义了参数值是否是必须要传的</td>
 </tr>
 <tr>
-<td>@PathVariable</td>
-<td>用来获取请求路径（url ）中的动态参数。例如：@RequestMapping(value = “user/login/{id}/{name}/{status}”) 中的 {id}/{name}/{status}与 @PathVariable int id、@PathVariable String name、@PathVariable boolean status一一对应，按名匹配。</td>
+<td><code>@PathVariable</code></td>
+<td>用来获取请求路径（url ）中的动态参数。例如：<code>@RequestMapping(value = &quot;user/login/{id}/{name}/{status}&quot;)</code>中的 <code>{id}/{name}/{status}</code>与 <code>@PathVariable int id、@PathVariable String name、@PathVariable boolean status</code>一一对应，按名匹配。</td>
 </tr>
 <tr>
-<td>@ResponseBody</td>
-<td>表示该方法的返回的结果直接写入 HTTP 响应正文（ResponseBody）中，一般在异步获取数据时使用，通常是在使用 @RequestMapping 后，返回值通常解析为跳转路径，加上 @Responsebody 后返回结果不会被解析为跳转路径，而是直接写入HTTP 响应正文中。会直接返回 json 数据。例如：（@RequestBody Thesis t）</td>
+<td><code>@ResponseBody</code></td>
+<td>表示该方法的返回的结果直接写入 HTTP 响应正文（ResponseBody）中，一般在异步获取数据时使用，通常是在使用 @RequestMapping 后，返回值通常解析为跳转路径，加上 <code>@Responsebody</code> 后返回结果不会被解析为跳转路径，而是直接写入HTTP 响应正文中。会直接返回 json 数据。例如：<code>@RequestBody Thesis t</code></td>
 </tr>
 <tr>
-<td>@GetMapping</td>
-<td>是@RequestMapping(method = RequestMethod.GET)的缩写。该注解将HTTP Get 映射到 特定的处理方法上</td>
+<td><code>@GetMapping</code></td>
+<td>是<code>@RequestMapping(method = RequestMethod.GET)</code>的缩写。该注解将HTTP Get 映射到 特定的处理方法上</td>
 </tr>
 <tr>
-<td>@PostMapping</td>
-<td>是@RequestMapping(method = RequestMethod.POST)的缩写。该注解用于将HTTP post请求映射到特定处理程序的方法注解</td>
+<td><code>@PostMapping</code></td>
+<td>是<code>@RequestMapping(method = RequestMethod.POST)</code>的缩写。该注解用于将HTTP post请求映射到特定处理程序的方法注解</td>
 </tr>
 <tr>
-<td>@Slf4j</td>
+<td><code>@Slf4j</code></td>
 <td>引入日志</td>
 </tr>
 <tr>
-<td>@Param</td>
-<td>xml中的参数用在方法中使用注解。例如：@Param(value = “condition”) String condition</td>
+<td><code>@Param</code></td>
+<td>xml中的参数用在方法中使用注解。例如：<code>@Param(value = &quot;condition&quot;) String condition</code></td>
 </tr>
 <tr>
-<td>@SpringBootApplication</td>
+<td><code>@SpringBootApplication</code></td>
 <td>是一个组合注解，它整合了<code>@Configuration</code>、<code>@EnableAutoConfiguration</code>和<code>@ComponentScan</code>注解，并开启了Spring Boot程序的组件扫描和自动配置功能。</td>
 </tr>
 <tr>
-<td>@Autowired</td>
+<td><code>@Autowired</code></td>
 <td>自动装配，其作用是为了消除代码Java代码里面的getter/setter与bean属性中的property</td>
 </tr>
 </tbody></table>
+</li>
+</ul>
 <ul>
 <li>加配置：application.yml（一般配置）：</li>
 </ul>
@@ -694,8 +696,7 @@
     <span class="token key atrule">org.hibernate</span><span class="token punctuation">:</span> INFO
     <span class="token key atrule">org.hibernate.type.descriptor.sql.BasicBinder</span><span class="token punctuation">:</span> TRACE
     <span class="token key atrule">org.hibernate.type.descriptor.sql.BasicExtractor</span><span class="token punctuation">:</span> TRACE</code></pre>
-<h4 id="二、Spring-Boot的监控组件Spring-Boot-Actuator"><a href="#二、Spring-Boot的监控组件Spring-Boot-Actuator" class="headerlink" title="二、Spring Boot的监控组件Spring Boot Actuator"></a>二、Spring Boot的监控组件Spring Boot Actuator</h4><p>1、Actuator为我们提供了很多监控端点，如下表所示。</p>
-<table>
+<h3 id="二、Spring-Boot的监控组件Spring-Boot-Actuator"><a href="#二、Spring-Boot的监控组件Spring-Boot-Actuator" class="headerlink" title="二、Spring Boot的监控组件Spring Boot Actuator"></a>二、Spring Boot的监控组件Spring Boot Actuator</h3><h4 id="1、Actuator为我们提供了很多监控端点，如下表所示。"><a href="#1、Actuator为我们提供了很多监控端点，如下表所示。" class="headerlink" title="1、Actuator为我们提供了很多监控端点，如下表所示。"></a>1、Actuator为我们提供了很多监控端点，如下表所示。</h4><table>
 <thead>
 <tr>
 <th align="left">端点（Spring Boot 2.x）</th>
@@ -714,14 +715,14 @@
 </tr>
 <tr>
 <td align="left">beans</td>
-<td align="left">显示应用程序上下文所有的Spring bean</td>
+<td align="left">显示应用程序上下文所有的<code>Spring bean</code></td>
 <td align="left">GET</td>
 <td align="left">是</td>
 <td align="left">beans</td>
 </tr>
 <tr>
 <td align="left">configprops</td>
-<td align="left">显示所有@ConfigurationProperties的配置属性列表</td>
+<td align="left">显示所有<code>@ConfigurationProperties</code>的配置属性列表</td>
 <td align="left">GET</td>
 <td align="left">是</td>
 <td align="left">configprops</td>
@@ -770,14 +771,12 @@
 </tr>
 </tbody></table>
 <p>只需访问<code>http://{ip}:{port}/actuator/{endpoint}</code> 端点，即可监控应用的运行状况。</p>
-<p>2、添加依赖：</p>
-<pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--Spring Boot Actuator是Spring Boot官方提供的监控组件--></span>
+<h4 id="2、添加依赖："><a href="#2、添加依赖：" class="headerlink" title="2、添加依赖："></a>2、添加依赖：</h4><pre class=" language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!--Spring Boot Actuator是Spring Boot官方提供的监控组件--></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-actuator<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span></code></pre>
-<p>3、加配置：</p>
-<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">management</span><span class="token punctuation">:</span>
+<h4 id="3、加配置："><a href="#3、加配置：" class="headerlink" title="3、加配置："></a>3、加配置：</h4><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">management</span><span class="token punctuation">:</span>
   <span class="token key atrule">endpoint</span><span class="token punctuation">:</span>
     <span class="token key atrule">health</span><span class="token punctuation">:</span>
       <span class="token comment" spellcheck="true"># 是否展示健康检查详情</span>
@@ -793,8 +792,8 @@
       <span class="token key atrule">exposure</span><span class="token punctuation">:</span>
         <span class="token comment" spellcheck="true"># 暴露metrics端点，如需暴露多个，用,分隔；如需暴露所有端点，用'*'</span>
         <span class="token key atrule">include</span><span class="token punctuation">:</span> <span class="token string">'*'</span></code></pre>
-<h4 id="三、服务注册与服务发现eureka"><a href="#三、服务注册与服务发现eureka" class="headerlink" title="三、服务注册与服务发现eureka"></a>三、服务注册与服务发现eureka</h4><p>Eureka是Netflix开源的服务发现组件，本身是一个基于REST的服务，包含Server和Client两部分，Spring Cloud将它集成在子项目Spring Cloud Netflix中。</p>
-<h5 id="1、Eureka原理"><a href="#1、Eureka原理" class="headerlink" title="1、Eureka原理"></a>1、Eureka原理</h5><ul>
+<h3 id="三、服务注册与服务发现eureka"><a href="#三、服务注册与服务发现eureka" class="headerlink" title="三、服务注册与服务发现eureka"></a>三、服务注册与服务发现eureka</h3><p>Eureka是Netflix开源的服务发现组件，本身是一个基于REST的服务，包含Server和Client两部分，Spring Cloud将它集成在子项目Spring Cloud Netflix中。</p>
+<h4 id="1、Eureka原理"><a href="#1、Eureka原理" class="headerlink" title="1、Eureka原理"></a>1、Eureka原理</h4><ul>
 <li><p>Eureka Server提供服务发现的能力，各个微服务启动时，会向Eureka Server注册自己的信息（例如IP、端口、微服务名称等），Eureka Server会存储这些信息；</p>
 </li>
 <li><p>Eureka Client是一个Java客户端，用于简化与Eureka Server的交互；</p>
@@ -809,8 +808,7 @@
 </li>
 </ul>
 <p>综上，Eureka通过心跳检查、客户端缓存等机制，提高了系统的灵活性、可伸缩性和可用性。</p>
-<h5 id="2、Eureka代码示例"><a href="#2、Eureka代码示例" class="headerlink" title="2、Eureka代码示例"></a>2、Eureka代码示例</h5><p>2.1、编写Eureka Server</p>
-<p>（1）加依赖：</p>
+<h4 id="2、Eureka代码示例"><a href="#2、Eureka代码示例" class="headerlink" title="2、Eureka代码示例"></a>2、Eureka代码示例</h4><h5 id="2-1、编写Eureka-Server"><a href="#2-1、编写Eureka-Server" class="headerlink" title="2.1、编写Eureka Server"></a>2.1、编写Eureka Server</h5><p>（1）加依赖：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-netflix-eureka-server<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
@@ -827,8 +825,7 @@
     <span class="token key atrule">fetch-registry</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
     <span class="token key atrule">service-url</span><span class="token punctuation">:</span>
       <span class="token key atrule">defaultZone</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>8761/eureka/</code></pre>
-<p>2.2、编写Eureka Client，将应用注册到Eureka Server上</p>
-<p>（1）加依赖：</p>
+<h5 id="2-2、编写Eureka-Client，将应用注册到Eureka-Server上"><a href="#2-2、编写Eureka-Client，将应用注册到Eureka-Server上" class="headerlink" title="2.2、编写Eureka Client，将应用注册到Eureka Server上"></a>2.2、编写Eureka Client，将应用注册到Eureka Server上</h5><p>（1）加依赖：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-cloud-starter-netflix-eureka-client<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
@@ -847,8 +844,7 @@
   <span class="token key atrule">instance</span><span class="token punctuation">:</span>
     <span class="token comment" spellcheck="true"># 是否注册IP到eureka server，如不指定或设为false，那就会注册主机名到eureka server</span>
     <span class="token key atrule">prefer-ip-address</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre>
-<h5 id="3、高可用Eureka-Server"><a href="#3、高可用Eureka-Server" class="headerlink" title="3、高可用Eureka Server"></a>3、高可用Eureka Server</h5><p>Eureka Server配置：</p>
-<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+<h4 id="3、高可用Eureka-Server"><a href="#3、高可用Eureka-Server" class="headerlink" title="3、高可用Eureka Server"></a>3、高可用Eureka Server</h4><h5 id="Eureka-Server配置："><a href="#Eureka-Server配置：" class="headerlink" title="Eureka Server配置："></a>Eureka Server配置：</h5><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">application</span><span class="token punctuation">:</span>
     <span class="token key atrule">name</span><span class="token punctuation">:</span> eureka<span class="token punctuation">-</span>ha
 <span class="token punctuation">---</span>
@@ -874,8 +870,7 @@
     <span class="token key atrule">serviceUrl</span><span class="token punctuation">:</span>
       <span class="token key atrule">defaultZone</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//peer1<span class="token punctuation">:</span>8761/eureka/
 </code></pre>
-<p>Eureka Client配置：</p>
-<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
+<h5 id="Eureka-Client配置："><a href="#Eureka-Client配置：" class="headerlink" title="Eureka Client配置："></a>Eureka Client配置：</h5><pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">spring</span><span class="token punctuation">:</span>
   <span class="token key atrule">application</span><span class="token punctuation">:</span>
     <span class="token comment" spellcheck="true"># 指定注册到eureka server上的服务名称</span>
     <span class="token key atrule">name</span><span class="token punctuation">:</span> user
@@ -886,8 +881,8 @@
   <span class="token key atrule">instance</span><span class="token punctuation">:</span>
     <span class="token comment" spellcheck="true"># 是否注册IP到eureka server，如不指定或设为false，那就会注册主机名到eureka server</span>
     <span class="token key atrule">prefer-ip-address</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre>
-<h5 id="4、Eureka安全认证"><a href="#4、Eureka安全认证" class="headerlink" title="4、Eureka安全认证"></a>4、Eureka安全认证</h5><p>Eureka本身不具备安全认证的能力，Spring Cloud使用Spring Security为Eureka Server进行了增强。</p>
-<h6 id="Eureka-Server端"><a href="#Eureka-Server端" class="headerlink" title="Eureka Server端"></a>Eureka Server端</h6><p>此处构建一个需要登录才能访问的Eureka Server。</p>
+<h4 id="4、Eureka安全认证"><a href="#4、Eureka安全认证" class="headerlink" title="4、Eureka安全认证"></a>4、Eureka安全认证</h4><p>Eureka本身不具备安全认证的能力，Spring Cloud使用Spring Security为Eureka Server进行了增强。</p>
+<h5 id="4-1-Eureka-Server端"><a href="#4-1-Eureka-Server端" class="headerlink" title="4.1 Eureka Server端"></a>4.1 Eureka Server端</h5><p>此处构建一个需要登录才能访问的Eureka Server。</p>
 <p>（1）加依赖：</p>
 <pre class=" language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.cloud<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
@@ -930,7 +925,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>（5）运行：<a href="http://localhost:8761" target="_blank" rel="noopener">http://localhost:8761</a></p>
-<h6 id="Eureka-Client端"><a href="#Eureka-Client端" class="headerlink" title="Eureka Client端"></a>Eureka Client端</h6><p>改配置：</p>
+<h5 id="4-2-Eureka-Client端"><a href="#4-2-Eureka-Client端" class="headerlink" title="4.2 Eureka Client端"></a>4.2 Eureka Client端</h5><p>改配置：</p>
 <pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">eureka</span><span class="token punctuation">:</span>
   <span class="token key atrule">client</span><span class="token punctuation">:</span>
     <span class="token key atrule">service-url</span><span class="token punctuation">:</span>
@@ -939,16 +934,11 @@
   <span class="token key atrule">instance</span><span class="token punctuation">:</span>
     <span class="token comment" spellcheck="true"># 是否注册IP到eureka server，如不指定或设为false，那就会注册主机名到eureka server</span>
     <span class="token key atrule">prefer-ip-address</span><span class="token punctuation">:</span> <span class="token boolean important">false</span></code></pre>
-<h4 id="2、负载均衡器-Ribbon"><a href="#2、负载均衡器-Ribbon" class="headerlink" title="2、负载均衡器-Ribbon"></a>2、负载均衡器-Ribbon</h4><p>Ribbon是Netflix发布的负载均衡器，它可以帮我们控制HTTP和TCP客户端的行为。只需为Ribbon配置服务提供者地址列表，Ribbon就可基于负载均衡算法计算出要请求的目标服务地址。</p>
-<p>Ribbon默认为我们提供了很多的负载均衡算法，例如轮询、随机、响应时间加权等——当然，为Ribbon自定义负载均衡算法也非常容易，只需实现<code>IRule</code> 接口即可。</p>
-<h4 id="3、良好的远程调用feign"><a href="#3、良好的远程调用feign" class="headerlink" title="3、良好的远程调用feign"></a>3、良好的远程调用feign</h4><h4 id="4、微服务之间的容错"><a href="#4、微服务之间的容错" class="headerlink" title="4、微服务之间的容错"></a>4、微服务之间的容错</h4><p>超时机制：</p>
-<p><strong>思路</strong>：一旦超时，就释放资源。由于释放资源速度较快，应用就不会那么容易被拖死。</p>
-<p>舱壁模式：</p>
-<p><strong>思路</strong>：不把鸡蛋放在一个篮子里。你有你的线程池，我有我的线程池，你的线程池满了和我没关系，你挂了也和我没关系。</p>
-<p>断路器：</p>
-<p><strong>思路</strong>：实时监测应用，如果发现在一定时间内失败次数/失败率达到一定阈值，就“跳闸”，断路器打开——此时，请求直接返回，而不去调用原本调用的逻辑。</p>
-<h4 id="5、通用方式使用Hystrix，防止高并发情况下应用被拖死"><a href="#5、通用方式使用Hystrix，防止高并发情况下应用被拖死" class="headerlink" title="5、通用方式使用Hystrix，防止高并发情况下应用被拖死"></a>5、通用方式使用Hystrix，防止高并发情况下应用被拖死</h4><h5 id="ribbon使用Hystrix"><a href="#ribbon使用Hystrix" class="headerlink" title="ribbon使用Hystrix"></a>ribbon使用Hystrix</h5><p>Hystrix是由Netflix开源的一个延迟和容错库，用于隔离访问远程系统、服务或者第三方库，防止级联失败，从而提升系统的可用性与容错性。  </p>
-<h5 id="feign使用Hystrix"><a href="#feign使用Hystrix" class="headerlink" title="feign使用Hystrix"></a>feign使用Hystrix</h5><h4 id="6、微服务网关Zuul"><a href="#6、微服务网关Zuul" class="headerlink" title="6、微服务网关Zuul"></a>6、微服务网关Zuul</h4><h4 id="7、Sleuth来实现调用链监控"><a href="#7、Sleuth来实现调用链监控" class="headerlink" title="7、Sleuth来实现调用链监控"></a>7、Sleuth来实现调用链监控</h4><h4 id="8、Zipkin是Twitter开源的分布式跟踪系统，基于Dapper的论文设计而来"><a href="#8、Zipkin是Twitter开源的分布式跟踪系统，基于Dapper的论文设计而来" class="headerlink" title="8、Zipkin是Twitter开源的分布式跟踪系统，基于Dapper的论文设计而来"></a>8、Zipkin是Twitter开源的分布式跟踪系统，基于Dapper的论文设计而来</h4>
+<p><em>参考：</em></p>
+<blockquote>
+<p>周立—<a href="http://www.itmuch.com/spring-cloud/spring-cloud-index/" target="_blank" rel="noopener">http://www.itmuch.com/spring-cloud/spring-cloud-index/</a></p>
+</blockquote>
+
             </div>
             <hr/>
 
@@ -973,7 +963,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://cyh756085049.github.io/2020/03/19/spring-cloud-wei-fu/">https://cyh756085049.github.io/2020/03/19/spring-cloud-wei-fu/</a>
+                    <a href="https://cyh756085049.github.io/2020/03/19/spring-cloud-wei-fu-wu/">https://cyh756085049.github.io/2020/03/19/spring-cloud-wei-fu-wu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1043,6 +1033,32 @@
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: null,
+        id: '2020-03-19T10-56-25',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
 
     
 
@@ -1064,7 +1080,8 @@
                 <a href="/2020/03/19/java-duo-xian-cheng-yu-bing-fa/">
                     <div class="card-image">
                         
-                        <img src="https://tva1.sinaimg.cn/large/00831rSTly1gcze23l6wjj30zk0k0mzz.jpg" class="responsive-img" alt="Java多线程与并发">
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Java多线程与并发">
                         
                         <span class="card-title">Java多线程与并发</span>
                     </div>
@@ -1083,8 +1100,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/Java%E9%9D%A2%E8%AF%95/" class="post-category">
+                                    Java面试
                                 </a>
                             
                             
@@ -1113,19 +1130,19 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/19/myfirstblog/">
+                <a href="/2020/03/19/xian-cheng-zhuang-tai-jie-xi-yi-ji-zhong-duan-xian-cheng-de-fang-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="myFirstBlog">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="线程相关知识">
                         
-                        <span class="card-title">myFirstBlog</span>
+                        <span class="card-title">线程相关知识</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            测试博客
+                            线程状态解析以及中断线程的方法
                         
                     </div>
                     <div class="publish-info">
@@ -1134,11 +1151,27 @@
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            cyh
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java%E9%9D%A2%E8%AF%95/" class="post-category">
+                                    Java面试
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%BA%BF%E7%A8%8B/">
+                        <span class="chip bg-color">线程</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B9%B6%E5%8F%91/">
+                        <span class="chip bg-color">并发</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1286,7 +1319,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">9.2k</span>&nbsp;字
+                class="white-color">9.6k</span>&nbsp;字
             
             
             
@@ -1331,10 +1364,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
     </a>
 
 
-
-    <a href="https://weibo.com/3不完美也ok" class="tooltipped" target="_blank" data-tooltip="关注我的微博: https://weibo.com/3不完美也ok" data-position="top" data-delay="50">
-        <i class="fab fa-weibo"></i>
-    </a>
 
 
 
