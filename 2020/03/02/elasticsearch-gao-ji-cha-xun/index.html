@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="python编写贪吃蛇游戏, 不完美也ok">
+    <meta name="keywords" content="ElasticSearch高级查询, 不完美也ok">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>python编写贪吃蛇游戏 | 不完美也ok</title>
+    <title>ElasticSearch高级查询 | 不完美也ok</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -295,12 +295,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">python编写贪吃蛇游戏</h1>
+                    <h1 class="description center-align post-title">ElasticSearch高级查询</h1>
                 </div>
             </div>
         </div>
@@ -417,8 +417,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/pygame/">
-                                <span class="chip bg-color">pygame</span>
+                            <a href="/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/">
+                                <span class="chip bg-color">搜索引擎</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
+                                <span class="chip bg-color">分布式</span>
                             </a>
                         
                     </div>
@@ -429,8 +433,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Python/" class="post-category">
-                                Python
+                            <a href="/categories/ElasticSearch/" class="post-category">
+                                ElasticSearch
                             </a>
                         
                     </div>
@@ -442,7 +446,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-21
+                    2020-03-02
                 </div>
                 
 
@@ -451,7 +455,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    12
+                    412
                 </div>
                 
 
@@ -474,8 +478,172 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>编写贪吃蛇游戏的主要思路：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd1cebf6uzj30zk0rwgmo.jpg" alt="贪吃蛇游戏效果图"></p>
+                <h3 id="一、子条件查询"><a href="#一、子条件查询" class="headerlink" title="一、子条件查询"></a>一、子条件查询</h3><p>定义：特定字段查询所指特定值。</p>
+<h4 id="1、Query-Context"><a href="#1、Query-Context" class="headerlink" title="1、Query Context"></a>1、Query Context</h4><p>在查询过程中,除了判断文档是否满足查询条件外,ES还会计算一个_score来标识匹配的程度,旨在判断目标文档和查询条件匹配的有多好。</p>
+<p><strong>常用查询</strong></p>
+<ul>
+<li><strong>全文本查询（针对文本类型数据）</strong></li>
+</ul>
+<p>精确查询：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"match_phrase"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"Java入门"</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>多个字段模糊匹配查询：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"multi_match"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"query"</span><span class="token operator">:</span> <span class="token string">"Mary"</span><span class="token punctuation">,</span>
+            <span class="token property">"fields"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"author"</span><span class="token punctuation">,</span> <span class="token string">"title"</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>语法查询：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"query_string"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"query"</span><span class="token operator">:</span> <span class="token string">"(Mary AND 对象) OR Java"</span><span class="token punctuation">,</span>
+            <span class="token property">"fields"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"author"</span><span class="token punctuation">,</span> <span class="token string">"title"</span><span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<ul>
+<li><strong>字段级别查询（针对结构化数据,如数字、日期等）</strong></li>
+</ul>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"term"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"word_count"</span><span class="token operator">:</span> <span class="token number">2000</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>一定范围查询：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"range"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"word_count"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">"gte"</span><span class="token operator">:</span> <span class="token number">1000</span><span class="token punctuation">,</span> # 大于等于
+                <span class="token property">"lte"</span><span class="token operator">:</span> <span class="token number">2000</span>  # 小于等于
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="2、Filter-Context"><a href="#2、Filter-Context" class="headerlink" title="2、Filter Context"></a>2、Filter Context</h4><p>在查询过程中,只判断该文档是否满足条件,只有Yes或者No。</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"bool"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"filter"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">"term"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"word_count"</span><span class="token operator">:</span> <span class="token number">1000</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="二、复合条件查询"><a href="#二、复合条件查询" class="headerlink" title="二、复合条件查询"></a>二、复合条件查询</h3><p>定义：以一定的逻辑组合子条件查询。</p>
+<p><strong>1、固定分数查询</strong></p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"constant_score"</span><span class="token operator">:</span> <span class="token punctuation">{</span> # 固定分数
+            <span class="token property">"filter"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">"match"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"word_count"</span><span class="token operator">:</span> <span class="token number">2000</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token property">"boost"</span><span class="token operator">:</span> <span class="token number">2</span> # 自定义分数值
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>2、布尔查询</strong></p>
+<p>只要满足其中的一个条件就可以：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"bool"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"should"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">"match"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"Mary"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">"match"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"入门"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>必须两个条件都满足：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"bool"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"must"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">"match"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"Mary"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">"match"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"七月"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>混合查询：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"bool"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"must"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">"match"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"Mary"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">"match"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"七月"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token property">"filter"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                    <span class="token property">"term"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                        <span class="token property">"word_count"</span><span class="token operator">:</span> <span class="token number">10000</span>
+                    <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>must_not查询：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"query"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"bool"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"must_not"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">"term"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"Mary"</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span> 
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="三、Springboot集成ElasticSearch"><a href="#三、Springboot集成ElasticSearch" class="headerlink" title="三、Springboot集成ElasticSearch"></a>三、Springboot集成ElasticSearch</h3><p>运行报错：</p>
+<pre class=" language-java"><code class="language-java">org<span class="token punctuation">.</span>elasticsearch<span class="token punctuation">.</span>client<span class="token punctuation">.</span>transport<span class="token punctuation">.</span>NoNodeAvailableException<span class="token operator">:</span> None of the configured nodes are available</code></pre>
+<p>原因：</p>
+<p>Elasticsearch版本客户端与服务端版本不一致问题</p>
+<p>解决：</p>
+<blockquote>
+<p><em>参考：</em></p>
+<p>被遗忘的博客：<a href="https://wenchao.ren/2019/01/org-elasticsearch-client-transport-NoNodeAvailableException-None-of-the-configured-nodes-are-available/" target="_blank" rel="noopener">https://wenchao.ren/2019/01/org-elasticsearch-client-transport-NoNodeAvailableException-None-of-the-configured-nodes-are-available/</a></p>
+<p>王卫东：<a href="https://blog.csdn.net/wwd0501/article/details/79203040" target="_blank" rel="noopener">https://blog.csdn.net/wwd0501/article/details/79203040</a></p>
+</blockquote>
 
             </div>
             <hr/>
@@ -501,7 +669,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://cyh756085049.github.io/2020/03/21/python-bian-xie-tan-chi-she-you-xi/">https://cyh756085049.github.io/2020/03/21/python-bian-xie-tan-chi-she-you-xi/</a>
+                    <a href="https://cyh756085049.github.io/2020/03/02/elasticsearch-gao-ji-cha-xun/">https://cyh756085049.github.io/2020/03/02/elasticsearch-gao-ji-cha-xun/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -539,8 +707,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/pygame/">
-                                    <span class="chip bg-color">pygame</span>
+                                <a href="/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/">
+                                    <span class="chip bg-color">搜索引擎</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
+                                    <span class="chip bg-color">分布式</span>
                                 </a>
                             
                         </div>
@@ -586,7 +758,7 @@
         repo: '',
         owner: '',
         admin: null,
-        id: '2020-03-21T10-30-33',
+        id: '2020-03-02T13-06-07',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -611,31 +783,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/21/yu-ming-gou-mai-ji-jie-xi/">
+                <a href="/2020/03/11/jian-zhi-offer-suan-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="github个人博客绑定自己的域名">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="剑指offer算法">
                         
-                        <span class="card-title">github个人博客绑定自己的域名</span>
+                        <span class="card-title">剑指offer算法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            域名解析
+                            剑指Offer算法题汇总
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-21
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-11
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
+                                    数据结构与算法
                                 </a>
                             
                             
@@ -645,8 +817,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%9F%9F%E5%90%8D/">
-                        <span class="chip bg-color">域名</span>
+                    <a href="/tags/%E5%89%91%E6%8C%87Offer/">
+                        <span class="chip bg-color">剑指Offer</span>
                     </a>
                     
                 </div>
@@ -660,30 +832,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/19/da-jian-ku-xuan-de-ge-ren-bo-ke/">
+                <a href="/2020/03/01/elasticsearch-ji-ben-yong-fa/">
                     <div class="card-image">
                         
-                        <img src="https://tva1.sinaimg.cn/large/00831rSTly1gczetv15pkj30zk0mvn4t.jpg" class="responsive-img" alt="搭建酷炫的个人博客">
                         
-                        <span class="card-title">搭建酷炫的个人博客</span>
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="ElasticSearch基本用法">
+                        
+                        <span class="card-title">ElasticSearch基本用法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            搭建个人博客
+                            一文了解ElasticSearch的基本概念和用法
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-01
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
-                                    工具
+                            <a href="/categories/ElasticSearch/" class="post-category">
+                                    ElasticSearch
                                 </a>
                             
                             
@@ -693,12 +866,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/">
+                        <span class="chip bg-color">搜索引擎</span>
                     </a>
                     
-                    <a href="/tags/github/">
-                        <span class="chip bg-color">github</span>
+                    <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/">
+                        <span class="chip bg-color">分布式</span>
                     </a>
                     
                 </div>
@@ -848,7 +1021,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">12.6k</span>&nbsp;字
+                class="white-color">19.2k</span>&nbsp;字
             
             
             
