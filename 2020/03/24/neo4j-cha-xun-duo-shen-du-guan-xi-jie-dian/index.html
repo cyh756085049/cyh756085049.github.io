@@ -392,14 +392,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    412
+                    422
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -436,6 +436,10 @@ match (a:pest_category)-[re]->(b:insect_category)-[re2]->(c:insect_info{insect_n
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd59uqqw5nj30n20ckq8t.jpg" alt=""></p>
 <pre class=" language-cypher"><code class="language-cypher">match (a:pest_category)-[re]->(b:insect_category)-[re2]->(c:insect_info) where c.insect_name contains('') and a.pest_name contains('') and b.category_name contains('螨') return a,re,b,re2,c</code></pre>
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd59vkr34fj30n40bowgd.jpg" alt=""></p>
+<blockquote>
+<p>参考：</p>
+<p><a href="https://blog.csdn.net/u013946356/article/details/81739079" target="_blank" rel="noopener">https://blog.csdn.net/u013946356/article/details/81739079</a></p>
+</blockquote>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
