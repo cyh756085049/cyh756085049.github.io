@@ -606,10 +606,11 @@ C_thread2_SyncObjectMethod1_End: 10:26:38</code></pre><h2 id="synchronized底层
 <li>实例数据</li>
 <li>对齐填充</li>
 </ul>
-<p><strong>对象头的结构：</strong><br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9t6nyepj314c07g41i.jpg" alt=""><br><strong>Mark word</strong><br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9tbb0rcj30zu0cuaei.jpg" alt=""></p>
+<p><strong>对象头的结构：</strong><br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9t6nyepj314c07g41i.jpg" alt="**对象头的结构"><br><strong>Mark word</strong><br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9tbb0rcj30zu0cuaei.jpg" alt="Mark word"></p>
 <blockquote>
 <p>Monitor :每个Java对象天生自带了一把看不见的锁</p>
 </blockquote>
+<p>ObjectMonitor的对象列表：</p>
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9tkd1isj31000j0dou.jpg" alt=""></p>
 <h3 id="什么是重入"><a href="#什么是重入" class="headerlink" title="什么是重入"></a>什么是重入</h3><p>从互斥锁的设计上来说，当一个线程试图操作一个由其他线程持有<br>的对象锁的临界资源时,将会处于阻塞状态,但当-一个线程再次请求<br>自己持有对象锁的临界资源时,这种情况属于重入</p>
 <h3 id="为什么会对synchronized嗤之以鼻"><a href="#为什么会对synchronized嗤之以鼻" class="headerlink" title="为什么会对synchronized嗤之以鼻"></a>为什么会对synchronized嗤之以鼻</h3><ul>
@@ -1239,7 +1240,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">27.6k</span>&nbsp;字
+                class="white-color">28.5k</span>&nbsp;字
             
             
             
