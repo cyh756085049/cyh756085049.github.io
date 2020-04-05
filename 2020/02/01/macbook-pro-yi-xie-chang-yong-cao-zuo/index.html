@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="支持向量机, Ramona">
+    <meta name="keywords" content="MacBook Pro一些常用操作, Ramona">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>支持向量机 | Ramona</title>
+    <title>MacBook Pro一些常用操作 | Ramona</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -232,12 +232,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">支持向量机</h1>
+                    <h1 class="description center-align post-title">MacBook Pro一些常用操作</h1>
                 </div>
             </div>
         </div>
@@ -354,8 +354,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                                <span class="chip bg-color">机器学习</span>
+                            <a href="/tags/%E6%8A%80%E5%B7%A7/">
+                                <span class="chip bg-color">技巧</span>
                             </a>
                         
                     </div>
@@ -366,8 +366,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E6%96%B9%E6%B3%95/" class="post-category">
-                                统计学方法
+                            <a href="/categories/%E5%B7%A5%E5%85%B7/" class="post-category">
+                                工具
                             </a>
                         
                     </div>
@@ -379,7 +379,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-06-25
+                    2020-02-01
                 </div>
                 
 
@@ -388,14 +388,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    60
+                    483
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -411,8 +411,43 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="第七章-支持向量机"><a href="#第七章-支持向量机" class="headerlink" title="第七章 支持向量机"></a>第七章 支持向量机</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd0cooufgfj30u00v14kz.jpg" alt="支持向量机思维导图"></p>
-<script>
+                <p>查询mac的文件：<br><code>command+shift+g</code></p>
+<h3 id="mac操作idea的快捷键的使用"><a href="#mac操作idea的快捷键的使用" class="headerlink" title="mac操作idea的快捷键的使用"></a>mac操作idea的快捷键的使用</h3><p><code>command + ，</code> 打开idea的Preferences,进行设置</p>
+<p><code>command + O</code> 打开搜索框</p>
+<p><code>command + shift + 回车</code> 转到在一行</p>
+<h3 id="mac工具"><a href="#mac工具" class="headerlink" title="mac工具"></a>mac工具</h3><p><code>Charles</code> 代理抓包工具 (视频7-6)</p>
+<p><code>Apache ab</code> 压测模拟并发的工具</p>
+<p><code>natapp</code> 内网穿透工具（<a href="https://natapp.cn/）" target="_blank" rel="noopener">https://natapp.cn/）</a></p>
+<h3 id="mac配置环境变量"><a href="#mac配置环境变量" class="headerlink" title="mac配置环境变量"></a>mac配置环境变量</h3><p>1、配置环境变量路径：</p>
+<pre><code>cd /etc/profile</code></pre><p>2、查看配置文件：</p>
+<pre><code>cat /etc/profile</code></pre><p>3、编辑配置文件：</p>
+<pre><code>vim /etc/profile</code></pre><p><strong>编辑完成退出</strong>:按<code>ESC</code></p>
+<p><strong>保存并退出</strong>：输入 <code>:wq!</code> (因为是 readonly文件，感叹号用于保存对readonly文件的修改)</p>
+<p>4、插入代码：插入指令<code>i</code></p>
+<h3 id="配置mysql环境变量"><a href="#配置mysql环境变量" class="headerlink" title="配置mysql环境变量"></a>配置mysql环境变量</h3><blockquote>
+<p>(1).进入<code>/usr/local/mysql/bin</code>,查看此目录下是否有<code>mysql</code>。<br>(2).执行<code>vim ~/.bash_profile</code><br>      在该文件中添加mysql/bin的目录，添加：<br>     <code>PATH=$PATH:/usr/local/mysql/bin</code><br>添加完成后，按<code>esc</code>，然后输入<code>wq</code>保存。<br>最后在命令行输入<code>source ~/.bash_profile</code></p>
+</blockquote>
+<h3 id="mac解压文件"><a href="#mac解压文件" class="headerlink" title="mac解压文件"></a>mac解压文件</h3><p>1、下载安装包 RAR for Mac OS X</p>
+<blockquote>
+<p>下载地址：<a href="https://www.rarlab.com/download.htm" target="_blank" rel="noopener">https://www.rarlab.com/download.htm</a></p>
+</blockquote>
+<p>2、解压压缩包，使用 <code>cd Downloads/rar</code>进入</p>
+<p>3、使用以下命令分别安装 rar 和 unrar：</p>
+<pre><code>sudo install -c -o $USER rar /usr/local/bin
+sudo install -c -o $USER unrar /usr/local/bin</code></pre><p>4、测试命令：</p>
+<pre><code>解压：unrar x FileName.rar
+压缩：rar a FileName.rar DirName</code></pre><h3 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h3><p>nginx的网站根目录有两个：</p>
+<pre><code>1、/usr/local/Cellar/nginx/1.17.3_1/html
+2、/usr/local/var/www</code></pre><p>nginx的一些配置路径：</p>
+<pre><code>/usr/local/etc/nginx/nginx.conf （配置文件路径）
+/usr/local/var/www （服务器默认路径）
+/usr/local/Cellar/nginx/1.17.3_1 （貌似是安装路径）</code></pre><p>将vue项目部署到nginx上：</p>
+<pre><code>// 复制vue项目下编译后的dist文件到nginx的html文件夹的sell文件夹下
+cp -r dist/* /usr/local/var/www/sell
+// 配置nginx反向代理
+
+
+</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -443,8 +478,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                                    <span class="chip bg-color">机器学习</span>
+                                <a href="/tags/%E6%8A%80%E5%B7%A7/">
+                                    <span class="chip bg-color">技巧</span>
                                 </a>
                             
                         </div>
@@ -487,7 +522,7 @@
         repo: 'gitalk',
         owner: 'cyh756085049',
         admin: "cyh756085049",
-        id: '2019-06-25T13-33-31',
+        id: '2020-02-01T11-28-37',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -775,31 +810,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/07/02/ti-sheng-fang-fa/">
+                <a href="/2020/02/13/redis-ru-men/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="提升方法">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Redis入门">
                         
-                        <span class="card-title">提升方法</span>
+                        <span class="card-title">Redis入门</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            提升方法思维导图
+                            Redis下载安装及基本概念介绍
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-07-02
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-13
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E6%96%B9%E6%B3%95/" class="post-category">
-                                    统计学方法
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -809,8 +844,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
+                    <a href="/tags/Redis/">
+                        <span class="chip bg-color">Redis</span>
                     </a>
                     
                 </div>
@@ -824,31 +859,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/06/18/luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing/">
+                <a href="/2019/11/10/ri-zhi-de-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="逻辑斯蒂回归与最大熵模型">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Java中日志的使用">
                         
-                        <span class="card-title">逻辑斯蒂回归与最大熵模型</span>
+                        <span class="card-title">Java中日志的使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            逻辑斯蒂回归与最大熵模型思维导图
+                            Slf4j日志和Logback的配置使用及比较
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-06-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E6%96%B9%E6%B3%95/" class="post-category">
-                                    统计学方法
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -858,8 +893,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
+                    <a href="/tags/%E6%97%A5%E5%BF%97/">
+                        <span class="chip bg-color">日志</span>
                     </a>
                     
                 </div>
