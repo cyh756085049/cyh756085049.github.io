@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Linux知识, Ramona">
+    <meta name="keywords" content="SpringBoot整合JPA遇到的问题, Ramona">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>Linux知识 | Ramona</title>
+    <title>SpringBoot整合JPA遇到的问题 | Ramona</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -232,12 +232,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Linux知识</h1>
+                    <h1 class="description center-align post-title">SpringBoot整合JPA遇到的问题</h1>
                 </div>
             </div>
         </div>
@@ -354,8 +354,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
+                            <a href="/tags/Spring-Boot/">
+                                <span class="chip bg-color">Spring Boot</span>
                             </a>
                         
                     </div>
@@ -366,8 +366,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Java%E9%9D%A2%E8%AF%95/" class="post-category">
-                                Java面试
+                            <a href="/categories/Java/" class="post-category">
+                                Java
                             </a>
                         
                     </div>
@@ -379,7 +379,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-02
+                    2020-04-10
                 </div>
                 
 
@@ -388,14 +388,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    910
+                    106
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -411,78 +411,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="1、Linux的体系结构"><a href="#1、Linux的体系结构" class="headerlink" title="1、Linux的体系结构"></a>1、Linux的体系结构</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdft5n5jf0j307b06jmx1.jpg" alt=""></p>
-<blockquote>
-<p>图片来源：<a href="https://www.geek-share.com/detail/2779369078.html" target="_blank" rel="noopener">https://www.geek-share.com/detail/2779369078.html</a></p>
-</blockquote>
-<ul>
-<li>体系结构主要分为用户态(用户上层活动)和内核态</li>
-<li>内核:本质是一段管理计算机硬件设备的程序</li>
-<li>系统调用:内核的访问接口,是一种能再简化的操作</li>
-<li>公用函数库:系统调用的组合拳</li>
-<li>Shell：命令解释器，可编程</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdft6ecjjej30vo0kaasq.jpg" alt=""></p>
-<h3 id="2、Linux查找特定文件"><a href="#2、Linux查找特定文件" class="headerlink" title="2、Linux查找特定文件"></a>2、Linux查找特定文件</h3><p><strong>如何查找特定的文件？</strong></p>
-<p><code>find</code></p>
-<pre class=" language-!"><code class="language-!">语法：find path [options] params</code></pre>
-<p><strong>作用</strong>：在指定目录下查找文件</p>
-<p><strong>面试里常用的方式:</strong></p>
-<ul>
-<li><code>find ~ -name "target3.java"</code> : 精确查找文件</li>
-<li><code>find ~ -name "target*"</code> :模糊查找文件</li>
-<li><code>find ~ -iname "target*"</code> :不区分文件名大小写去查找文件</li>
-<li><code>man find</code> :更多关于find指令的使用说明</li>
-</ul>
-<h3 id="3、检索文件内容"><a href="#3、检索文件内容" class="headerlink" title="3、检索文件内容"></a>3、检索文件内容</h3><p><code>grep</code></p>
-<pre class=" language-!"><code class="language-!">语法：grep [options] pattern file</code></pre>
-<p>全称：Global Regular Expression Print</p>
-<p><strong>作用</strong>：查找文件里符合条件的字符串</p>
-<p><code>管道操作符 |</code></p>
-<p>可以将指令连接起来，前一个指令的输出作为后一个指令的输入</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdft7rikmaj30ec03jaa8.jpg" alt=""></p>
-<blockquote>
-<p>图谱来源：<a href="https://blog.51cto.com/yuyucat/1651914" target="_blank" rel="noopener">https://blog.51cto.com/yuyucat/1651914</a></p>
-</blockquote>
-<p><strong>使用管道注意的要点</strong>：</p>
-<ul>
-<li>只处理前一个命令正确输出，不处理错误输出</li>
-<li>右边命令必须能够接收标准输入流，否则传递过程中数据会被抛弃</li>
-<li>常用来接收数据管道的命令有：sed,awk,grep,cut,head,top,less,more,wc,join,sort,split等</li>
-</ul>
-<p><strong>面试里常用的方式：</strong></p>
-<ul>
-<li><code>find ~ | grep "target"</code>:模糊查找文件</li>
-<li><code>grep 'partial\[truel\]' bsc-plat-al-data.info.log</code>:在内容中查找包含某个字段的文件，并在相关的行中展示出来</li>
-<li><code>grep -O 'engine\[[O-9a-z]*\]'</code>：筛选出符合正则表达式的内容</li>
-<li><code>grep -V 'grep'</code>:过滤掉包含此字符串的内容</li>
-</ul>
-<h3 id="4、对日志内容做统计"><a href="#4、对日志内容做统计" class="headerlink" title="4、对日志内容做统计"></a>4、对日志内容做统计</h3><p><code>awk</code></p>
-<pre class=" language-!"><code class="language-!">语法: awk [options] 'cmd' file</code></pre>
-<ul>
-<li>一次读取一行文本,按输入分隔符进行切片,切成多个组成部分</li>
-<li>将切片直接保存在内建的变量中, $1,$2…($0表示行的全部)</li>
-<li>支持对单个切片的判断,支持循环判断,默认分隔符为空格</li>
-<li></li>
-<li><em>面试里常用的方式*</em></li>
-<li><code>awk '{print $1, $4}' netstat.txt</code>:筛选出文件内容的某些列的数据</li>
-<li><code>awk '$1=="tcp" &amp;&amp; $2==1 {print $O}' netstat.txt</code>:依据某些条件筛选文件内容中的某些列的数据</li>
-<li><code>awk '{enginearr[$1]++}END{for(i in enginearr)print i"\t" enginearr[i]}'</code>:对内容逐行做统计操作，并列出对应的统计结果</li>
-</ul>
-<p>示例：<br><code>grep 'partial\[truel\]' bsc-plat-al-data.info.log ｜ grep -O 'engine\[[O-9a-z]*\]' ｜ awk '{enginearr[$1]++}END{for(i in enginearr)print i "\t" enginearr[i]}'</code></p>
-<h3 id="5、批量替换文件内容"><a href="#5、批量替换文件内容" class="headerlink" title="5、批量替换文件内容"></a>5、批量替换文件内容</h3><p><code>sed</code></p>
-<pre class=" language-!"><code class="language-!">语法：sed [options] 'sed command' filename</code></pre>
-<ul>
-<li>全名stream editor,流编辑器</li>
-<li>适合用于对文本的行内容进行处理</li>
-</ul>
-<p><strong>面试里常用的方式：</strong></p>
-<ul>
-<li><code>sed -i 's/^Str/String/' replace.java</code>:在文件中筛选出以<code>Str</code>开头的行并把<code>Str</code>替换成<code>String</code>，<code>-i</code>表示直接在目标文本上进行修改，<code>s</code>是指对字符串进行操作</li>
-<li><code>sed -i's/\.$/\;/' replacejava</code>:筛选出以<code>.</code>结尾的行，并把<code>.</code>替换为<code>;</code>,<code>$</code>是指结尾符</li>
-<li><code>sed -i's/Jack/me/g' replace.java</code>:筛选出包含<code>Jack</code>指定字符串的行，并把该字符串替换为<code>me</code>，<code>g</code>是指对整行的内容进行替换，没有<code>g</code>则只替换该行第一次符合条件的字符串</li>
-<li><code>sed -i '/^ *$/d' replace.java</code>:删除空行，<code>d</code>指删除指定行，此处为空格</li>
-</ul>
+                <h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h3><p>在springboot中整合JPA可能会遇到“No Identifier specified for entity”即没有标识实体类的错误。</p>
+<h3 id="解决办法："><a href="#解决办法：" class="headerlink" title="解决办法："></a>解决办法：</h3><p>检查自己的实体类是否有以下注释：</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdoti0vxtoj31a80baq4p.jpg" alt=""></p>
+<p>注解依赖：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>*<span class="token punctuation">;</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -514,8 +447,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
+                                <a href="/tags/Spring-Boot/">
+                                    <span class="chip bg-color">Spring Boot</span>
                                 </a>
                             
                         </div>
@@ -558,7 +491,7 @@
         repo: 'gitalk',
         owner: 'cyh756085049',
         admin: "cyh756085049",
-        id: '2020-04-02T22-46-58',
+        id: '2020-04-10T17-48-00',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -842,17 +775,68 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/04/03/er-cha-shu-de-zhong-xu-bian-li/">
+                <a href="/2020/04/10/springboot-zheng-he-jpa-yu-dao-de-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="二叉树的中序遍历">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="SpringBoot整合JPA遇到的问题">
                         
-                        <span class="card-title">二叉树的中序遍历</span>
+                        <span class="card-title">SpringBoot整合JPA遇到的问题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            在springboot中整合JPA遇到“No Identifier specified for entity”问题
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-10
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring-Boot/">
+                        <span class="chip bg-color">Spring Boot</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/09/he-bing-er-cha-shu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="合并二叉树">
+                        
+                        <span class="card-title">合并二叉树</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -862,9 +846,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-03
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -882,55 +866,6 @@
                     
                     <a href="/tags/leetcode/">
                         <span class="chip bg-color">leetcode</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/04/02/jvm-zhi-shi/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="JVM知识">
-                        
-                        <span class="card-title">JVM知识</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            JVM相关知识笔记
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-02
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Java%E9%9D%A2%E8%AF%95/" class="post-category">
-                                    Java面试
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/JVM/">
-                        <span class="chip bg-color">JVM</span>
                     </a>
                     
                 </div>
