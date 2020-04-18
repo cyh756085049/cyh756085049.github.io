@@ -398,7 +398,8 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>title: 数据库<br>date: 2020-04-16 16:51:18<br>tags:</p>
+                <p>title: 数据库<br>date: 2020-04-16 16:51:18<br>tags: 数据库</p>
+<p>summary: 各种树的知识</p>
 <h1 id="数据库-MySQL"><a href="#数据库-MySQL" class="headerlink" title="数据库-MySQL"></a>数据库-MySQL</h1><h2 id="一、数据结构"><a href="#一、数据结构" class="headerlink" title="一、数据结构"></a>一、数据结构</h2><h3 id="1、二叉搜索树（BST）"><a href="#1、二叉搜索树（BST）" class="headerlink" title="1、二叉搜索树（BST）"></a>1、二叉搜索树（BST）</h3><p>二叉搜索树（BST）又称二叉查找树或二叉排序树。二叉树的提出其实主要就是为了提高查找效率。</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdwjfwgws4j30hs09ut9t.jpg" alt="二叉查找树"></p>
 <h4 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h4><p>1.<strong>左</strong>子树上所有结点的值均<strong>小于或等于</strong>它的根结点的值。</p>
@@ -484,7 +485,7 @@
 <h4 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h4><p>文件系统及数据库系统普遍采用 B+ Tree 作为索引结构。</p>
 <h4 id="B-树和红黑树的比较"><a href="#B-树和红黑树的比较" class="headerlink" title="B+树和红黑树的比较"></a>B+树和红黑树的比较</h4><p>（1）B+树有更少的查找次数，因为红黑树的树高很明显比 B+ Tree 大非常多，查找的次数也就更多。</p>
 <p>（2）B+树能够利用磁盘预读特性。为了减少磁盘 I/O 操作，磁盘往往不是严格按需读取，而是每次都会预读。预读过程中，磁盘进行顺序读取，顺序读取不需要进行磁盘寻道，并且只需要很短的磁盘旋转时间，速度会非常快。操作系统一般将内存和磁盘分割成固定大小的块，每一块称为一页，内存与磁盘以页为单位交换数据。数据库系统将索引的一个节点的大小设置为页的大小，使得一次 I/O 就能完全载入一个节点。并且可以利用预读特性，相邻的节点也能够被预先载入。</p>
-<h2 id="mysql索引和redis跳表？"><a href="#mysql索引和redis跳表？" class="headerlink" title="mysql索引和redis跳表？"></a>mysql索引和redis跳表？</h2><p>他们都是用于解决数据集合的查找问题，即根据指定的key，快速查到它所在的位置（或者对应的value）。</p>
+<h2 id="二、mysql索引和redis跳表？"><a href="#二、mysql索引和redis跳表？" class="headerlink" title="二、mysql索引和redis跳表？"></a>二、mysql索引和redis跳表？</h2><p>他们都是用于解决数据集合的查找问题，即根据指定的key，快速查到它所在的位置（或者对应的value）。</p>
 <h5 id="数据集合的查找问题"><a href="#数据集合的查找问题" class="headerlink" title="数据集合的查找问题"></a>数据集合的查找问题</h5><ol>
 <li>需要支持哪些查找方式，单key/多key/范围查找</li>
 <li>插入/删除效率</li>
@@ -557,7 +558,7 @@
 </blockquote>
 <h2 id="索引数据结构"><a href="#索引数据结构" class="headerlink" title="索引数据结构"></a>索引数据结构</h2><h4 id="数据库索引为什么要使用树结构存储？"><a href="#数据库索引为什么要使用树结构存储？" class="headerlink" title="数据库索引为什么要使用树结构存储？"></a>数据库索引为什么要使用树结构存储？</h4><p>查询效率高，可以保持有序。</p>
 <h4 id="数据库索引为什么不使用二叉查找树实现？"><a href="#数据库索引为什么不使用二叉查找树实现？" class="headerlink" title="数据库索引为什么不使用二叉查找树实现？"></a>数据库索引为什么不使用二叉查找树实现？</h4><p>从算法逻辑上来说，二叉查找树的查询速度和比较次数是最小的，但是需要考虑现实问题，就是磁盘IO的问题，数据库索引是存储在磁盘上的，数据量很大的时候，索引大小就很多，当利用索引查询的时候，我们不能把整个索引加载到内存，能做的只有逐一加载每一个磁盘页，这里的磁盘页对应着索引树的节点。当使用二叉树作为索引节点查询值的时候，在最坏情况下，磁盘IO次数等于索引树的高度，为了减少磁盘IO次数，就需要降低树的高度，所以就要引入B Tree。</p>
-<h4 id="Hash-1"><a href="#Hash-1" class="headerlink" title="Hash"></a>Hash</h4><h4 id="B-树"><a href="#B-树" class="headerlink" title="B+ 树"></a>B+ 树</h4><blockquote>
+<h4 id="未完待续。。。"><a href="#未完待续。。。" class="headerlink" title="未完待续。。。"></a>未完待续。。。</h4><blockquote>
 <p>参考引用：</p>
 <p><a href="https://zhuanlan.zhihu.com/p/53975333" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/53975333</a></p>
 <p><a href="https://www.cnblogs.com/stonefang/p/10714769.html" target="_blank" rel="noopener">https://www.cnblogs.com/stonefang/p/10714769.html</a></p>
@@ -935,10 +936,9 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            title: 数据库date: 2020-04-16 16:51:18tags:
-数据库-MySQL一、数据结构1、二叉搜索树（BST）二叉搜索树（BST）又称二叉查找树或二叉排序树。二叉树的提出其实主要就是为了提高查找效率。
-
-特征1.左
+                            title: 数据库date: 2020-04-16 16:51:18tags: 数据库
+summary: 各种树的知识
+数据库-MySQL一、数据结构1、二叉搜索树（BST）二叉搜索树（BST）又称二叉查找树或二叉排序树。二叉树的提出其实
                         
                     </div>
                     <div class="publish-info">
