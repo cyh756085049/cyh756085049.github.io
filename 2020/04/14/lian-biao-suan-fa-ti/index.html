@@ -416,7 +416,8 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><strong>本文所有算法题目来源均为 <a href="https://leetcode-cn.com" target="_blank" rel="noopener">力扣（LeetCode）</a>。</strong></p>
-<p>本篇主要记录链表相关算法题目，链表（Linked List）是一种常见的基础数据结构，是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存到下一个节点的指针（Pointer）。由于不必须按顺序存储，链表在插入的时候可以达到O(1)的<a href="https://zh.wikipedia.org/wiki/複雜度" target="_blank" rel="noopener">复杂度</a>，比另一种线性表<a href="https://zh.wikipedia.org/wiki/顺序表" target="_blank" rel="noopener">顺序表</a>快得多，但是查找一个节点或者访问特定编号的节点则需要O(n)的时间，而顺序表相应的时间复杂度分别是O(logn)和O(1)。</p>
+<p>本篇主要记录链表相关算法题目，链表（Linked List）是一种常见的基础数据结构，是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存到下一个节点的指针（Pointer）。由于不必须按顺序存储，链表在插入的时候可以达到O(1)的<a href="https://zh.wikipedia.org/wiki/複雜度" target="_blank" rel="noopener">复杂度</a>，比另一种线性表<a href="https://zh.wikipedia.org/wiki/顺序表" target="_blank" rel="noopener">顺序表</a>快得多，但是查</p>
+<p>找一个节点或者访问特定编号的节点则需要O(n)的时间，而顺序表相应的时间复杂度分别是O(logn)和O(1)。</p>
 <p>使用链表结构可以克服数组链表需要预先知道数据大小的缺点，链表结构可以充分利用计算机内存空间，实现灵活的内存动态管理。但是链表失去了数组随机读取的优点，同时链表由于增加了结点的指针域，空间开销比较大。</p>
 <h3 id="06-从尾到头打印链表"><a href="#06-从尾到头打印链表" class="headerlink" title="06 从尾到头打印链表"></a>06 从尾到头打印链表</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><blockquote>
 <p>输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。</p>
@@ -1454,8 +1455,7 @@ root = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], k = 3
 输出: [[1, 2, 3, 4], [5, 6, 7], [8, 9, 10]]
 解释:
 输入被分成了几个连续的部分，并且每部分的长度相差不超过1.前面部分的长度大于等于后面部分的长度。</code></pre></blockquote>
-<p>####解法1 创建新链表</p>
-<blockquote>
+<h4 id="解法1-创建新链表"><a href="#解法1-创建新链表" class="headerlink" title="解法1 创建新链表"></a>解法1 创建新链表</h4><blockquote>
 <p>首先计算链表的总节点数n，然后通过n/k得到分割的链表节点数，如果n%k不为0，则需要在分隔的节点上都依次加1，然后创建一个新链表，把分隔的列表写入新链表。</p>
 </blockquote>
 <h5 id="代码实现-21"><a href="#代码实现-21" class="headerlink" title="代码实现"></a>代码实现</h5><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
@@ -1502,8 +1502,7 @@ root = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], k = 3
 <td><strong>$O(max(n,k))$</strong></td>
 </tr>
 </tbody></table>
-<p>####解法2 拆分链表</p>
-<blockquote>
+<h4 id="解法2-拆分链表"><a href="#解法2-拆分链表" class="headerlink" title="解法2 拆分链表"></a>解法2 拆分链表</h4><blockquote>
 <p>同解法1类似，此处只是拆分原链表。</p>
 </blockquote>
 <h5 id="代码实现-22"><a href="#代码实现-22" class="headerlink" title="代码实现"></a>代码实现</h5><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
@@ -1556,8 +1555,7 @@ root = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], k = 3
 <p> 给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。使用原地算法完成。你的算法的空间复杂度应为 O(1)，时间复杂度应为 O(nodes)，nodes 为节点总数。</p>
 <pre><code>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL
 输出: 1-&gt;3-&gt;5-&gt;2-&gt;4-&gt;NULL</code></pre></blockquote>
-<p>####解法1 双指针法</p>
-<blockquote>
+<h4 id="解法1-双指针法-1"><a href="#解法1-双指针法-1" class="headerlink" title="解法1 双指针法"></a>解法1 双指针法</h4><blockquote>
 <p>将奇节点放在一个链表里，偶链表放在另一个链表里。然后把偶链表接在奇链表的尾部。用变量 <code>head</code> 和 <code>odd</code> 保存奇链表的头和尾指针。 <code>evenHead</code> 和 <code>even</code> 保存偶链表的头和尾指针。</p>
 </blockquote>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gdxzoppydvj30r20sswgd.jpg" alt=""></p>
@@ -1962,34 +1960,44 @@ root = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], k = 3
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/04/16/shu-ju-ku/">
+                <a href="/2020/04/18/suo-yin-shu-ju-jie-gou/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="数据库">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="索引数据结构">
                         
-                        <span class="card-title">数据库</span>
+                        <span class="card-title">索引数据结构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            title: 数据库date: 2020-04-16 16:51:18tags: 数据库
-summary: 各种树的知识
-数据库-MySQL一、数据结构1、二叉搜索树（BST）二叉搜索树（BST）又称二叉查找树或二叉排序树。二叉树的提出其实
+                            树相关的知识
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-18
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            cyh
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%A0%91/">
+                        <span class="chip bg-color">树</span>
+                    </a>
+                    
                 </div>
                 
             </div>
