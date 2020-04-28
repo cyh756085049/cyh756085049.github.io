@@ -392,14 +392,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.9k
+                    6.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    27 分
+                    29 分
                 </div>
                 
 
@@ -1593,6 +1593,72 @@ root = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], k = 3
 <td><strong>$O(1)$</strong></td>
 </tr>
 </tbody></table>
+<h3 id="2-两数相加"><a href="#2-两数相加" class="headerlink" title="2 两数相加"></a>2 两数相加</h3><h4 id="题目描述-11"><a href="#题目描述-11" class="headerlink" title="题目描述"></a>题目描述</h4><blockquote>
+<p>给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。如果，我们将这两个数相加起来，则会返回一个新的链表来表示它们的和。</p>
+<pre><code>输入：(2 -&gt; 4 -&gt; 3) + (5 -&gt; 6 -&gt; 4)
+输出：7 -&gt; 0 -&gt; 8
+原因：342 + 465 = 807</code></pre></blockquote>
+<h4 id="解法1-初等数学"><a href="#解法1-初等数学" class="headerlink" title="解法1 初等数学"></a>解法1 初等数学</h4><p>新创建一个链表<code>head</code>，遍历两个非空链表，设置一个进位值<code>carry</code>，初始值为0，把链表值与进位值相加取余，即为新链表的值，同时更新进位值，当遍历完成之后，如果进位值为1，则返回列表追加一个含有数字 1 的新结点。</p>
+<h5 id="代码实现-24"><a href="#代码实现-24" class="headerlink" title="代码实现"></a>代码实现</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>cn<span class="token punctuation">.</span>algorithm<span class="token punctuation">.</span>array<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>cn<span class="token punctuation">.</span>algorithm<span class="token punctuation">.</span>linklist<span class="token punctuation">.</span>ListNodeOutPut<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>cn<span class="token punctuation">.</span>algorithm<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ListNode<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/**
+ * @Author: cyh
+ * @Date: 2020-04-26 18:19
+ * @Description: 两数相加
+ **/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AddTwoNumbers</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 两数相加-初等数学
+     * @param l1
+     * @param l2
+     * @return
+     */</span>
+    <span class="token keyword">public</span> ListNode <span class="token function">addTwoNumbers</span><span class="token punctuation">(</span>ListNode l1<span class="token punctuation">,</span> ListNode l2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ListNode head <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ListNode p <span class="token operator">=</span> l1<span class="token punctuation">,</span> q <span class="token operator">=</span> l2<span class="token punctuation">,</span> cur <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> carry <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> null <span class="token operator">||</span> q <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token operator">?</span> p<span class="token punctuation">.</span>val <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> y <span class="token operator">=</span> <span class="token punctuation">(</span>q <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token operator">?</span> q<span class="token punctuation">.</span>val <span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            sum <span class="token operator">=</span> x <span class="token operator">+</span> y <span class="token operator">+</span> carry<span class="token punctuation">;</span>
+            cur<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span>sum <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            cur <span class="token operator">=</span> cur<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            carry <span class="token operator">=</span> sum <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">!=</span> null<span class="token punctuation">)</span> p <span class="token operator">=</span> p<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>q <span class="token operator">!=</span> null<span class="token punctuation">)</span> q <span class="token operator">=</span> q<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>carry <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            cur<span class="token punctuation">.</span>next <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ListNode</span><span class="token punctuation">(</span>carry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        AddTwoNumbers demo <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AddTwoNumbers</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"-------------------初始链表----------------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ListNode node <span class="token operator">=</span> ListNodeOutPut<span class="token punctuation">.</span><span class="token function">listNodeOut</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"-------------------两数相加----------------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ListNode node1 <span class="token operator">=</span> demo<span class="token punctuation">.</span><span class="token function">addTwoNumbers</span><span class="token punctuation">(</span>node<span class="token punctuation">,</span> node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ListNodeOutPut<span class="token punctuation">.</span><span class="token function">resultOut</span><span class="token punctuation">(</span>node1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h5 id="复杂度分析-25"><a href="#复杂度分析-25" class="headerlink" title="复杂度分析"></a>复杂度分析</h5><table>
+<thead>
+<tr>
+<th align="center">时间复杂度</th>
+<th align="center">O(max(m,n))</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>空间复杂度</strong></td>
+<td align="center">O(max(m,n))</td>
+</tr>
+</tbody></table>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -2206,7 +2272,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">71.7k</span>&nbsp;字
+                class="white-color">73.3k</span>&nbsp;字
             
             
             
