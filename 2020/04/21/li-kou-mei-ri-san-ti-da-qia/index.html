@@ -388,14 +388,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    11 分
                 </div>
                 
 
@@ -684,6 +684,140 @@
 <tbody><tr>
 <td align="center"><strong>空间复杂度</strong></td>
 <td align="center">$O(n)$</td>
+</tr>
+</tbody></table>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="70-爬楼梯"><a href="#70-爬楼梯" class="headerlink" title="70. 爬楼梯"></a><a href="https://leetcode-cn.com/problems/climbing-stairs/" target="_blank" rel="noopener">70. 爬楼梯</a></h2><h3 id="题目描述-5"><a href="#题目描述-5" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
+<p>假设你正在爬楼梯。需要 <em>n</em> 阶你才能到达楼顶。</p>
+<p>每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p>
+<pre><code>输入： 3
+输出： 3
+解释： 有三种方法可以爬到楼顶。
+1.  1 阶 + 1 阶 + 1 阶
+2.  1 阶 + 2 阶
+3.  2 阶 + 1 阶</code></pre></blockquote>
+<h3 id="解法1-动态规划"><a href="#解法1-动态规划" class="headerlink" title="解法1 动态规划"></a>解法1 动态规划</h3><p>这个问题可以被分解为一些包含最优子结构的子问题，即它的最优解可以从其子问题的最优解来有效地构建，我们可以使用动态规划来解决这一问题。</p>
+<p>第 i 阶可以由以下两种方法得到：</p>
+<p>在第 (i-1)阶后向上爬一阶。</p>
+<p>在第 (i-2) 阶后向上爬 2 阶。</p>
+<p>所以到达第 i 阶的方法总数就是到第 (i-1) 阶和第 (i-2) 阶的方法数之和。</p>
+<p>令 dp[i] 表示能到达第 i 阶的方法总数：<code>dp[i]=dp[i-1]+dp[i-2]</code></p>
+<h4 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">climbStairs</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        dp<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        dp<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span> i <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> dp<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="复杂度分析-6"><a href="#复杂度分析-6" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><table>
+<thead>
+<tr>
+<th align="center">时间复杂度</th>
+<th align="center">$O(n)$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>空间复杂度</strong></td>
+<td align="center">$O(n)$</td>
+</tr>
+</tbody></table>
+<h3 id="解法2-斐波那契数"><a href="#解法2-斐波那契数" class="headerlink" title="解法2 斐波那契数"></a>解法2 斐波那契数</h3><p>在上述方法中，我们使用 dp数组，其中 dp[i]=dp[i-1]+dp[i-2]。可以很容易通过分析得出 dp[i]其实就是第 i 个斐波那契数。</p>
+<p><code>Fib(n)=Fib(n-1)+Fib(n-2)</code></p>
+<p>现在我们必须找出以 1 和 2 作为第一项和第二项的斐波那契数列中的第 n 个数，也就是说 Fib(1)=1且 Fib(2)=2。</p>
+<h4 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">climbStairs</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> first <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> second <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> third <span class="token operator">=</span> first <span class="token operator">+</span> second<span class="token punctuation">;</span>
+            first <span class="token operator">=</span> second<span class="token punctuation">;</span>
+            second <span class="token operator">=</span> third<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> second<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="复杂度分析-7"><a href="#复杂度分析-7" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><table>
+<thead>
+<tr>
+<th align="center">时间复杂度</th>
+<th align="center">$O(n)$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>空间复杂度</strong></td>
+<td align="center">$O(1)$</td>
+</tr>
+</tbody></table>
+<h1 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h1><h2 id="101-对称二叉树"><a href="#101-对称二叉树" class="headerlink" title="101. 对称二叉树"></a><a href="https://leetcode-cn.com/problems/symmetric-tree/" target="_blank" rel="noopener">101. 对称二叉树</a></h2><h3 id="题目描述-6"><a href="#题目描述-6" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
+<p>给定一个二叉树，检查它是否是镜像对称的。</p>
+<p>例如，二叉树 <code>[1,2,2,3,4,4,3]</code> 是对称的。</p>
+<pre><code>        1
+   / \
+  2   2
+ / \ / \
+3  4 4  3</code></pre></blockquote>
+<h3 id="解法1-递归"><a href="#解法1-递归" class="headerlink" title="解法1 递归"></a>解法1 递归</h3><p>递归结束条件：都为空指针则返回 true；只有一个为空则返回 false<br>递归过程：判断两个指针当前节点值是否相等；判断 A 的右子树与 B 的左子树是否对称；判断 A 的左子树与 B 的右子树是否对称</p>
+<h4 id="代码实现-5"><a href="#代码实现-5" class="headerlink" title="代码实现"></a>代码实现</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isSymmetric</span><span class="token punctuation">(</span>TreeNode root<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token function">isMirror</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> root<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isMirror</span><span class="token punctuation">(</span>TreeNode t1<span class="token punctuation">,</span> TreeNode t2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>t1 <span class="token operator">==</span> null <span class="token operator">&amp;&amp;</span> t2 <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>t1 <span class="token operator">==</span> null <span class="token operator">||</span> t2 <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>t1<span class="token punctuation">.</span>val <span class="token operator">==</span> t2<span class="token punctuation">.</span>val<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isMirror</span><span class="token punctuation">(</span>t1<span class="token punctuation">.</span>left<span class="token punctuation">,</span> t2<span class="token punctuation">.</span>right<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isMirror</span><span class="token punctuation">(</span>t1<span class="token punctuation">.</span>right<span class="token punctuation">,</span> t2<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="复杂度分析-8"><a href="#复杂度分析-8" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><table>
+<thead>
+<tr>
+<th align="center">时间复杂度</th>
+<th align="center">$O(n)$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>空间复杂度</strong></td>
+<td align="center">$O(n)$</td>
+</tr>
+</tbody></table>
+<h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><h2 id="121-买卖股票的最佳时机"><a href="#121-买卖股票的最佳时机" class="headerlink" title="121. 买卖股票的最佳时机"></a><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="noopener">121. 买卖股票的最佳时机</a></h2><h3 id="题目描述-7"><a href="#题目描述-7" class="headerlink" title="题目描述"></a>题目描述</h3><blockquote>
+<p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。</p>
+<p>注意：你不能在买入股票前卖出股票</p>
+<pre><code>输入: [7,1,5,3,6,4]
+输出: 5
+解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+     注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。</code></pre></blockquote>
+<h3 id="解法1-贪心算法"><a href="#解法1-贪心算法" class="headerlink" title="解法1 贪心算法"></a>解法1 贪心算法</h3><p>从左向右，维护一个最小值low，与每一天的股票价格做差，差最大的为答案。</p>
+<h4 id="代码实现-6"><a href="#代码实现-6" class="headerlink" title="代码实现"></a>代码实现</h4><pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 贪心法 时间复杂度o(n) 空间复杂度o(1)</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">maxProfit</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> prices<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> maxProfit <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> low <span class="token operator">=</span> Integer<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> p <span class="token operator">:</span> prices<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>p <span class="token operator">&lt;</span> low<span class="token punctuation">)</span>
+                low <span class="token operator">=</span> p<span class="token punctuation">;</span>
+            maxProfit <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxProfit<span class="token punctuation">,</span> p <span class="token operator">-</span> low<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> maxProfit<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="复杂度分析-9"><a href="#复杂度分析-9" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><table>
+<thead>
+<tr>
+<th align="center">时间复杂度</th>
+<th align="center">$O(n)$</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>空间复杂度</strong></td>
+<td align="center">$O(1)$</td>
 </tr>
 </tbody></table>
 <script>
@@ -1283,7 +1417,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">75.9k</span>&nbsp;字
+                class="white-color">76.9k</span>&nbsp;字
             
             
             
