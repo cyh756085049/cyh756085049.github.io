@@ -388,14 +388,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    3.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    16 分
                 </div>
                 
 
@@ -803,6 +803,7 @@
 </blockquote>
 <p><strong>分析：</strong></p>
 <p>f(n) = f(n - 1) + f(n - 2) + f(n - 3) + … + f(2) + f(1)<br>f(n - 1) = f(n - 2) + f(n - 3) + … + f(2) + f(1)<br>f(n) = 2*f(n - 1)</p>
+<p>其本质是斐波那契数列的变种。</p>
 <p><strong>代码：</strong></p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">JumpFloorII</span><span class="token punctuation">(</span><span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -829,6 +830,138 @@
 <td><strong>O(1)</strong></td>
 </tr>
 </tbody></table>
+<h3 id="矩形覆盖"><a href="#矩形覆盖" class="headerlink" title="矩形覆盖"></a>矩形覆盖</h3><p><strong>题目描述</strong></p>
+<blockquote>
+<p>我们可以用2<em>1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2</em>1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？</p>
+<p>比如n=3时，2*3的矩形块有3种覆盖方法：</p>
+<p><img src="https://uploadfiles.nowcoder.com/images/20200218/6384065_1581999858239_64E40A35BE277D7E7C87D4DCF588BE84" alt="img"></p>
+</blockquote>
+<p><strong>分析：</strong></p>
+<ul>
+<li><p>当n=1时，只有一种方法，f(1)=1;</p>
+</li>
+<li><p>当n=2时，既可以横着覆盖，也可以竖着覆盖，有两种方法，f(2)=2;</p>
+</li>
+<li><p>当n=n时，考虑n=n-1和n=n-2的情况，f(n)=f(n - 1) + f(n - 2)</p>
+<p>其实质还是斐波那契数列。</p>
+</li>
+</ul>
+<p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 2*1  1.  2*2. 2   2*3. 3.   2*4  5</span>
+    <span class="token comment" spellcheck="true">// n = (n - 1) + (n - 2)</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">RectCover</span><span class="token punctuation">(</span><span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>target <span class="token operator">&lt;=</span> <span class="token number">2</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> target<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> one <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> two <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> target<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> cur <span class="token operator">=</span> one <span class="token operator">+</span> two<span class="token punctuation">;</span>
+            one <span class="token operator">=</span> two<span class="token punctuation">;</span>
+            two <span class="token operator">=</span> cur<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> two<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>复杂度</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">时间复杂度</th>
+<th align="center">O(n)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>空间复杂度</strong></td>
+<td align="center"><strong>O(1)</strong></td>
+</tr>
+</tbody></table>
+<h3 id="二进制中1的个数"><a href="#二进制中1的个数" class="headerlink" title="二进制中1的个数"></a>二进制中1的个数</h3><p><strong>题目描述</strong></p>
+<blockquote>
+<p>输入一个整数，输出该数二进制表示中1的个数。其中负数用补码表示。</p>
+</blockquote>
+<h4 id="解法1"><a href="#解法1" class="headerlink" title="解法1"></a>解法1</h4><p><strong>分析：</strong></p>
+<p>1、先将数字转换成二进制字符串<br>2、用String.split()函数存入一个数组中<br>3、遍历数组跟1比较，同时计数<br>4、输出计数值</p>
+<p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">NumberOf1</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String s <span class="token operator">=</span> Integer<span class="token punctuation">.</span><span class="token function">toBinaryString</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> splits <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> splits<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>splits<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                a<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="解法2"><a href="#解法2" class="headerlink" title="解法2"></a>解法2</h4><h5 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h5><p>如果一个整数不为0，那么这个整数至少有一位是1。如果我们把这个整数减1，那么原来处在整数最右边的1就会变为0，原来在1后面的所有的0都会变成1(如果最右边的1后面还有0的话)。其余所有位将不会受到影响。<br>举个例子：一个二进制数1100，从右边数起第三位是处于最右边的一个1。减去1后，第三位变成0，它后面的两位0变成了1，而前面的1保持不变，因此得到的结果是1011.我们发现减1的结果是把最右边的一个1开始的所有位都取反了。这个时候如果我们再把原来的整数和减去1之后的结果做与运算，从原来整数最右边一个1那一位开始所有位都会变成0。如1100&amp;1011=1000.也就是说，把一个整数减去1，再和原整数做与运算，会把该整数最右边一个1变成0.那么一个整数的二进制有多少个1，就可以进行多少次这样的操作。</p>
+<p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 20->10100 &amp; 10011 = 10000    10000 &amp; 01111 = 00000</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">NumberOf1</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            count <span class="token operator">++</span><span class="token punctuation">;</span>
+            n <span class="token operator">=</span> n <span class="token operator">&amp;</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="数值的整数次方"><a href="#数值的整数次方" class="headerlink" title="数值的整数次方"></a>数值的整数次方</h3><p><strong>题目描述</strong></p>
+<blockquote>
+<p>给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。保证base和exponent不同时为0</p>
+</blockquote>
+<h4 id="解法1-内置函数Math-pow"><a href="#解法1-内置函数Math-pow" class="headerlink" title="解法1 内置函数Math.pow()"></a>解法1 内置函数Math.pow()</h4><p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">Power</span><span class="token punctuation">(</span><span class="token keyword">double</span> base<span class="token punctuation">,</span> <span class="token keyword">int</span> exponent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> exponent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="解法2-暴力法"><a href="#解法2-暴力法" class="headerlink" title="解法2 暴力法"></a>解法2 暴力法</h4><h5 id="分析：-1"><a href="#分析：-1" class="headerlink" title="分析："></a>分析：</h5><p>将数字 base 连续乘 exponent 次。时间复杂度O(n) ，空间复杂度O(1)。</p>
+<p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 时间复杂度O(n)  空间复杂度O(1)</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">Power</span><span class="token punctuation">(</span><span class="token keyword">double</span> base<span class="token punctuation">,</span> <span class="token keyword">int</span> exponent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>exponent <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>exponent <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> base<span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span> isNegative <span class="token operator">=</span> exponent <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> e <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>exponent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">double</span> result <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> e<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            result <span class="token operator">*=</span> base<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> isNegative <span class="token operator">?</span> result <span class="token operator">:</span> <span class="token number">1</span><span class="token operator">/</span>result<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="解法3-二分法"><a href="#解法3-二分法" class="headerlink" title="解法3 二分法"></a>解法3 二分法</h4><h5 id="分析：-2"><a href="#分析：-2" class="headerlink" title="分析："></a>分析：</h5><p>为了方便讨论，假设指数<code>exponent</code>是正数。那么递归式如下：</p>
+<ul>
+<li>如果<code>exponent</code>是偶数，<code>Power(base, exponent) = Power(base, exponent / 2) * Power(base, exponent / 2)</code> </li>
+<li>如果<code>exponent</code>是奇数，<code>Power(base, exponent) = base * Power(base, exponent / 2) * Power(base, exponent / 2)</code> </li>
+</ul>
+<p>对于负指数<code>exponent</code>的情况，取其绝对值先计算。将最后结果取倒数即可。</p>
+<p>例如：2的4次方。可以分解为2的二次方乘以2的二次方。</p>
+<p>时间复杂度是 O(logN)；由于采用递归结构，空间复杂度是 O(logN)。</p>
+<h5 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">double</span> <span class="token function">Power</span><span class="token punctuation">(</span><span class="token keyword">double</span> base<span class="token punctuation">,</span> <span class="token keyword">int</span> exponent<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>exponent <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>exponent <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> base<span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span> isNegative <span class="token operator">=</span> exponent <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> e <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>exponent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">double</span> result <span class="token operator">=</span> <span class="token function">Power</span><span class="token punctuation">(</span>base<span class="token punctuation">,</span> e <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>e <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            result <span class="token operator">=</span> result <span class="token operator">*</span> result<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            result <span class="token operator">=</span> result <span class="token operator">*</span> result <span class="token operator">*</span> base<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> isNegative <span class="token operator">?</span> result <span class="token operator">:</span> <span class="token number">1</span><span class="token operator">/</span>result<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <blockquote>
 <p>参考：</p>
 <p>CyC：<a href="https://cyc2018.github.io/CS-Notes" target="_blank" rel="noopener">https://cyc2018.github.io/CS-Notes</a></p>
@@ -1443,7 +1576,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">97.2k</span>&nbsp;字
+                class="white-color">98.3k</span>&nbsp;字
             
             
             
