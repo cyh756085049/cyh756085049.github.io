@@ -388,14 +388,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.6k
+                    4.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    18 分
                 </div>
                 
 
@@ -961,6 +961,77 @@
         <span class="token punctuation">}</span>
         <span class="token keyword">return</span> isNegative <span class="token operator">?</span> result <span class="token operator">:</span> <span class="token number">1</span><span class="token operator">/</span>result<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="链表中第K个节点"><a href="#链表中第K个节点" class="headerlink" title="链表中第K个节点"></a>链表中第K个节点</h3><p><strong>题目描述</strong></p>
+<blockquote>
+<p>输入一个链表，输出该链表中倒数第k个结点。</p>
+</blockquote>
+<h4 id="解法1-快慢指针法"><a href="#解法1-快慢指针法" class="headerlink" title="解法1 快慢指针法"></a>解法1 快慢指针法</h4><p><strong>分析：</strong></p>
+<p>首先定义两个指向链表头的指针p ,q;先令一个指针指向第k节点，然后两个指针同时向后移动，最后q指向的即为倒数第k个节点。当k为零或节点为空返回。</p>
+<p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> ListNode <span class="token function">FindKthToTail</span><span class="token punctuation">(</span>ListNode head<span class="token punctuation">,</span><span class="token keyword">int</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>head <span class="token operator">==</span> null <span class="token operator">||</span> k <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        ListNode p<span class="token punctuation">,</span>q<span class="token punctuation">;</span>
+        p <span class="token operator">=</span> q <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> p <span class="token operator">!=</span> null<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">>=</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                q <span class="token operator">=</span> q<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            p <span class="token operator">=</span> p<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> i <span class="token operator">&lt;</span> k <span class="token operator">?</span> null <span class="token operator">:</span> q<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="反转链表"><a href="#反转链表" class="headerlink" title="反转链表"></a>反转链表</h3><p><strong>题目描述</strong></p>
+<blockquote>
+<p>输入一个链表，反转链表后，输出新链表的表头。</p>
+</blockquote>
+<p><strong>分析：</strong></p>
+<p>题目所给的是单链表，反转后的样子：最后一个结点指向倒数第二个，倒数第二个指向倒数第三个，……，第二个指向第一个，<strong>第一个指向null</strong>; 知道了反转后各个结点指向哪之后，就需要开始调整每个结点的next指针。 这就需要把结点挨个从链表上摘下来，做调整； 这个调整过程需要两个指针辅助：pre记录其前一个结点位置，好让该结点的next指针指向前一个结点，但是在指向前一个结点前需要用一个指针next记录后一个结点地址，避免结点丢失。 </p>
+<p>例子：</p>
+<ul>
+<li>以head结点为例步骤如下： </li>
+<li>1.反转后head是指向null，所以未反转的时候其前一个结点应该是null，初始化pre指针为null； </li>
+<li>2.用next指针记录head的下一个结点head.next； </li>
+<li>3.从链表上摘下head，即让head.next指向pre； </li>
+<li>4.此时已完成head结点的摘取及与前一个节点的连接，则我们需要操作下一个结点：故需移动pre和head，让pre指向head，head指向下一个节点。 </li>
+<li>重复这四个操作直到head走完原链表，指向null时，循环结束，返回pre。</li>
+</ul>
+<p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> ListNode <span class="token function">ReverseList</span><span class="token punctuation">(</span>ListNode head<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ListNode pre <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        ListNode next <span class="token operator">=</span> null<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>head <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            next <span class="token operator">=</span> head<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            head<span class="token punctuation">.</span>next <span class="token operator">=</span> pre<span class="token punctuation">;</span>
+            pre <span class="token operator">=</span> head<span class="token punctuation">;</span>
+            head <span class="token operator">=</span> next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> pre<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <blockquote>
 <p>参考：</p>
@@ -1576,7 +1647,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">98.3k</span>&nbsp;字
+                class="white-color">98.8k</span>&nbsp;字
             
             
             
