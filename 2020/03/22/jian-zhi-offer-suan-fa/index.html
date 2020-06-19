@@ -375,14 +375,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.6k
+                    11.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    42 分
+                    49 分
                 </div>
                 
 
@@ -1637,7 +1637,206 @@ public class TreeNode {
         <span class="token keyword">return</span> list<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><blockquote>
+<h3 id="和为S的连续正数序列"><a href="#和为S的连续正数序列" class="headerlink" title="和为S的连续正数序列"></a>和为S的连续正数序列</h3><p><strong>题目描述</strong></p>
+<blockquote>
+<p>输入一个正整数 target ，输出所有和为 target 的连续正整数序列（至少含有两个数）。序列内的数字由小到大排列，不同序列按照首个数字从小到大排列。</p>
+<pre><code>输入：target = 9
+输出：[[2,3,4],[4,5]]</code></pre></blockquote>
+<h4 id="解法1-滑动窗口"><a href="#解法1-滑动窗口" class="headerlink" title="解法1 滑动窗口"></a>解法1 滑动窗口</h4><h5 id="分析-16"><a href="#分析-16" class="headerlink" title="分析"></a>分析</h5><p>参考详细题解<a href="https://leetcode-cn.com/problems/he-wei-sde-lian-xu-zheng-shu-xu-lie-lcof/solution/shi-yao-shi-hua-dong-chuang-kou-yi-ji-ru-he-yong-h/" target="_blank" rel="noopener">LeetCode</a></p>
+<p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ArrayList<span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> ArrayList<span class="token operator">&lt;</span>ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">></span> <span class="token operator">></span> <span class="token function">FindContinuousSequence</span><span class="token punctuation">(</span><span class="token keyword">int</span> sum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       ArrayList<span class="token operator">&lt;</span>ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">>></span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span>ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">>></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+       <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+       <span class="token keyword">int</span> right <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+       <span class="token keyword">int</span> sumVal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+       <span class="token keyword">while</span> <span class="token punctuation">(</span>left <span class="token operator">&lt;=</span> sum <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+           <span class="token keyword">if</span> <span class="token punctuation">(</span>sumVal <span class="token operator">&lt;</span> sum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               sumVal <span class="token operator">+=</span> right<span class="token punctuation">;</span>
+               right<span class="token operator">++</span><span class="token punctuation">;</span>
+           <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>sumVal <span class="token operator">></span> sum<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               sumVal <span class="token operator">=</span> sumVal <span class="token operator">-</span> left<span class="token punctuation">;</span>
+               left<span class="token operator">++</span><span class="token punctuation">;</span>
+           <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+               ArrayList<span class="token operator">&lt;</span>Integer<span class="token operator">></span> list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+               <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> left<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> right<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+               list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           <span class="token punctuation">}</span>
+           res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+           sumVal <span class="token operator">-=</span> left<span class="token punctuation">;</span>
+           left<span class="token operator">++</span><span class="token punctuation">;</span>
+           <span class="token punctuation">}</span>
+       <span class="token punctuation">}</span>
+       <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>###平衡二叉树</p>
+<p><strong>题目描述</strong></p>
+<blockquote>
+<p>输入一棵二叉树的根节点，判断该树是不是平衡二叉树。如果某二叉树中任意节点的左右子树的深度相差不超过1，那么它就是一棵平衡二叉树。</p>
+<pre><code>给定二叉树 [3,9,20,null,null,15,7]
+    3
+   / \
+  9  20
+    /  \
+   15   7
+返回 true </code></pre></blockquote>
+<h4 id="解法1-后序遍历"><a href="#解法1-后序遍历" class="headerlink" title="解法1 后序遍历"></a>解法1 后序遍历</h4><h5 id="分析-17"><a href="#分析-17" class="headerlink" title="分析"></a>分析</h5><p>参考详细题解<a href="https://leetcode-cn.com/problems/ping-heng-er-cha-shu-lcof/solution/mian-shi-ti-55-ii-ping-heng-er-cha-shu-cong-di-zhi/" target="_blank" rel="noopener">LeetCode</a></p>
+<p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">IsBalanced_Solution</span><span class="token punctuation">(</span>TreeNode root<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">depth</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">depth</span><span class="token punctuation">(</span>TreeNode root<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>root <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> left <span class="token operator">=</span> <span class="token function">depth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>left<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> right <span class="token operator">=</span> <span class="token function">depth</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span>right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>right <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">abs</span><span class="token punctuation">(</span>left <span class="token operator">-</span> right<span class="token punctuation">)</span> <span class="token operator">&lt;</span> <span class="token number">2</span> <span class="token operator">?</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>left<span class="token punctuation">,</span> right<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>###两个链表的第一个公共结点</p>
+<p><strong>题目描述</strong></p>
+<blockquote>
+<p>输入两个链表，找出它们的第一个公共节点。</p>
+<pre><code>输入：intersectVal = 8, listA = [4,1,8,4,5], listB = [5,0,1,8,4,5], skipA = 2, skipB = 3
+输出：Reference of the node with value = 8
+输入解释：相交节点的值为 8 （注意，如果两个列表相交则不能为 0）。从各自的表头开始算起，链表 A 为 [4,1,8,4,5]，链表 B 为 [5,0,1,8,4,5]。在 A 中，相交节点前有 2 个节点；在 B 中，相交节点前有 3 个节点。</code></pre></blockquote>
+<h4 id="解法1-双指针法-1"><a href="#解法1-双指针法-1" class="headerlink" title="解法1 双指针法"></a>解法1 双指针法</h4><h5 id="分析-18"><a href="#分析-18" class="headerlink" title="分析"></a>分析</h5><p>参考详细题解<a href="https://leetcode-cn.com/problems/liang-ge-lian-biao-de-di-yi-ge-gong-gong-jie-dian-lcof/solution/shuang-zhi-zhen-fa-lang-man-xiang-yu-by-ml-zimingm/" target="_blank" rel="noopener">LeetCode</a></p>
+<p>遍历两遍这两个链表，如果有重复的节点，那么一定能够使遍历的指针相等。</p>
+<p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*
+public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> ListNode <span class="token function">FindFirstCommonNode</span><span class="token punctuation">(</span>ListNode pHead1<span class="token punctuation">,</span> ListNode pHead2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>pHead1 <span class="token operator">==</span> null <span class="token operator">||</span> pHead2 <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        ListNode p1 <span class="token operator">=</span> pHead1<span class="token punctuation">;</span>
+        ListNode p2 <span class="token operator">=</span> pHead2<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>p1 <span class="token operator">!=</span> p2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            p1 <span class="token operator">=</span> p1<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            p2 <span class="token operator">=</span> p2<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>p1 <span class="token operator">!=</span> p2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>p1 <span class="token operator">==</span> null<span class="token punctuation">)</span> p1 <span class="token operator">=</span> pHead2<span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>p2 <span class="token operator">==</span> null<span class="token punctuation">)</span> p2 <span class="token operator">=</span> pHead1<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> p1<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>###<a href="https://www.nowcoder.com/practice/253d2c59ec3e4bc68da16833f79a38e4?tpId=13&amp;&amp;tqId=11208&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking" target="_blank" rel="noopener">链表中环的入口</a></p>
+<p><strong>题目描述</strong></p>
+<blockquote>
+<p>给一个链表，若其中包含环，请找出该链表的环的入口结点，否则，输出null。</p>
+</blockquote>
+<h4 id="解法1-双指针（快慢指针）法"><a href="#解法1-双指针（快慢指针）法" class="headerlink" title="解法1 双指针（快慢指针）法"></a>解法1 双指针（快慢指针）法</h4><h5 id="分析-19"><a href="#分析-19" class="headerlink" title="分析"></a>分析</h5><p>参考详细题解<a href="https://leetcode-cn.com/problems/linked-list-cycle-ii/solution/linked-list-cycle-ii-kuai-man-zhi-zhen-shuang-zhi-/" target="_blank" rel="noopener">LeetCode</a></p>
+<p>定义两个指针开始都指向头结点，然后快指针一次走二步，慢指针一次走一步，当两个指针第一次相遇时，跳出循环，此时让快指针再次重新指向头结点，慢指针位置不变，接下来快慢指针都一步一步走，当快慢指针再次相遇时，跳出循环，此时相遇点即为该链表的环的入口结点。</p>
+<p>时间复杂度 O(N)：总体为线性复杂度；<br>空间复杂度 O(1)：双指针使用常数大小的额外空间。</p>
+<p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*
+ public class ListNode {
+    int val;
+    ListNode next = null;
+
+    ListNode(int val) {
+        this.val = val;
+    }
+}
+*/</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">public</span> ListNode <span class="token function">EntryNodeOfLoop</span><span class="token punctuation">(</span>ListNode pHead<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>pHead <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">return</span> pHead<span class="token punctuation">;</span>
+        ListNode fast <span class="token operator">=</span> pHead<span class="token punctuation">,</span> slow <span class="token operator">=</span> pHead<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>fast <span class="token operator">==</span> null <span class="token operator">||</span> fast<span class="token punctuation">.</span>next <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+            fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>fast <span class="token operator">==</span> slow<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        fast <span class="token operator">=</span> pHead<span class="token punctuation">;</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!=</span> slow<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            fast <span class="token operator">=</span> fast<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+            slow <span class="token operator">=</span> slow<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> fast<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="第一个只出现一次的字符"><a href="#第一个只出现一次的字符" class="headerlink" title=" 第一个只出现一次的字符"></a><a href="https://leetcode-cn.com/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/" target="_blank" rel="noopener"> 第一个只出现一次的字符</a></h3><p><strong>题目描述</strong></p>
+<blockquote>
+<p>在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。</p>
+<pre><code>s = "abaccdeff"
+返回 "b"
+
+s = "" 
+返回 " "</code></pre></blockquote>
+<h4 id="解法1-哈希表"><a href="#解法1-哈希表" class="headerlink" title="解法1 哈希表"></a>解法1 哈希表</h4><h5 id="分析-20"><a href="#分析-20" class="headerlink" title="分析"></a>分析</h5><p>参考详细题解<a href="https://leetcode-cn.com/problems/di-yi-ge-zhi-chu-xian-yi-ci-de-zi-fu-lcof/solution/mian-shi-ti-50-di-yi-ge-zhi-chu-xian-yi-ci-de-zi-3/" target="_blank" rel="noopener">LeetCode</a></p>
+<p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">char</span> <span class="token function">firstUniqChar</span><span class="token punctuation">(</span>String s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        HashMap<span class="token operator">&lt;</span>Character<span class="token punctuation">,</span> Boolean<span class="token operator">></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> res <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> res<span class="token punctuation">)</span>
+            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token operator">!</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> res<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> c<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">' '</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>机器人的运动范围</p>
+<h3 id="机器人的运动范围"><a href="#机器人的运动范围" class="headerlink" title="机器人的运动范围"></a><a href="https://www.nowcoder.com/practice/6e5207314b5241fb83f2329e89fdecc8?tpId=13&amp;&amp;tqId=11219&amp;rp=1&amp;ru=/ta/coding-interviews&amp;qru=/ta/coding-interviews/question-ranking" target="_blank" rel="noopener">机器人的运动范围</a></h3><p><strong>题目描述</strong></p>
+<blockquote>
+<p>地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。 例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 = 18。但是，它不能进入方格（35,38），因为3+5+3+8 = 19。请问该机器人能够达到多少个格子？</p>
+<pre><code>输入：m = 2, n = 3, k = 1
+输出：3</code></pre></blockquote>
+<h4 id="解法1-深度优先遍历（DFS）"><a href="#解法1-深度优先遍历（DFS）" class="headerlink" title="解法1 深度优先遍历（DFS）"></a>解法1 深度优先遍历（DFS）</h4><h5 id="分析-21"><a href="#分析-21" class="headerlink" title="分析"></a>分析</h5><p>参考详细题解<a href="https://leetcode-cn.com/problems/ji-qi-ren-de-yun-dong-fan-wei-lcof/solution/mian-shi-ti-13-ji-qi-ren-de-yun-dong-fan-wei-dfs-b/" target="_blank" rel="noopener">LeetCode</a></p>
+<p>矩阵搜索问题一般可使用DFS和BFS解决。本题中有一个限定条件，行坐标和列坐标的数位之和不能大于某个已知给定的K值，因此我们需要先了解数位和的求解方法。</p>
+<h5 id="数位和计算"><a href="#数位和计算" class="headerlink" title="数位和计算"></a>数位和计算</h5><p>给定一数字<code>x</code>,通过<code>x%10</code>得到<code>x</code>的个位数字，通过<code>x/10</code>得到<code>x</code>的删除个位数的数字，因此，可通过如下代码求得<code>x</code>得数位和。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>x <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    sum <span class="token operator">+=</span> x <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">;</span>
+  x <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">return</span> sum<span class="token punctuation">;</span></code></pre>
+<h5 id="数位和增量公式"><a href="#数位和增量公式" class="headerlink" title="数位和增量公式"></a>数位和增量公式</h5><p>由于机器人每一次只能向左，右，上，下四个方向移动一格，因此每次只需要计算<code>x</code>到<code>x+1/x-1</code>的数位和增量，本题说明 <code>1&lt;= n, m &lt;= 100</code> ，以下公式仅在此范围适用。</p>
+<p>设<code>x</code>的数位和为<code>sx</code>,<code>x+1</code>的数位和为<code>sx+1</code></p>
+<ul>
+<li><p>当<code>（x + 1）% 10 = 0​</code>时，<code>sx + 1 = sx - 8</code>，如89，90的数位和分别为17，9；</p>
+</li>
+<li><p>当<code>（x + 1）% 10 != 0</code>时，<code>sx + 1 = sx + 1</code>,如2，3的数位和分别为2，3。</p>
+<pre class=" language-java"><code class="language-java"><span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">10</span> <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">?</span> si <span class="token operator">+</span> <span class="token number">1</span> <span class="token operator">:</span> si <span class="token operator">-</span> <span class="token number">8</span><span class="token punctuation">;</span></code></pre>
+</li>
+</ul>
+<h5 id="算法思路："><a href="#算法思路：" class="headerlink" title="算法思路："></a>算法思路：</h5><p>递归参数：当前元素在矩阵中的行列索引i和j，两者的数位和为si、sj。</p>
+<p>终止条件：1、行列索引越界 2、数位和超出目标值 3、当前元素已访问过。满足上面3种条件的一种，则最后返回0</p>
+<p>递归流程：标记当前单元格，将其值设置为布尔值记录下来，值设置为true，代表此单元格已被访问过。然后计算当前元素的下、右两个方向元素的数位和，并开启下层递归。</p>
+<p>回溯返回值：返回<code>1+右方搜索符合条件的总数+下方搜索符合条件的总数</code>。</p>
+<p><strong>代码：</strong></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">char</span> <span class="token function">firstUniqChar</span><span class="token punctuation">(</span>String s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        HashMap<span class="token operator">&lt;</span>Character<span class="token punctuation">,</span> Boolean<span class="token operator">></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> res <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> res<span class="token punctuation">)</span>
+            map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token operator">!</span>map<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> res<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> c<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">' '</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<blockquote>
 <p>参考：</p>
 <p>CyC：<a href="https://cyc2018.github.io/CS-Notes" target="_blank" rel="noopener">https://cyc2018.github.io/CS-Notes</a></p>
 <p>牛客网：<a href="https://www.nowcoder.com/questionTerminal" target="_blank" rel="noopener">https://www.nowcoder.com/questionTerminal</a></p>
@@ -2239,7 +2438,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">113.6k</span>&nbsp;字
+                class="white-color">115.3k</span>&nbsp;字
             
             
             
