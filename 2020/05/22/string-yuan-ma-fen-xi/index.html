@@ -388,14 +388,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4k
+                    6.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    18 分
+                    26 分
                 </div>
                 
 
@@ -415,7 +415,9 @@
 <p>String 字符串是常量，其值在实例创建后就不能被修改，但字符串缓冲区（StringBuffer）支持可变的字符串，由于String对象是不可变的，因此可以共享它们。</p>
 <h2 id="String-的结构"><a href="#String-的结构" class="headerlink" title="String    的结构"></a><code>String</code>    的结构</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf1214ef3pj30uc07awes.jpg" alt=""></p>
 <h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="包名"><a href="#包名" class="headerlink" title="包名"></a>包名</h3><p><code>package java.lang</code></p>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">String</span> <span class="token keyword">implements</span> <span class="token class-name">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>Serializable</span><span class="token punctuation">,</span> Comparable<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">,</span> CharSequence <span class="token punctuation">{</span>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>我们常常听人说，HashMap 的 key 建议使用不可变类，比如说 String 这种不可变类。这里说的不可变指的是类值一旦被初始化，就不能再被改变了，如果被修改，将会是新的类，比如有这样的例子： <code>String s = “hello”; s = “world”</code>，看到这里也许会有人疑惑，String 初始化以后好像可以被修改。其实这里的赋值并不是对 <code>s</code>内容的修改，而是将<code>s</code>指向了新的字符串。从 debug 的日志来看，其实已经把 s 的引用指向了新的 String，如下图所示：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfxsd1q3y9j311g080gow.jpg" alt="image-20200619184230724"></p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">String</span> <span class="token keyword">implements</span> <span class="token class-name">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>Serializable</span><span class="token punctuation">,</span> Comparable<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">,</span> CharSequence <span class="token punctuation">{</span>
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">}</span></code></pre>
 <p>可以看出 String 是 final 类型的，表示该类不能被其他类继承，同时该类实现了三个接口<code>Serializable, Comparable, CharSequence</code>。</p>
@@ -436,11 +438,15 @@
     <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> ObjectStreamField<span class="token punctuation">[</span><span class="token punctuation">]</span> serialPersistentFields <span class="token operator">=</span>
         <span class="token keyword">new</span> <span class="token class-name">ObjectStreamField</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
-<p>在平常写代码的时候，会这样的例子： <code>String str = “hello”; str = “world”</code>，看到这里也许会有人疑惑，String 初始化以后好像可以被修改。其实这里的赋值并不是对 str 内容的修改，而是将str指向了新的字符串。</p>
 <blockquote>
 <p><strong>String 是基于字符数组 char[] 实现的。</strong></p>
 </blockquote>
+<p>String 中保存数据的是一个 char 的数组 value。我们发现 value 也是被 final 修饰的，也就是说 value 一旦被赋值，内存地址是绝对无法修改的，而且 value 的权限是 private 的，外部绝对访问不到，String 也没有开放出可以对 value 进行赋值的方法，所以说 value 一旦产生，内存地址就根本无法被修改。</p>
 <p>因为 String 实现了 Serializable 接口，所以支持序列化和反序列化支持。Java 的序列化机制是通过在运行时判断类的 serialVersionUID 来验证版本一致性的。在进行反序列化时，JVM 会把传来的字节流中的 serialVersionUID 与本地相应实体（类）的 serialVersionUID 进行比较，如果相同就认为是一致的，可以进行反序列化，否则就会出现序列化版本不一致的异常 (InvalidCastException)。</p>
+<p>因为 String 具有不变性，所以 String 的大多数操作方法，都会返回新的 String，如下面这种写法是不对的：</p>
+<pre class=" language-java"><code class="language-java">String str <span class="token operator">=</span><span class="token string">"hello world !!"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 这种写法是替换不掉的，必须接受 replace 方法返回的参数才行，这样才行：str = str.replace("l","dd");</span>
+str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"l"</span><span class="token punctuation">,</span><span class="token string">"dd"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h3><h4 id="1、无参构造器"><a href="#1、无参构造器" class="headerlink" title="1、无参构造器"></a>1、无参构造器</h4><pre class=" language-java"><code class="language-java">        <span class="token comment" spellcheck="true">//初始化一个新创建的{@code String}对象，使其代表空字符序列。 请注意，使用此构造函数是不必要，因为字符串是不可变的。</span>
     <span class="token keyword">public</span> <span class="token function">String</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
@@ -636,6 +642,14 @@ String aPart <span class="token operator">=</span> data<span class="token punctu
         <span class="token keyword">return</span> <span class="token function">toLowerCase</span><span class="token punctuation">(</span>Locale<span class="token punctuation">.</span><span class="token function">getDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </code></pre>
+<p>如果我们的项目被 <strong>Spring 托管</strong>的话，有时候我们会通过 <code>applicationContext.getBean(className);</code> 这种方式得到 SpringBean，这时 className 必须是要满足首字母小写的，除了该场景，在<strong>反射场景</strong>下面，我们也经常要使类属性的首字母小写，这时候我们一般都会这么做：</p>
+<p><code>name.substring(0, 1).toLowerCase() + name.substring(1);</code>，使用 substring 方法，该方法主要是为了截取字符串连续的一部分，substring 有两个方法：</p>
+<ol>
+<li><code>public String substring(int beginIndex, int endIndex)</code> beginIndex：开始位置，endIndex：结束位置；</li>
+<li><code>public String substring(int beginIndex)</code>beginIndex：开始位置，结束位置为文本末尾。</li>
+</ol>
+<p>substring 方法的底层使用的是字符数组范围截取的方法 ：<code>Arrays.copyOfRange(字符数组, 开始位置, 结束位置);</code> 从字符数组中进行一段范围的拷贝。</p>
+<p>相反的，如果要修改成首字母大写，只需要修改成 <code>name.substring(0, 1).toUpperCase() + name.substring(1)</code> 即可。</p>
 <h5 id="拼接替换字符串方法"><a href="#拼接替换字符串方法" class="headerlink" title="拼接替换字符串方法"></a>拼接替换字符串方法</h5><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 拼接字符串</span>
 <span class="token keyword">public</span> String <span class="token function">concat</span><span class="token punctuation">(</span>String str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">int</span> otherLen <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -685,8 +699,9 @@ String aPart <span class="token operator">=</span> data<span class="token punctu
         <span class="token keyword">return</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Pattern<span class="token punctuation">.</span>LITERAL<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>
                 <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span>Matcher<span class="token punctuation">.</span><span class="token function">quoteReplacement</span><span class="token punctuation">(</span>replacement<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span></code></pre>
-<p>replace 的参数是 char 和 CharSequence，即可以支持字符的替换, 也支持字符串的替换</p>
-<p>replaceAll 和 replaceFirst 的参数是 regex，即基于规则表达式的替换</p>
+<p>replace 的参数是 char 和 CharSequence，即可以支持字符的替换, 也支持字符串的替换，需要注意的是， replace 并不只是替换一个，是替换所有匹配到的字符或字符串哦。</p>
+<p>replaceAll 和 replaceFirst 的参数是 regex，即基于规则表达式的替换。</p>
+<p>当然我们想要删除某些字符，也可以使用 replace 方法，把想删除的字符替换成 “” 即可。</p>
 <h5 id="正则表达匹配方法"><a href="#正则表达匹配方法" class="headerlink" title="正则表达匹配方法"></a>正则表达匹配方法</h5><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 判断字符串是否匹配给定的regex正则表达式</span>
 <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">matches</span><span class="token punctuation">(</span>String regex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> Pattern<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span>regex<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -752,6 +767,47 @@ String aPart <span class="token operator">=</span> data<span class="token punctu
 <span class="token comment" spellcheck="true">// 按照字符 regex 将字符串分段</span>
 <span class="token keyword">public</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">split</span><span class="token punctuation">(</span>String regex<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token function">split</span><span class="token punctuation">(</span>regex<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>如上边源码所示，拆分使用 split 方法，该方法有两个入参数。第一个参数是我们拆分的标准字符，第二个参数是一个 int 值，叫 limit，来限制我们需要拆分成几个元素。如果 limit 比实际能拆分的个数小，按照 limit 的个数进行拆分，我们演示一个 demo：</p>
+<pre class=" language-java"><code class="language-java">String s <span class="token operator">=</span><span class="token string">"boo:and:foo"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 我们对 s 进行了各种拆分，演示的代码和结果是：</span>
+s<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">":"</span><span class="token punctuation">)</span> 结果<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"boo"</span><span class="token punctuation">,</span><span class="token string">"and"</span><span class="token punctuation">,</span><span class="token string">"foo"</span><span class="token punctuation">]</span>
+s<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">":"</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> 结果<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"boo"</span><span class="token punctuation">,</span><span class="token string">"and:foo"</span><span class="token punctuation">]</span>
+s<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">":"</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">)</span> 结果<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"boo"</span><span class="token punctuation">,</span><span class="token string">"and"</span><span class="token punctuation">,</span><span class="token string">"foo"</span><span class="token punctuation">]</span>
+s<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">":"</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">)</span> 结果<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"boo"</span><span class="token punctuation">,</span><span class="token string">"and"</span><span class="token punctuation">,</span><span class="token string">"foo"</span><span class="token punctuation">]</span>
+s<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"o"</span><span class="token punctuation">)</span> 结果<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"b"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">":and:f"</span><span class="token punctuation">]</span>
+s<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"o"</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span> 结果<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"b"</span><span class="token punctuation">,</span><span class="token string">"o:and:foo"</span><span class="token punctuation">]</span></code></pre>
+<p>从演示的结果来看，limit 对拆分的结果，是具有限制作用的，还有就是拆分结果里面不会出现被拆分的字段。</p>
+<p>那如果字符串里面有一些空值呢，拆分的结果如下：</p>
+<pre class=" language-java"><code class="language-java">String a <span class="token operator">=</span><span class="token string">",a,,b,"</span><span class="token punctuation">;</span>
+a<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span> 结果<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">"a"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">"b"</span><span class="token punctuation">]</span></code></pre>
+<p>从拆分结果中，我们可以看到，空值是拆分不掉的，仍然成为结果数组的一员，如果我们想删除空值，只能自己拿到结果后再做操作，但 Guava（Google 开源的技术工具） 提供了一些可靠的工具类，可以帮助我们快速去掉空值，如下：</p>
+<pre class=" language-java"><code class="language-java">String a <span class="token operator">=</span><span class="token string">",a, ,  b  c ,"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Splitter 是 Guava 提供的 API </span>
+List<span class="token operator">&lt;</span>String<span class="token operator">></span> list <span class="token operator">=</span> Splitter<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">','</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">trimResults</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">// 去掉空格</span>
+    <span class="token punctuation">.</span><span class="token function">omitEmptyStrings</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">// 去掉空值</span>
+    <span class="token punctuation">.</span><span class="token function">splitToList</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"Guava 去掉空格的分割方法：{}"</span><span class="token punctuation">,</span>JSON<span class="token punctuation">.</span><span class="token function">toJSONString</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 打印出的结果为：</span>
+<span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span><span class="token string">"b  c"</span><span class="token punctuation">]</span></code></pre>
+<p>从打印的结果中，可以看到去掉了空格和空值，这正是我们工作中常常期望的结果，所以推荐使用 Guava 的 API 对字符串进行分割。</p>
+<p>合并我们使用 join 方法，此方法是静态的，我们可以直接使用。方法有两个入参，参数一是合并的分隔符，参数二是合并的数据源，数据源支持数组和 List，在使用的时候，我们发现有两个不太方便的地方：</p>
+<ol>
+<li>不支持依次 join 多个字符串，比如我们想依次 join 字符串 s 和 s1，如果你这么写的话 <code>String.join(",",s).join(",",s1)</code> 最后得到的是 s1 的值，第一次 join 的值被第二次 join 覆盖了；</li>
+<li>如果 join 的是一个 List，无法自动过滤掉 null 值。</li>
+</ol>
+<p>而 Guava 正好提供了 API，解决上述问题，我们来演示一下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 依次 join 多个字符串，Joiner 是 Guava 提供的 API</span>
+Joiner joiner <span class="token operator">=</span> Joiner<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">skipNulls</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+String result <span class="token operator">=</span> joiner<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">,</span>null<span class="token punctuation">,</span><span class="token string">"china"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"依次 join 多个字符串:{}"</span><span class="token punctuation">,</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+List<span class="token operator">&lt;</span>String<span class="token operator">></span> list <span class="token operator">=</span> Lists<span class="token punctuation">.</span><span class="token function">newArrayList</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{</span><span class="token string">"hello"</span><span class="token punctuation">,</span><span class="token string">"china"</span><span class="token punctuation">,</span>null<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"自动删除 list 中空值:{}"</span><span class="token punctuation">,</span>joiner<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 输出的结果为；</span>
+依次 join 多个字符串<span class="token operator">:</span>hello<span class="token punctuation">,</span>china
+自动删除 list 中空值<span class="token operator">:</span>hello<span class="token punctuation">,</span>china</code></pre>
+<p>从结果中，我们可以看到 Guava 不仅仅支持多个字符串的合并，还帮助我们去掉了 List 中的空值，这就是我们在工作中常常需要得到的结果。</p>
 <h5 id="字符串转换成字节数组"><a href="#字符串转换成字节数组" class="headerlink" title="字符串转换成字节数组"></a>字符串转换成字节数组</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getBytes</span><span class="token punctuation">(</span>Charset charset<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>charset <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">NullPointerException</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> StringCoding<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>charset<span class="token punctuation">,</span> value<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> value<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -759,18 +815,34 @@ String aPart <span class="token operator">=</span> data<span class="token punctu
 <span class="token keyword">public</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> StringCoding<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> value<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span></code></pre>
-<h5 id="比较方法"><a href="#比较方法" class="headerlink" title="比较方法"></a>比较方法</h5><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 比较对象</span>
+<p>在生活中，我们经常碰到这样的场景，进行二进制转化操作时，本地测试的都没有问题，到其它环境机器上时，有时会出现字符串乱码的情况，这个主要是因为在二进制转化操作时，并没有强制规定文件编码，而不同的环境默认的文件编码不一致导致的。</p>
+<p>我们通过一个 demo 来模仿一下字符串乱码：</p>
+<pre class=" language-java"><code class="language-java">String str  <span class="token operator">=</span><span class="token string">"nihao 你好 喬亂"</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 字符串转化成 byte 数组</span>
+<span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> bytes <span class="token operator">=</span> str<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token string">"ISO-8859-1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// byte 数组转化成字符串</span>
+String s2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>bytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span>s2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 结果打印为：</span>
+nihao <span class="token operator">?</span><span class="token operator">?</span> <span class="token operator">?</span><span class="token operator">?</span></code></pre>
+<p>打印的结果为？？，这就是常见的乱码表现形式。这时候有同学说，是不是我把代码修改成 <code>String s2 = new String(bytes,"ISO-8859-1");</code> 就可以了？这是不行的。主要是因为 ISO-8859-1 这种编码对中文的支持有限，导致中文会显示乱码。唯一的解决办法，就是在所有需要用到编码的地方，都统一使用 UTF-8，对于 String 来说，getBytes 和 new String 两个方法都会使用到编码，我们把这两处的编码替换成 UTF-8 后，打印出的结果就正常了。</p>
+<h5 id="比较方法"><a href="#比较方法" class="headerlink" title="比较方法"></a>比较方法</h5><p>我们判断相等有两种办法，equals 和 equalsIgnoreCase。后者判断相等时，会忽略大小写，如果让你写判断两个 String 相等的逻辑，应该如何写，我们来一起看下 equals 的源码，整理一下思路：</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 比较对象</span>
 <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">equals</span><span class="token punctuation">(</span>Object anObject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token comment" spellcheck="true">// 判断内存地址是否相同</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span> <span class="token operator">==</span> anObject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
+              <span class="token comment" spellcheck="true">// 待比较的对象是否是 String，如果不是 String，直接返回不相等</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>anObject <span class="token keyword">instanceof</span> <span class="token class-name">String</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             String anotherString <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span>anObject<span class="token punctuation">;</span>
             <span class="token keyword">int</span> n <span class="token operator">=</span> value<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+              <span class="token comment" spellcheck="true">// 两个字符串的长度是否相等，不等则直接返回不相等</span>
             <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> anotherString<span class="token punctuation">.</span>value<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 <span class="token keyword">char</span> v1<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
                 <span class="token keyword">char</span> v2<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> anotherString<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
                 <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                  <span class="token comment" spellcheck="true">// 依次比较每个字符是否相等，若有一个不等，直接返回不相等</span>
                 <span class="token keyword">while</span> <span class="token punctuation">(</span>n<span class="token operator">--</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
                     <span class="token keyword">if</span> <span class="token punctuation">(</span>v1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> v2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
                         <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
@@ -781,7 +853,13 @@ String aPart <span class="token operator">=</span> data<span class="token punctu
         <span class="token punctuation">}</span>
         <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">// 与StringBuffer对象比较</span>
+
+<span class="token comment" spellcheck="true">//  忽略大小写比较字符串</span>
+<span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compareToIgnoreCase</span><span class="token punctuation">(</span>String str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> CASE_INSENSITIVE_ORDER<span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<p>从 equals 的源码可以看出，逻辑非常清晰，完全是根据 String 底层的结构来编写出相等的代码。这也提供了一种思路给我们：如果有人问如何判断两者是否相等时，我们可以从两者的底层结构出发，这样可以迅速想到一种贴合实际的思路和方法，就像 String 底层的数据结构是 char 的数组一样，判断相等时，就挨个比较 char 数组中的字符是否相等即可。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 与StringBuffer对象比较</span>
 <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">contentEquals</span><span class="token punctuation">(</span>StringBuffer sb<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> <span class="token function">contentEquals</span><span class="token punctuation">(</span><span class="token punctuation">(</span>CharSequence<span class="token punctuation">)</span>sb<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -853,14 +931,7 @@ String aPart <span class="token operator">=</span> data<span class="token punctu
             k<span class="token operator">++</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
         <span class="token keyword">return</span> len1 <span class="token operator">-</span> len2<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token comment" spellcheck="true">//  忽略大小写比较字符串</span>
-<span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compareToIgnoreCase</span><span class="token punctuation">(</span>String str<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> CASE_INSENSITIVE_ORDER<span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-
-</code></pre>
+    <span class="token punctuation">}</span></code></pre>
 <h5 id="hashCode方法"><a href="#hashCode方法" class="headerlink" title="hashCode方法"></a><code>hashCode</code>方法</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">int</span> h <span class="token operator">=</span> hash<span class="token punctuation">;</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>h <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> value<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -904,6 +975,28 @@ String aPart <span class="token operator">=</span> data<span class="token punctu
 <li><p>如果你只需要创建一个字符串，你可以使用双引号的方式，如果你需要在堆中创建一个新的对象，你可以选择构造函数的方式。</p>
 </li>
 </ul>
+<h2 id="Long"><a href="#Long" class="headerlink" title="Long"></a>Long</h2><p>Long 最被我们关注的就是 Long 的缓存问题，Long 自己实现了一种缓存机制，缓存了从 -128 到 127 内的所有 Long 值，如果是这个范围内的 Long 值，就不会初始化，而是从缓存中拿，缓存初始化源码如下：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">LongCache</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token function">LongCache</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 缓存，范围从 -128 到 127，+1 是因为有个 0</span>
+    <span class="token keyword">static</span> <span class="token keyword">final</span> Long cache<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Long</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">128</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">127</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">// 容器初始化时，进行加载</span>
+    <span class="token keyword">static</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 缓存 Long 值，注意这里是 i - 128 ，所以再拿的时候就需要 + 128</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> cache<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            cache<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Long</span><span class="token punctuation">(</span>i <span class="token operator">-</span> <span class="token number">128</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="为什么使用-Long-时，大家推荐多使用-valueOf-方法，少使用-parseLong-方法"><a href="#为什么使用-Long-时，大家推荐多使用-valueOf-方法，少使用-parseLong-方法" class="headerlink" title="为什么使用 Long 时，大家推荐多使用 valueOf 方法，少使用 parseLong 方法"></a>为什么使用 Long 时，大家推荐多使用 valueOf 方法，少使用 parseLong 方法</h3><p>答：因为 Long 本身有缓存机制，缓存了 -128 到 127 范围内的 Long，valueOf 方法会从缓存中去拿值，如果命中缓存，会减少资源的开销，parseLong 方法就没有这个机制。</p>
+<pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// valueOf源码</span>
+<span class="token keyword">public</span> <span class="token keyword">static</span> Long <span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token keyword">long</span> l<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">final</span> <span class="token keyword">int</span> offset <span class="token operator">=</span> <span class="token number">128</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>l <span class="token operator">>=</span> <span class="token operator">-</span><span class="token number">128</span> <span class="token operator">&amp;&amp;</span> l <span class="token operator">&lt;=</span> <span class="token number">127</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">// will cache</span>
+            <span class="token keyword">return</span> LongCache<span class="token punctuation">.</span>cache<span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>l <span class="token operator">+</span> offset<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Long</span><span class="token punctuation">(</span>l<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1505,7 +1598,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">115.3k</span>&nbsp;字
+                class="white-color">117.5k</span>&nbsp;字
             
             
             
