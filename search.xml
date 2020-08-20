@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>浏览器渲染机制</title>
+      <link href="/2020/08/20/liu-lan-qi-xuan-ran-ji-zhi/"/>
+      <url>/2020/08/20/liu-lan-qi-xuan-ran-ji-zhi/</url>
+      
+        <content type="html"><![CDATA[<p>不同的浏览器内核不同，渲染过程中有的细节也不一样，以<code>webkit</code>主流程为例：</p><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ghxofb9nf2j30hc0813zc.jpg" alt="浏览器解析渲染机制"></p><h6 id="浏览器解析渲染页面大致过程："><a href="#浏览器解析渲染页面大致过程：" class="headerlink" title="浏览器解析渲染页面大致过程："></a>浏览器解析渲染页面大致过程：</h6><p>1、<code>DOM Tree</code>：浏览器向服务器发送<code>http</code>请求，服务器响应<code>http</code>请求并发送文档给浏览器，<strong>浏览器解析<code>HTML</code>构建<code>DOM</code>树。</strong></p><blockquote><p>其中HTML Parser就起到了将HTML标记解析成DOM Tree的作用，HTML Parser将文本的HTML文档，提炼出关键信息，嵌套层级的树形结构，便于计算拓展；这其中也有很多的规则和操作，比如容错机制，识别特殊标签<code>&lt;br&gt;&lt;/br&gt;</code>等</p></blockquote><p>2、<code>CSSOM</code>：<strong>浏览器解析<code>CSS</code>构建<code>CSSOM</code>树。</strong></p><blockquote><p>CSS Parser将很多个CSS文件中的样式合并解析出具有树形结构Style Rules，也叫做CSSOM</p><p>其中还有一个细节是浏览器解析文档：当遇到<code>&lt;script&gt;</code>标签的时候会停止解析文档，立即解析脚本，将脚本中改变DOM和CSS的地方分别解析出来，追加到DOM Tree和CSSOM上</p></blockquote><p>3、<code>Render Tree</code>：<strong>把<code>DOM</code>树和<code>CSSOM</code>树组合构建渲染树<code>Rander Tree</code></strong>，有了渲染树，浏览器就知道网页上有哪些节点以及每个节点的<code>CSS</code>属性。</p><blockquote><p>Render Tree的构建其实就是DOM Tree和CSSOM Attach的过程，在webkit中，解析样式和创建呈现器的过程称为”附加”，每个DOM节点都有一个”attach”方法，Render Tree其实就相当于一个计算好样式，与HTML对应的Tree</p></blockquote><p>4、<code>Layout</code>：<strong>根据<code>Render</code>树进行布局渲染<code>render layer</code></strong>，计算每个节点的几何结构（也就是计算出每个节点在屏幕上的位置）。</p><blockquote><p>创建渲染树后，Layout根据根据渲染树中渲染对象的信息，计算好每一个渲染对象的位置和尺寸，将其放在浏览器窗口的正确位置，某些时候会在文档布局完成之后进行DOM修改，<strong>重新布局的过程就称为回流</strong></p></blockquote><p>5、<code>Painting</code>：将计算好的每个节点的布局信息绘制到屏幕上。</p><blockquote><p>绘制阶段则会遍历呈现树，并调用呈现器的paint方法，将呈现器的内容显示在屏幕上，绘制的顺序其实就是元素进入堆栈样式上下文的顺序，例如，块呈现器的堆栈顺序如下：1.背景颜色，2.背景图片，3.边框，4.子代，5.轮廓</p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>前端需要注意的小细节总结</title>
       <link href="/2020/08/20/qian-duan-xu-yao-zhu-yi-de-xiao-xi-jie-zong-jie/"/>
       <url>/2020/08/20/qian-duan-xu-yao-zhu-yi-de-xiao-xi-jie-zong-jie/</url>
