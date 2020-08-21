@@ -388,7 +388,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.6k
+                    2.7k
                 </div>
                 
 
@@ -421,9 +421,16 @@
 <p>可如果用到<strong>异步更新</strong>，情况就大为改观了。比如，我们在访问新浪微博时，看到一大半了，点击底部的<strong>加载更多</strong>，会自动帮我们加载更多的微博，同时<strong>页面并没有刷新</strong>。</p>
 <p>试想一下，如果没有异步刷新的话，每次点击“加载更多”，网页都要刷新，体验就太不好了。</p>
 <p><code>web</code>前端里的异步更新，就要用到 <code>Ajax</code>。</p>
-<h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a><code>Ajax</code></h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p><code>Ajax</code>（<code>Asynchronous Javascript And XML</code>：异步 <code>JavaScript</code>和 <code>XML</code>）。它是对于现有技术的结合。<strong><code>Ajax</code>的核心是 <code>js</code>对象</strong>：<strong><code>XMLHttpRequest</code></strong>。</p>
-<p>在浏览器中，我们可以在不刷新页面的情况下，通过<code>ajax</code>的方式去获取一些新的内容。</p>
-<h3 id="XMLHttpRequest对象详解"><a href="#XMLHttpRequest对象详解" class="headerlink" title="XMLHttpRequest对象详解"></a><code>XMLHttpRequest</code>对象详解</h3><h4 id="创建异步对象"><a href="#创建异步对象" class="headerlink" title="创建异步对象"></a>创建异步对象</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h2 id="Ajax"><a href="#Ajax" class="headerlink" title="Ajax"></a><code>Ajax</code></h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p><code>Ajax</code>（<code>Asynchronous Javascript And XML</code>：异步 <code>JavaScript</code>和 <code>XML</code>）。它是对于现有技术的结合。<strong><code>Ajax</code>的核心是 <code>js</code>对象</strong>：<strong><code>XMLHttpRequest</code></strong>。也就是使用 <code>XMLHttpRequest</code>对象与服务器通信。 它可以使用 <code>JSON，XML，HTML</code> 和 <code>text</code> 文本等格式发送和接收数据。</p>
+<p>在浏览器中，我们可以在不刷新页面的情况下，通过<code>ajax</code>的方式与服务器通信，交换数据，或更新页面，去获取一些新的内容。</p>
+<h3 id="XMLHttpRequest对象详解"><a href="#XMLHttpRequest对象详解" class="headerlink" title="XMLHttpRequest对象详解"></a><code>XMLHttpRequest</code>对象详解</h3><h4 id="创建异步对象"><a href="#创建异步对象" class="headerlink" title="创建异步对象"></a>创建异步对象</h4><pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> xhr<span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>XMLHttpRequest<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Mozilla, Safari, IE7+ ...</span>
+  hr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>window<span class="token punctuation">.</span>ActiveXObject<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// IE 6 and older</span>
+  xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ActiveXObject</span><span class="token punctuation">(</span><span class="token string">"Microsoft.XMLHTTP"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <h4 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h4><p>发送请求的方法：</p>
 <pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// method：请求的类型；GET 或 POST;url：文件在服务器上的位置;async：true（异步）或 false（同步）</span>
 <span class="token function">open</span><span class="token punctuation">(</span>method<span class="token punctuation">,</span> url<span class="token punctuation">,</span> <span class="token keyword">async</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -434,6 +441,9 @@ xhr<span class="token punctuation">.</span><span class="token function">send</sp
 xhr<span class="token punctuation">.</span><span class="token function">setRequestHeader</span><span class="token punctuation">(</span><span class="token string">'Content-type'</span><span class="token punctuation">,</span> <span class="token string">'application/x-wwww-form-urlencoded'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">'name=tom&amp;age=18'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3 id="onreadystatechange-事件"><a href="#onreadystatechange-事件" class="headerlink" title="onreadystatechange 事件"></a><code>onreadystatechange</code> 事件</h3><p>注册 <code>onreadystatechange</code> 事件后，每当 <code>readyState</code>属性改变时，就会调用 <code>onreadystatechange</code> 函数。</p>
+<pre class=" language-js"><code class="language-js">xhr<span class="token punctuation">.</span>onreadystatechange <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// Process the server response here.</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre>
 <h5 id="readyState状态"><a href="#readyState状态" class="headerlink" title="readyState状态"></a><code>readyState</code>状态</h5><ul>
 <li><p>0: 请求未初始化</p>
 </li>
@@ -525,7 +535,7 @@ xhr<span class="token punctuation">.</span><span class="token function">send</sp
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
-<h3 id="Ajax-传输-JSON"><a href="#Ajax-传输-JSON" class="headerlink" title="Ajax 传输 JSON"></a><code>Ajax</code> 传输 <code>JSON</code></h3><h3 id="JSON的语法"><a href="#JSON的语法" class="headerlink" title="JSON的语法"></a><code>JSON</code>的语法</h3><p><code>JSON(JavaScript Object Notation)</code>：是<code>ECMAScript</code>的子集。作用是<strong>进行数据的交换</strong>。语法更为简洁，网络传输、机器解析都更为迅速。</p>
+<h3 id="Ajax-传输-JSON"><a href="#Ajax-传输-JSON" class="headerlink" title="Ajax 传输 JSON"></a><code>Ajax</code> 传输 <code>JSON</code></h3><h4 id="JSON的语法"><a href="#JSON的语法" class="headerlink" title="JSON的语法"></a><code>JSON</code>的语法</h4><p><code>JSON(JavaScript Object Notation)</code>：是<code>ECMAScript</code>的子集。作用是<strong>进行数据的交换</strong>。语法更为简洁，网络传输、机器解析都更为迅速。</p>
 <h5 id="语法规则："><a href="#语法规则：" class="headerlink" title="语法规则："></a>语法规则：</h5><ul>
 <li><p>数据在键值对中</p>
 </li>
@@ -570,8 +580,8 @@ xhr<span class="token punctuation">.</span><span class="token function">send</sp
       <span class="token property">"age"</span><span class="token operator">:</span><span class="token string">"2"</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">]</span></code></pre>
-<h3 id="json-字符串-与-js-对象转换"><a href="#json-字符串-与-js-对象转换" class="headerlink" title="json 字符串 与 js 对象转换"></a>json 字符串 与 js 对象转换</h3><p>基本所有的语言都有<strong>将 json 字符串转化为该语言对象</strong>的语法。</p>
-<h4 id="JS中的转换"><a href="#JS中的转换" class="headerlink" title="JS中的转换"></a><code>JS</code>中的转换</h4><p><code>JSON.parse()</code>：将<code>JSON</code>字符串转化为 <code>js</code> 对象。例如：</p>
+<h4 id="json-字符串-与-js-对象转换"><a href="#json-字符串-与-js-对象转换" class="headerlink" title="json 字符串 与 js 对象转换"></a>json 字符串 与 js 对象转换</h4><p>基本所有的语言都有<strong>将 json 字符串转化为该语言对象</strong>的语法。</p>
+<h5 id="JS中的转换"><a href="#JS中的转换" class="headerlink" title="JS中的转换"></a><code>JS</code>中的转换</h5><p><code>JSON.parse()</code>：将<code>JSON</code>字符串转化为 <code>js</code> 对象。例如：</p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> jsObj <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>ajax<span class="token punctuation">.</span>responseText<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p><code>JSON.stringify()</code>：将 <code>JS</code> 对象转化为<code>JSON</code>字符串。例如：</p>
 <pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> Obj <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -580,13 +590,13 @@ xhr<span class="token punctuation">.</span><span class="token function">send</sp
     <span class="token punctuation">}</span><span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// 将 js 对象格式化为 JSON 字符串</span>
     <span class="token keyword">var</span> jsonStr <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>Obj<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<h4 id="PHP中的转换"><a href="#PHP中的转换" class="headerlink" title="PHP中的转换"></a><code>PHP</code>中的转换</h4><ul>
+<h5 id="PHP中的转换"><a href="#PHP中的转换" class="headerlink" title="PHP中的转换"></a><code>PHP</code>中的转换</h5><ul>
 <li><p><code>json_decode()</code>方法：将<code>json</code>字符串转化为变量。</p>
 </li>
 <li><p><code>json_encode()</code>方法：将变量转化为<code>json</code>字符串。</p>
 </li>
 </ul>
-<h3 id="jQuery中的-Ajax"><a href="#jQuery中的-Ajax" class="headerlink" title="jQuery中的 Ajax"></a><code>jQuery</code>中的 <code>Ajax</code></h3><p><code>JQuery</code>作为最受欢迎的<code>JS</code>框架之一，常见的<code>Ajax</code>已经帮助我们封装好了，只需要调用即可。更为详细的api文档可以查阅：<a href="http://www.w3school.com.cn/jquery/jquery_ref_ajax.asp" target="_blank" rel="noopener">w3cSchool_JQueryAjax</a></p>
+<h4 id="jQuery中的-Ajax"><a href="#jQuery中的-Ajax" class="headerlink" title="jQuery中的 Ajax"></a><code>jQuery</code>中的 <code>Ajax</code></h4><p><code>JQuery</code>作为最受欢迎的<code>JS</code>框架之一，常见的<code>Ajax</code>已经帮助我们封装好了，只需要调用即可。更为详细的api文档可以查阅：<a href="http://www.w3school.com.cn/jquery/jquery_ref_ajax.asp" target="_blank" rel="noopener">w3cSchool_JQueryAjax</a></p>
 <p>格式：</p>
 <pre class=" language-js"><code class="language-js">$<span class="token punctuation">.</span><span class="token function">ajax</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
             url<span class="token punctuation">:</span> <span class="token string">'请求地址'</span><span class="token punctuation">,</span>
@@ -599,6 +609,15 @@ xhr<span class="token punctuation">.</span><span class="token function">send</sp
             <span class="token comment" spellcheck="true">// 请求失败调用</span>
             error<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>argument<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h3 id="Ajax-与-cookie"><a href="#Ajax-与-cookie" class="headerlink" title="Ajax 与 cookie"></a>Ajax 与 cookie</h3><ul>
+<li>ajax 会自动带上同源的 cookie，不会带上不同源的 cookie</li>
+<li>可以通过前端设置 withCredentials 为 true， 后端设置 Header 的方式让 ajax 自动带上不同源的 cookie，但是这个属性对同源请求没有任何影响。会被自动忽略。</li>
+</ul>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/withCredentials" target="_blank" rel="noopener">withCredentials | MDN</a></p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> xhr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+xhr<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token string">"GET"</span><span class="token punctuation">,</span> <span class="token string">"http://example.com/"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+xhr<span class="token punctuation">.</span>withCredentials <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+xhr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h2 id="Ajax函数封装"><a href="#Ajax函数封装" class="headerlink" title="Ajax函数封装"></a>Ajax函数封装</h2><p>此部分把ajax发送HTTP的常用请求进行封装，方便调用，减少代码冗余，解耦合，在编写项目时可以作为工具类使用。</p>
 <h4 id="请求封装"><a href="#请求封装" class="headerlink" title="请求封装"></a>请求封装</h4><pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// get请求封装</span>
         <span class="token keyword">function</span> <span class="token function">getAjax</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -1364,7 +1383,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">156.6k</span>&nbsp;字
+                class="white-color">156.7k</span>&nbsp;字
             
             
             
