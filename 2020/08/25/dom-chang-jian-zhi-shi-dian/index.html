@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="DOM常见知识点, Ramona">
+    <meta name="keywords" content="BOM和DOM, Ramona">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -27,7 +27,7 @@
 </script>
 
 
-    <title>DOM常见知识点 | Ramona</title>
+    <title>BOM和DOM | Ramona</title>
     <link rel="icon" type="image/jpeg" href="/favicon.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -232,12 +232,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">DOM常见知识点</h1>
+                    <h1 class="description center-align post-title">BOM和DOM</h1>
                 </div>
             </div>
         </div>
@@ -388,14 +388,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    3.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    14 分
                 </div>
                 
 
@@ -414,8 +414,73 @@
                 <blockquote>
 <p>持续更新……</p>
 </blockquote>
-<p><em>概念</em>：通俗的说DOM就是浏览器为JavaScript提供的一系列接口（通过window,document提供的），通过这些接口我们可以操作web页面。比如让盒子移动、变色、轮播图等。DOM不是编程语言，是文档对象模型，该模型独立于编程语言。</p>
-<h3 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h3><p><strong>节点</strong>（Node）：构成 HTML 网页的最基本单元。网页中的每一个部分都可以称为是一个节点，比如：html标签、属性、文本、注释、整个文档等都是一个节点。</p>
+<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><p><em>概念</em>：<code>BOM（Brower Object Model）</code>是浏览器对象模型。主要处理浏览器窗口和框架，描述与浏览器进行交互的方法和接口，可以对浏览器窗口进行访问和操作，比如弹出新的窗口、回退历史记录等。</p>
+<h3 id="BOM对象"><a href="#BOM对象" class="headerlink" title="BOM对象"></a>BOM对象</h3><ul>
+<li><code>Window JavaScript</code>层级中的顶层对象，表示浏览器窗口。同时 window 也是网页中的全局对象。</li>
+<li><code>Navigator</code>代表当前浏览器的信息，通过该对象可以识别不同的浏览器。</li>
+<li><code>History</code>包含了浏览器窗口访问过的URL。</li>
+<li><code>Location</code>包含了当前URL的信息，通过 Location 可以获取地址栏信息，或者操作浏览器跳转页面。</li>
+<li><code>Screen</code>包含客户端显示屏的信息。</li>
+</ul>
+<blockquote>
+<p><em>注意</em>：这些 BOM 对象都是作为 window 对象的属性保存的，可以通过window对象来使用，也可以直接使用。比如，可以使用 <code>window.location.href</code>，也可以直接使用 <code>location.href</code>，二者是等价的。<code>document</code>也是在<code>window</code>中保存的</p>
+</blockquote>
+<h3 id="常用的对象"><a href="#常用的对象" class="headerlink" title="常用的对象"></a>常用的对象</h3><h4 id="1、navigator"><a href="#1、navigator" class="headerlink" title="1、navigator"></a>1、navigator</h4><p><strong>一般我们只会使用<code>navigator.userAgent</code>来获取浏览器的信息</strong>。</p>
+<p>代码示例如下：</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>script<span class="token operator">></span>
+        <span class="token comment" spellcheck="true">// 获取当前浏览器的userAgent</span>
+        <span class="token keyword">var</span> UA <span class="token operator">=</span> navigator<span class="token punctuation">.</span>userAgent<span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'ramona当前浏览器的userAgent为：'</span> <span class="token operator">+</span> UA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex">/firefox/i</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>UA<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'火狐浏览器'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex">/chrome/i</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>UA<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Chrome浏览器'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex">/msie/i</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>UA<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'IE浏览器'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'ActiveXObject'</span> <span class="token keyword">in</span> window<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'IE 11 浏览器'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<p>我们也可以直接在浏览器控制台上输入：<code>navigator.userAgent</code>，查看到如下结果：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gi31zliw3mj31fy01yt9f.jpg" alt=""></p>
+<p>另外我们还可以在电脑上模拟移动端浏览器的场景。如下图方式操作：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gi32c3j4r2j327y0lgdu6.jpg" alt="image-20200825145607744"></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gi32h8fbzuj327o0fwdjt.jpg" alt="image-20200825150103566"></p>
+<blockquote>
+<h5 id="不同浏览器的userAgent"><a href="#不同浏览器的userAgent" class="headerlink" title="不同浏览器的userAgent"></a>不同浏览器的userAgent</h5><p><em>iOS 版微信浏览器：</em></p>
+<p>Mozilla/5.0 (iPhone; CPU iPhone OS 9_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13E233 MicroMessenger/6.3.15 NetType/WIFI Language/zh_CN</p>
+<p><em>Android 版微信浏览器：</em></p>
+<p>Mozilla/5.0 (Linux; Android 5.0.1; GT-I9502 Build/LRX22C; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 MicroMessenger/6.1.0.78_r1129455.543 NetType/WIFI</p>
+<p><em>iOS 版本QQ浏览器：</em></p>
+<p>Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_2 like Mac OS X) AppleWebKit/604.4.7 (KHTML, like Gecko) Mobile/15C202 QQ/7.3.5.473 V1_IPH_SQ_7.3.5_1_APP_A Pixel/1125 Core/UIWebView Device/Apple(iPhone X) NetType/WIFI QBWebViewType/1</p>
+<p><em>Android 版 QQ浏览器：</em></p>
+<p>Mozilla/5.0 (Linux; Android 4.4.2; PE-TL20 Build/HuaweiPE-TL20; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/6.2 TBS/043807 Mobile Safari/537.36 V1_AND_SQ_7.3.2_762_YYB_D QQ/7.3.2.3350 NetType/WIFI WebP/0.3.0 Pixel/1080</p>
+</blockquote>
+<h4 id="2、History"><a href="#2、History" class="headerlink" title="2、History"></a>2、History</h4><p>History对象可以用来操作浏览器的向前或向后翻页。</p>
+<p>常见的属性和方法代码示例如下：</p>
+<pre class=" language-js"><code class="language-js">history<span class="token punctuation">.</span>length  <span class="token comment" spellcheck="true">// 获取浏览器历史列表中的 url 数量,只是统计当次的数量，如果浏览器关了，数量会重置为1</span>
+history<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 用来回退到上一个页面，作用和浏览器的「回退按钮」一样</span>
+history<span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 用来跳转下一个页面，作用和浏览器的「前进按钮」一样</span>
+history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span> <span class="token number">1</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 向前跳转一个页面，相当于 history.forward()</span>
+history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 刷新当前页面</span>
+history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 向后跳转一个页面，相当于 history.back()</span></code></pre>
+<h4 id="3、Location"><a href="#3、Location" class="headerlink" title="3、Location"></a>3、Location</h4><p>Location 对象封装了浏览器地址栏的 URL 信息。</p>
+<p>常见的属性和方法代码示例如下：</p>
+<pre class=" language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>location<span class="token punctuation">.</span>href<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取当前页面的url 路径</span>
+location<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token string">'www.baidu.com'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 跳转到指定的页面链接。通俗理解就是：跳转到其他的页面</span>
+location<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+location<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 重新加载当前页面</span>
+location<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 在方法的参数中传递一个true，则会强制清空缓存刷新页面</span>
+ location<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 使用一个新的页面替换当前页面，调用完毕也会跳转页面。但不会生成历史记录，不能使用「后退按钮」后退</span></code></pre>
+<blockquote>
+<p>详情参考：<a href="https://github.com/huyaocode/webKnowledge/blob/master/前端基础/JS/BOM.md" target="_blank" rel="noopener">https://github.com/huyaocode/webKnowledge/blob/master/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JS/BOM.md</a></p>
+</blockquote>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><p><em>概念</em>：通俗的说DOM就是浏览器为JavaScript提供的一系列接口（通过window,document提供的），通过这些接口我们可以操作web页面。比如让盒子移动、变色、轮播图等。DOM不是编程语言，是文档对象模型，该模型独立于编程语言。</p>
+<blockquote>
+<p>API (web 或 XML 页面) = DOM + JS (脚本语言)</p>
+</blockquote>
+<h4 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h4><p><strong>节点</strong>（Node）：构成 HTML 网页的最基本单元。网页中的每一个部分都可以称为是一个节点，比如：html标签、属性、文本、注释、整个文档等都是一个节点。</p>
 <p>虽然都是节点，但是实际上他们的具体类型是不同的。常见节点分为四类：</p>
 <ul>
 <li><p>文档节点（文档）：整个 HTML 文档。整个 HTML 文档就是一个文档节点。</p>
@@ -428,7 +493,7 @@
 </li>
 </ul>
 <p>节点的类型不同，属性和方法也都不尽相同。<strong>所有的节点都是Object</strong>。</p>
-<h3 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h3><h4 id="DOM解析过程"><a href="#DOM解析过程" class="headerlink" title="DOM解析过程"></a>DOM解析过程</h4><p>HTML加载完毕，渲染引擎会在内存中把HTML文档，生成一个DOM树，getElementById是获取内中DOM上的元素节点。然后操作的时候修改的是该元素的<strong>属性</strong>。<strong>在HTML当中，一切都是节点</strong>。</p>
+<h4 id="DOM解析过程"><a href="#DOM解析过程" class="headerlink" title="DOM解析过程"></a>DOM解析过程</h4><p>HTML加载完毕，渲染引擎会在内存中把HTML文档，生成一个DOM树，getElementById是获取内中DOM上的元素节点。然后操作的时候修改的是该元素的<strong>属性</strong>。<strong>在HTML当中，一切都是节点</strong>。</p>
 <h4 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h4><h5 id="1、创建新节点"><a href="#1、创建新节点" class="headerlink" title="1、创建新节点"></a>1、创建新节点</h5><table>
 <thead>
 <tr>
@@ -768,6 +833,12 @@ someDom<span class="token punctuation">.</span><span class="token function">disp
 <p>参考：<a href="https://github.com/huyaocode/webKnowledge/blob/master/前端基础/JS/DOM.md" target="_blank" rel="noopener">https://github.com/huyaocode/webKnowledge/blob/master/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JS/DOM.md</a></p>
 <p><a href="https://harttle.land/2015/10/01/javascript-dom-api.html" target="_blank" rel="noopener">https://harttle.land/2015/10/01/javascript-dom-api.html</a></p>
 </blockquote>
+<h2 id="BOM-与-DOM-的关系"><a href="#BOM-与-DOM-的关系" class="headerlink" title="BOM 与 DOM 的关系"></a>BOM 与 DOM 的关系</h2><ol>
+<li>javacsript 是通过访问 BOM 对象来访问、 控制、 修改浏览器</li>
+<li>BOM 的 window 包含了 document， 因此通过 window 对象的document 属性就可以访问、 检索、 修改文档内容与结构。</li>
+<li>document 对象又是 DOM 模型的根节点。</li>
+</ol>
+<p>因此， <strong>BOM 包含了 DOM， 浏览器提供出来给予访问的是 BOM 对象， 从 BOM 对象再访 问到 DOM 对象</strong>， 从而 js 可以操作浏览器以及浏览器读取到的文档。</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1136,15 +1207,15 @@ someDom<span class="token punctuation">.</span><span class="token function">disp
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="DOM常见知识点">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="BOM和DOM">
                         
-                        <span class="card-title">DOM常见知识点</span>
+                        <span class="card-title">BOM和DOM</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            DOM一些常见小细节总结
+                            BOM和DOM一些常见小细节总结
                         
                     </div>
                     <div class="publish-info">
@@ -1367,7 +1438,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">168.1k</span>&nbsp;字
+                class="white-color">169.2k</span>&nbsp;字
             
             
             
