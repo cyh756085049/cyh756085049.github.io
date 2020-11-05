@@ -388,14 +388,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.4k
+                    4.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    18 分
                 </div>
                 
 
@@ -842,6 +842,12 @@ s<span class="token punctuation">.</span> <span class="token function">intern</s
 <li>解析：jdk6+是能把字符串的引用放入常量池中的</li>
 </ul>
 <p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdfslj4zr8j30qe0c2dix.jpg" alt=""></p>
+<h3 id="8、指针压缩"><a href="#8、指针压缩" class="headerlink" title="8、指针压缩"></a>8、指针压缩</h3><h4 id="1、指针压缩是如何实现的？如何证明开启指针压缩节省了内存？"><a href="#1、指针压缩是如何实现的？如何证明开启指针压缩节省了内存？" class="headerlink" title="1、指针压缩是如何实现的？如何证明开启指针压缩节省了内存？"></a>1、指针压缩是如何实现的？如何证明开启指针压缩节省了内存？</h4><p>默认情况下，Java虚拟机中对象的起始地址需要对齐至8的倍数（即为内存对齐，对应虚拟机选项 <code>-XX:ObjectAlignmentInBytes</code>，默认值为 8）。如果一个对象用不到8字节，那么空白的那部分空间就白白浪费掉了。这些浪费掉的空间我们称之为对象之间的填充。默认情况下，Java虚拟机中32位的指针可以寻址到2的35次方，也就是32GB的内存空间（超过32位会关闭压缩指针）。在对压缩指针解引用时，我们需要将其左移3位，再加上一个固定的偏移量，便可以寻址到32GB地址空间为64位指针了。此外，我们可以配置刚刚提到的内存对齐选项（<code>-XX:ObjectAlignmentInBytes</code>）来进一步提升内存寻址范围。但是，这也可能增加对象填充，导致压缩指针没有打到节省空间效果。</p>
+<p>在64位的虚拟机中，对象头的标记字段占64位，而类型指针又占64位。也就是说一个对象额外占用的字节就是16个字节。以Integer对象为例，它仅有一个int类型的私有字段，占4个字节。因此，每个Integer的额外开销至少400%，这也就是Java为什么要引入基本数据类型的原因之一。为了减少内存开销，64位Java虚拟机引入了压缩指针概念（对应虚拟机选项<code>-XX:+UseCompressedOops</code>，默认开启），将堆中原本64位的Java对象指针压缩成32位的。这样一来，对象头的类型指针也会被压缩成32位，使得对象头大小从16字节降低为12字节。压缩指针不仅可以作用对象头的类型指针，还可以作用引用类型的字段，引用类型的数组。</p>
+<h4 id="2、开启指针压缩后，一个oop所能表示的最大堆空间是多少？不开呢？"><a href="#2、开启指针压缩后，一个oop所能表示的最大堆空间是多少？不开呢？" class="headerlink" title="2、开启指针压缩后，一个oop所能表示的最大堆空间是多少？不开呢？"></a>2、开启指针压缩后，一个oop所能表示的最大堆空间是多少？不开呢？</h4><p>开启指针压缩后，一个oop所能表示的最大堆空间是32 GB，当最大堆大小超过32 GB时，JVM将自动关闭oop压缩。不开启指针压缩后，一个oop所能表示的最大堆空间是4GB。</p>
+<h4 id="3、如何扩展开启指针压缩后一个oop所能表示的最大堆空间？"><a href="#3、如何扩展开启指针压缩后一个oop所能表示的最大堆空间？" class="headerlink" title="3、如何扩展开启指针压缩后一个oop所能表示的最大堆空间？"></a>3、如何扩展开启指针压缩后一个oop所能表示的最大堆空间？</h4><p>当Java堆大小大于32GB时，也可以使用压缩指针。虽然默认对象对齐是8个字节，但可以使用    <code>-XX：ObjectAlignmentInBytes</code>配置字节值。指定的值应为2的幂，并且必须在8和256的范围内。例如，当对象对齐为16个字节时，通过压缩指针最多可以使用64 GB的堆空间。请注意，随着对齐值的增加，对象之间未使用的空间也会增加。</p>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>启用指针压缩:<code>-XX:+UseCompressedOops</code></p>
+<p>禁止指针压缩:<code>-XX:-UseCompressedOops</code></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1451,7 +1457,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">173.6k</span>&nbsp;字
+                class="white-color">174.4k</span>&nbsp;字
             
             
             
