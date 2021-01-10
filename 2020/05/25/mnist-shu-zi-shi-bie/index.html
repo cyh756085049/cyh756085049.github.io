@@ -1,0 +1,1500 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="MNIST数字识别, Ramona">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', '');
+</script>
+
+
+    <title>MNIST数字识别 | Ramona</title>
+    <link rel="icon" type="image/jpeg" href="/favicon.jpeg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/love flowers.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Ramona</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/love flowers.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Ramona</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">MNIST数字识别</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Tensorflow/">
+                                <span class="chip bg-color">Tensorflow</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Python/" class="post-category">
+                                Python
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-05-25
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    13 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="变量管理"><a href="#变量管理" class="headerlink" title="变量管理"></a>变量管理</h3><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># get_variable</span>
+<span class="token comment" spellcheck="true">#根据变量名称直接获取，如果不存在就创建一个新的</span>
+emb <span class="token operator">=</span> tf<span class="token punctuation">.</span>get_variab1e<span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"emb"</span>，<span class="token comment" spellcheck="true">#变量名称(必填)</span>
+                                            shape <span class="token comment" spellcheck="true">#词向量维度</span>
+                                            initializer<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 词向量矩阵, 训练好的</span>
+<span class="token comment" spellcheck="true"># Variable</span>
+<span class="token comment" spellcheck="true">#创建一个新的变量,用具体的值初始化，变量名称可选</span>
+emb <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span>initializer，<span class="token comment" spellcheck="true">#词向量矩阵,训练好的</span>
+                                    name<span class="token operator">=</span><span class="token string">"emb"</span> <span class="token comment" spellcheck="true">#变量名称(可选)</span></code></pre>
+<p><code>tf.Variable + tf. name_ scope</code>通过组合可以简化命名参数，合理组织参数，在Tensorboard可视化展示过程中更加清晰结构逻辑<br><code>tf.get_variable + tf.variab1e_scope</code>主要用于实现参数共享</p>
+<h4 id="Variable-name-scope"><a href="#Variable-name-scope" class="headerlink" title="Variable+name_ scope"></a>Variable+name_ scope</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#在conv1命名空间下定义变量</span>
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>name_scope<span class="token punctuation">(</span><span class="token string">'conv1'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> scope<span class="token punctuation">:</span>
+            weights1 <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1.0</span><span class="token punctuation">,</span> <span class="token number">2.0</span><span class="token punctuation">]</span> <span class="token punctuation">,</span> name<span class="token operator">=</span> <span class="token string">'weights'</span><span class="token punctuation">)</span>
+            bias1 <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'bias'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#在conv2命名空间下定义变量</span>
+<span class="token keyword">with</span> tf <span class="token punctuation">.</span> name_ scoрe<span class="token punctuation">(</span><span class="token string">' conv2'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> scope <span class="token punctuation">:</span>
+            weights2 <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">4.0</span><span class="token punctuation">,</span> <span class="token number">2.0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> name<span class="token operator">=</span> <span class="token string">'weights'</span><span class="token punctuation">)</span>
+            bias2 <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0.33</span><span class="token punctuation">]</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'bias'</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span>weights1<span class="token punctuation">.</span>name<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># conv1/wei ghts</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span>weights2<span class="token punctuation">.</span>name<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># conv2/wei ghts</span></code></pre>
+<h4 id="get-variable-variable-scope"><a href="#get-variable-variable-scope" class="headerlink" title="get_variable +variable_scope"></a>get_variable +variable_scope</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#根据变量名称直接获取，如果不存在就创建一个新的</span>
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>variable_scope<span class="token punctuation">(</span>“s1"<span class="token punctuation">)</span><span class="token punctuation">:</span>
+V <span class="token operator">=</span> get_variab1e<span class="token punctuation">(</span>“V"， shape1<span class="token punctuation">,</span> initializer1<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#创建失败，由于变量名“V”已经存在</span>
+v1 <span class="token operator">=</span> get_variab1e<span class="token punctuation">(</span>“v"， shape1<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#如果已经存在，直接返回当前变量</span>
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>variab1e_scope<span class="token punctuation">(</span>“s1"， reuse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+v2 <span class="token operator">=</span> get_variab1e<span class="token punctuation">(</span>“V"， shape1<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#输出True， 都是s1/v</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span>V<span class="token operator">==</span>v2<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">#変量空囘s1下創建変量v</span>
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>variab1e_scope<span class="token punctuation">(</span><span class="token string">"s1"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+v <span class="token operator">=</span> get_variab1e<span class="token punctuation">(</span>“v"<span class="token punctuation">,</span> shape1<span class="token punctuation">,</span> initializer1<span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span>V<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#輸出s1/v:0</span>
+
+<span class="token comment" spellcheck="true">#変量空囘s2下創建変量v</span>
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>variab1e_scope<span class="token punctuation">(</span><span class="token string">"s2"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+v <span class="token operator">=</span> get_variab1e<span class="token punctuation">(</span>“v"<span class="token punctuation">,</span> shape1<span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span>V<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#輸出s2/v:0</span>
+
+<span class="token comment" spellcheck="true">#変量空囘s2下創建変量v</span>
+V <span class="token operator">=</span> get_variab1e<span class="token punctuation">(</span>“s1<span class="token operator">/</span>v"<span class="token punctuation">,</span> shape1<span class="token punctuation">)</span></code></pre>
+<h4 id="variable-scope-VS-name-scope"><a href="#variable-scope-VS-name-scope" class="headerlink" title="variable_scope VS . name_scope"></a>variable_scope VS . name_scope</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#在name_scope下凋用get_variable</span>
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>name_scope<span class="token punctuation">(</span>“s1"<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            v <span class="token operator">=</span> get_variable<span class="token punctuation">(</span>“v"， shape1<span class="token punctuation">,</span> initializer1<span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span>V<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#輸出v:0</span>
+<span class="token comment" spellcheck="true">#在variable_scope下凋用Variable</span>
+<span class="token keyword">with</span> tf<span class="token punctuation">.</span>variab1e_scope<span class="token punctuation">(</span>“s2"<span class="token punctuation">)</span><span class="token punctuation">:</span>
+v <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variab1e<span class="token punctuation">(</span>“v"<span class="token punctuation">,</span> shape1<span class="token punctuation">)</span>
+<span class="token keyword">print</span> <span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#輸出s2/v:0</span></code></pre>
+<p><strong>get_variable是不受name_scope的限制</strong></p>
+<h3 id="持久化管理"><a href="#持久化管理" class="headerlink" title="持久化管理"></a>持久化管理</h3><h4 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 前续TensorFlow代码</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token comment" spellcheck="true">#用于保存模型参数</span>
+saver <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>Saver<span class="token punctuation">(</span><span class="token punctuation">)</span>
+With tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+          <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+            <span class="token comment" spellcheck="true">#保存模型到制定路径下</span>
+            saver<span class="token punctuation">.</span>save<span class="token punctuation">(</span>sess<span class="token punctuation">,</span> <span class="token string">"path/to/model/model.ckpt"</span><span class="token punctuation">)</span></code></pre>
+<p>生成三个文件:</p>
+<ol>
+<li><code>model.ckpt.meta</code> 计算图结构，模型结构</li>
+<li><code>model.ckpt</code> 模型参数</li>
+<li><code>checkpoint</code> 所有模型文件列表</li>
+</ol>
+<h4 id="部分保存"><a href="#部分保存" class="headerlink" title="部分保存"></a>部分保存</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 前续TensorFlow代码</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token comment" spellcheck="true">#用于保存模型参数，通过词典给出要保存的参数列表</span>
+saver <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>Saver<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"v1"</span><span class="token punctuation">:</span>v1<span class="token punctuation">,</span> <span class="token string">"v2"</span><span class="token punctuation">:</span>v2<span class="token punctuation">}</span><span class="token punctuation">)</span>
+With tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+          <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+            <span class="token comment" spellcheck="true">#保存模型到制定路径下</span>
+            saver<span class="token punctuation">.</span>save<span class="token punctuation">(</span>sess<span class="token punctuation">,</span> <span class="token string">"path/to/model/model.ckpt"</span><span class="token punctuation">)</span></code></pre>
+<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 前续TensorFlow代码</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token comment" spellcheck="true">#用于保存模型参数</span>
+saver <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>Saver<span class="token punctuation">(</span><span class="token punctuation">)</span>
+With tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+          <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+            <span class="token comment" spellcheck="true">#导入指定路径下的模型</span>
+            saver<span class="token punctuation">.</span>restore<span class="token punctuation">(</span>sess<span class="token punctuation">,</span> <span class="token string">"path/to/model/model.ckpt"</span><span class="token punctuation">)</span>
+<span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span><span class="token operator">-</span>   
+<span class="token comment" spellcheck="true">#直接加载计算结构图</span>
+saver <span class="token operator">=</span> tf<span class="token punctuation">.</span> train<span class="token punctuation">.</span> import_meta_graph<span class="token punctuation">(</span><span class="token string">"path/to/model/model.ckpt/mode1.ckpt.meta"</span><span class="token punctuation">)</span>
+With tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+          <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+            <span class="token comment" spellcheck="true">#导入指定路径下的模型</span>
+            saver<span class="token punctuation">.</span>restore<span class="token punctuation">(</span>sess<span class="token punctuation">,</span> <span class="token string">"path/to/model/model.ckpt"</span><span class="token punctuation">)</span></code></pre>
+<h3 id="滑动平均模型"><a href="#滑动平均模型" class="headerlink" title="滑动平均模型"></a>滑动平均模型</h3><p>滑动平均模型可以使模型在测试数据上更健壮，适合基于梯度下降算法训练神经网络的过程。在TensorFlow中提供了该模型: <code>tf.train.ExponentialMovingAverage</code></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf3e5gptfkj30v60a2ac7.jpg" alt=""></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#定义一个变量</span>
+v1 <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variab1e<span class="token punctuation">(</span><span class="token number">0</span>， dtype<span class="token operator">=</span>tf<span class="token punctuation">.</span>f1oat32<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># num_updates变量更新次数</span>
+step <span class="token operator">=</span> tf<span class="token punctuation">.</span>variab1e<span class="token punctuation">(</span><span class="token number">0</span>， trainab1e<span class="token operator">=</span>Fa1se<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#定义一个滑动平均模型，给出decay和num_updates</span>
+ema<span class="token operator">=</span>tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>Exponentia1MovingAverage<span class="token punctuation">(</span><span class="token number">0.99</span>，step<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#定义一个滑动平均计算操作，给出要维护的变量列表</span>
+maintain_averages_op <span class="token operator">=</span> ema<span class="token punctuation">.</span>app1y<span class="token punctuation">(</span><span class="token punctuation">[</span>v1<span class="token punctuation">]</span><span class="token punctuation">)</span>
+With tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+            <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+            sess<span class="token punctuation">.</span> run<span class="token punctuation">(</span>maintain_averages_op<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 运行滑动平均模型</span></code></pre>
+<h3 id="学习速率衰减"><a href="#学习速率衰减" class="headerlink" title="学习速率衰减"></a>学习速率衰减</h3><p>训练前期使用较大的学习率加速，让模型快速收敛,训练过程中主键减小学习速率，到训练后期使用较小的学习率,使模型在训练后期更稳定。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf3edh3v2qj30p003eaas.jpg" alt=""></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># TensorFlow支持的学习速率衰减策略</span>
+exponential_decay
+tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>exponential_decay<span class="token punctuation">(</span>learning_rate<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 初始学习率</span>
+                          global_step<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 当前迭代次数</span>
+                          decay_steps<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 衰减速度，在迭代到该次数时衰减</span>
+                          decay_rate<span class="token comment" spellcheck="true"># 学习率衰减系数，通常介于0-1之间)</span>
+inverse_time_decay
+natural_exp_decay
+piecewise_constant
+polynomial_decay</code></pre>
+<h3 id="多目标优化"><a href="#多目标优化" class="headerlink" title="多目标优化"></a>多目标优化</h3><p>有时需要同时维护多套参数。例如，使用滑动平均模型时除了模型参数，还需要维护模型参数对应的影子变量。这个时候可以通过group和control_ dependencies完成。</p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># group</span>
+tf<span class="token punctuation">.</span>group<span class="token punctuation">(</span>train_part1<span class="token punctuation">,</span> train_part2<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># control_denendencies</span>
+With tf<span class="token punctuation">.</span>control_dependencies<span class="token punctuation">(</span><span class="token punctuation">[</span>train_p1<span class="token punctuation">,</span> train_p2<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">:</span>
+            train_op <span class="token operator">=</span> tf<span class="token punctuation">.</span>no_op <span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"train"</span><span class="token punctuation">)</span></code></pre>
+<h2 id="MNIST数字识别程序构成"><a href="#MNIST数字识别程序构成" class="headerlink" title="MNIST数字识别程序构成"></a>MNIST数字识别程序构成</h2><p><code>mnist_inference.py</code> 前馈计算，定义神经网络模型结构。<br><code>mnist_train.py</code> 模型训练，定义神经网络的训练过程。<br><code>mnist_eval.py</code> 模型评价，定义程序测试过程。</p>
+<h3 id="前馈计算"><a href="#前馈计算" class="headerlink" title="前馈计算"></a>前馈计算</h3><ul>
+<li>导入Mnist数据集</li>
+<li>设置神经网络结构相关的参数</li>
+<li>定义获取变量函数</li>
+<li>定义神经网络的前向传播过程</li>
+</ul>
+<h4 id="MNIST数据集"><a href="#MNIST数据集" class="headerlink" title="MNIST数据集"></a>MNIST数据集</h4><p>MNIST是一个手写体数字识别数据集，它的训练数据集包含60000张图片，测试数据集包含10000张图片，其中每一-张图片都代表0~9中的一个数字。</p>
+<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf3ejn502pj30qk0dmwhk.jpg" alt="手写数字识别数据集" style="zoom:50%;">
+
+<h4 id="1、导入Mnist数据集"><a href="#1、导入Mnist数据集" class="headerlink" title="1、导入Mnist数据集"></a>1、导入Mnist数据集</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding: utf-8 -*</span>
+<span class="token comment" spellcheck="true"># 从Tensorflow里边加载MNIST数据集</span>
+<span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>examples<span class="token punctuation">.</span>tutorials<span class="token punctuation">.</span>mnist <span class="token keyword">import</span> input_data
+<span class="token comment" spellcheck="true"># 载入MBNIST数据集，如果之前没有下载过，则会自动下载到相应的目录</span>
+mnist <span class="token operator">=</span> input_data<span class="token punctuation">.</span>read_data_sets<span class="token punctuation">(</span><span class="token string">'./path/MNIST_data'</span><span class="token punctuation">,</span> one_hot<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 打印training_data_size: 55000</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'training_data_size:'</span><span class="token punctuation">,</span> mnist<span class="token punctuation">.</span>train<span class="token punctuation">.</span>num_examples<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># 打印Example training data</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Example training data:'</span><span class="token punctuation">,</span> mnist<span class="token punctuation">.</span>train<span class="token punctuation">.</span>images<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p>输出结果</p>
+<pre><code>training_data_size: 55000
+Example training data: [0.         0.         0.         ...  0.3803922  0.37647063 0.3019608
+0.81568635 0.7803922  0.7803922  0.7803922  ....
+ 0.         0.        ]</code></pre><blockquote>
+<p>代码中的one hot=True ，表示将样本标签转化为one hot 编码。<br>举例来解释one_hot 编码： 假如一共10 类。0 的one_hot 为1000000000,1 的one_hot为0100000000 , 2 的one hot 为0010000000 , 3 的one hot 为0001000000 ..…·依此类推。只有一个位为1 , 1 所在的位置就代表着第几类。</p>
+</blockquote>
+<h4 id="2、设置神经网络结构相关的参数"><a href="#2、设置神经网络结构相关的参数" class="headerlink" title="2、设置神经网络结构相关的参数"></a>2、设置神经网络结构相关的参数</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 输入层的节点数。对于MNIST数据集，这个等于图片的总像素=28*28</span>
+INPUT_NODE <span class="token operator">=</span> <span class="token number">784</span>
+<span class="token comment" spellcheck="true"># 输出层的节点数。在MNIST数据集中有0~9这10个数字类别</span>
+OUTPUT_NODE <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token comment" spellcheck="true"># 神经网络隐藏节点数</span>
+LAYERl_NODE <span class="token operator">=</span> <span class="token number">500</span></code></pre>
+<h4 id="3、定义获取变量函数"><a href="#3、定义获取变量函数" class="headerlink" title="3、定义获取变量函数"></a>3、定义获取变量函数</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">get_weight_variable</span><span class="token punctuation">(</span>shape<span class="token punctuation">,</span> regularizer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># shape是变量的大小，regularizer是正则化函数。</span>
+    <span class="token comment" spellcheck="true"># tf.truncated_normal_initializer是正态分布初始化函数</span>
+    weights <span class="token operator">=</span> tf<span class="token punctuation">.</span>get_variable<span class="token punctuation">(</span><span class="token string">"weights"</span><span class="token punctuation">,</span> shape<span class="token punctuation">,</span> initializer<span class="token operator">=</span>tf<span class="token punctuation">.</span>truncated_normal_initializer<span class="token punctuation">(</span>stddev<span class="token operator">=</span><span class="token number">0.1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># tf.add_to_collections 将当前变量的正则化损失加入名字为1osses的集合</span>
+    <span class="token keyword">if</span> regularizer <span class="token operator">!=</span> None<span class="token punctuation">:</span>
+        tf<span class="token punctuation">.</span>add_to_col1ections<span class="token punctuation">(</span><span class="token string">'losses'</span><span class="token punctuation">,</span> regularizer<span class="token punctuation">(</span>weights<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> weights</code></pre>
+<h4 id="4、定义神经网络的前向传播过程"><a href="#4、定义神经网络的前向传播过程" class="headerlink" title="4、定义神经网络的前向传播过程"></a>4、定义神经网络的前向传播过程</h4><pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">inference</span><span class="token punctuation">(</span>input_tensor<span class="token punctuation">,</span> regularizer<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 声明第一层神经网络的名 命空间'layer1'及相关变量，并完成前向传播过程</span>
+    <span class="token keyword">with</span> tf<span class="token punctuation">.</span>variable_scope<span class="token punctuation">(</span><span class="token string">"layer1"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        weights <span class="token operator">=</span> get_weight_variable<span class="token punctuation">(</span><span class="token punctuation">[</span>INPUT_NODE<span class="token punctuation">,</span> LAYERl_NODE<span class="token punctuation">]</span><span class="token punctuation">,</span> regularizer<span class="token punctuation">)</span>
+        biases <span class="token operator">=</span> tf<span class="token punctuation">.</span>get_variab1e<span class="token punctuation">(</span><span class="token string">"biases"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>LAYERl_NODE<span class="token punctuation">]</span><span class="token punctuation">,</span> initializer<span class="token operator">=</span>tf<span class="token punctuation">.</span>constant_initializer<span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        output1 <span class="token operator">=</span> tf<span class="token punctuation">.</span>matmul<span class="token punctuation">(</span>input_tensor<span class="token punctuation">,</span> weights<span class="token punctuation">)</span> <span class="token operator">+</span> biases
+        <span class="token comment" spellcheck="true"># 使用relu激活函数</span>
+        layer1 <span class="token operator">=</span> tf<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>relu<span class="token punctuation">(</span>output1<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 声明第二层神经网络的名命空间'layer2’及相关变量，并完成前向传播过程</span>
+    <span class="token keyword">with</span> tf<span class="token punctuation">.</span>variable_scope<span class="token punctuation">(</span><span class="token string">'layer2'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        weights <span class="token operator">=</span> get_weight_variable<span class="token punctuation">(</span><span class="token punctuation">[</span>LAYERl_NODE<span class="token punctuation">,</span> OUTPUT_NODE<span class="token punctuation">]</span><span class="token punctuation">,</span> regularizer<span class="token punctuation">)</span>
+        biases <span class="token operator">=</span> tf<span class="token punctuation">.</span>get_variable<span class="token punctuation">(</span><span class="token string">'biases'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>OUTPUT_NODE<span class="token punctuation">]</span><span class="token punctuation">,</span> initializer<span class="token operator">=</span>tf<span class="token punctuation">.</span>constant_initializer<span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        layer2 <span class="token operator">=</span> tf<span class="token punctuation">.</span>matmul<span class="token punctuation">(</span>layer1<span class="token punctuation">,</span> weights<span class="token punctuation">)</span> <span class="token operator">+</span> biases
+    <span class="token comment" spellcheck="true"># 返回前向传播的结果</span>
+    <span class="token keyword">return</span> layer2</code></pre>
+<h3 id="模型训练"><a href="#模型训练" class="headerlink" title="模型训练"></a>模型训练</h3><ul>
+<li>配置训练参数</li>
+<li>定义训练模型</li>
+<li>进行训练</li>
+</ul>
+<h4 id="配置训练参数"><a href="#配置训练参数" class="headerlink" title="配置训练参数"></a>配置训练参数</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 一个训练batch中的训练数据个数</span>
+BATCH_SIZE <span class="token operator">=</span> <span class="token number">100</span>
+<span class="token comment" spellcheck="true"># 基础学习率</span>
+LEARNING_RATE_BASE <span class="token operator">=</span> <span class="token number">0.8</span>
+<span class="token comment" spellcheck="true"># 学习率的衰减率</span>
+LEARNING_RATE_DECAY <span class="token operator">=</span> <span class="token number">0.99</span>
+<span class="token comment" spellcheck="true"># 正则化项在损失函数里的系数</span>
+REGULARAZTION_RATE <span class="token operator">=</span> <span class="token number">0.0001</span>
+<span class="token comment" spellcheck="true"># 训练轮数</span>
+TRAINING_STEPS <span class="token operator">=</span> <span class="token number">30000</span>
+<span class="token comment" spellcheck="true"># 滑动平均衰减率</span>
+MOVING_AVERAGE_DECAY <span class="token operator">=</span> <span class="token number">0.99</span>
+
+<span class="token comment" spellcheck="true"># 配置神经网络参数</span>
+MODEL_SAVE_PATH <span class="token operator">=</span> <span class="token string">"/path/to/model"</span>
+MODEL_NAME <span class="token operator">=</span><span class="token string">"model.ckpt"</span></code></pre>
+<h4 id="定义训练模型"><a href="#定义训练模型" class="headerlink" title="定义训练模型"></a>定义训练模型</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 定义训练模型</span>
+<span class="token keyword">def</span> <span class="token function">train</span><span class="token punctuation">(</span>mnist<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment" spellcheck="true"># 定义输入输出的placeholder</span>
+    x <span class="token operator">=</span> tf<span class="token punctuation">.</span>placeholder<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>f1oat32<span class="token punctuation">,</span> <span class="token punctuation">[</span>NONE<span class="token punctuation">,</span> mnist_inference<span class="token punctuation">.</span>INPUT_NODE<span class="token punctuation">]</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'x-input'</span><span class="token punctuation">)</span>
+    y_ <span class="token operator">=</span> tf<span class="token punctuation">.</span>placeholder<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>f1oat32<span class="token punctuation">,</span> <span class="token punctuation">[</span>NONE<span class="token punctuation">,</span> mnist_inference<span class="token punctuation">.</span>OUTPUT_NODE<span class="token punctuation">]</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'y-input'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 并定义正则化方法(tensorflow中的12正则化法)</span>
+    regularizer <span class="token operator">=</span> tf<span class="token punctuation">.</span>contrib<span class="token punctuation">.</span>layers<span class="token punctuation">.</span>l2_regularizer<span class="token punctuation">(</span>REGULARAZTION_RATE<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 直接调用mnist_inference.py中定义的前向传播过程</span>
+    y <span class="token operator">=</span> mnist_inference<span class="token punctuation">.</span>inference<span class="token punctuation">(</span>x<span class="token punctuation">,</span> regularizer<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 定义迭代次数变量，一般会将训练轮数的变量指定为不可训练的参数</span>
+    global_step <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> trainable<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 滑动平均模型定义滑动平均操作，提升模型对数据对鲁棒性</span>
+    variable_averages <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>ExponentialMovingAverage<span class="token punctuation">(</span>MOVING_AVERAGE_DECAY<span class="token punctuation">,</span> global_step<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 使用tf.trainable_variables可以获得神经网络中所有trainable=True的变量</span>
+    variable_averages_op <span class="token operator">=</span> variable_averages<span class="token punctuation">.</span>apply<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>trainable_variables<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 定义模型预测值与真实标签的交叉熵</span>
+    cross_entropy <span class="token operator">=</span> tf<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>sparse_softmax_cross_entropy_with_logits<span class="token punctuation">(</span>logits<span class="token operator">=</span>y<span class="token punctuation">,</span> labels<span class="token operator">=</span>y_<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 求一个batch的平均交叉熵</span>
+    cross_entropy_mean <span class="token operator">=</span> tf<span class="token punctuation">.</span>reduce_mean<span class="token punctuation">(</span>cross_entropy<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 定义损失函数，包含预测标签与实际标签的损失和正则化损失</span>
+    loss <span class="token operator">=</span> cross_entropy_mean <span class="token operator">+</span> tf<span class="token punctuation">.</span>add_n<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>get_collection<span class="token punctuation">(</span><span class="token string">'losses'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 定义指数衰减学习率，训练前期使用较大的学习率加速，训练后期使用较小的学习率，使模型在训练后期更稳定</span>
+    learning_rate <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>exponential_decay<span class="token punctuation">(</span>LEARNING_RATE_BASE<span class="token punctuation">,</span>  <span class="token comment" spellcheck="true"># 基础学习率</span>
+                                               global_step<span class="token punctuation">,</span>   <span class="token comment" spellcheck="true"># 当前迭代轮数</span>
+                                               mnist<span class="token punctuation">.</span>train<span class="token punctuation">.</span>num_examples<span class="token operator">/</span>BATCH_SIZE<span class="token punctuation">,</span>  <span class="token comment" spellcheck="true"># 所有训练数据需要迭代的轮数</span>
+                                               LEARNING_RATE_DECAY<span class="token punctuation">)</span>  <span class="token comment" spellcheck="true"># 学习率衰减速度</span>
+    <span class="token comment" spellcheck="true"># 定义优化函数，使用tensorflow的梯度下降优化器</span>
+    train_step <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>GradientDescentOptimizer<span class="token punctuation">(</span>learning_rate<span class="token punctuation">)</span><span class="token punctuation">.</span>minimize<span class="token punctuation">(</span>loss<span class="token punctuation">,</span> global_step<span class="token operator">=</span>global_step<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 训练时，每过一遍数据，需要更新参数以及每个参数的滑动平均值，使用tf.group()</span>
+    train_op <span class="token operator">=</span> tf<span class="token punctuation">.</span>group<span class="token punctuation">(</span>train_step<span class="token punctuation">,</span> variable_averages_op<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># 初始化Tensorflow持久化类</span>
+    saver <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>Saver<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 初始化全局的变量</span>
+        tf<span class="token punctuation">.</span>global_variables_initializer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>TRAINING_STEPS<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment" spellcheck="true"># 自动获取一个batch的数据</span>
+            xs<span class="token punctuation">,</span> ys <span class="token operator">=</span> mnist<span class="token punctuation">.</span>train<span class="token punctuation">.</span>next_batch<span class="token punctuation">(</span>BATCH_SIZE<span class="token punctuation">)</span>
+            _<span class="token punctuation">,</span> loss_value<span class="token punctuation">,</span> step <span class="token operator">=</span> sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span><span class="token punctuation">[</span>train_op<span class="token punctuation">,</span> loss<span class="token punctuation">,</span> global_step<span class="token punctuation">]</span><span class="token punctuation">,</span> feed_dict<span class="token operator">=</span><span class="token punctuation">{</span>x<span class="token punctuation">:</span> xs<span class="token punctuation">,</span> y<span class="token punctuation">:</span> ys<span class="token punctuation">}</span><span class="token punctuation">)</span>
+            <span class="token comment" spellcheck="true"># 每1000轮保存一次模型</span>
+            <span class="token keyword">if</span> i <span class="token operator">%</span> <span class="token number">1000</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+                <span class="token comment" spellcheck="true"># 输出当前训练情况，并保存当前模型</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"After %d training step(s), loss on training batch is %g"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>step<span class="token punctuation">,</span> loss_value<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                saver<span class="token punctuation">.</span>save<span class="token punctuation">(</span>sess<span class="token punctuation">,</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>MODEL_SAVE_PATH<span class="token punctuation">,</span> MODEL_NAME<span class="token punctuation">)</span><span class="token punctuation">,</span> global_step<span class="token operator">=</span>global_step<span class="token punctuation">)</span></code></pre>
+<h4 id="进行训练"><a href="#进行训练" class="headerlink" title="进行训练"></a>进行训练</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 执行训练</span>
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    mnist <span class="token operator">=</span> mnist_inference<span class="token punctuation">.</span>mnist
+    train<span class="token punctuation">(</span>mnist<span class="token punctuation">)</span>
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h3 id="模型评价"><a href="#模型评价" class="headerlink" title="模型评价"></a>模型评价</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> time
+
+<span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+<span class="token keyword">from</span> tftest <span class="token keyword">import</span> mnist_inference
+<span class="token keyword">from</span> tftest <span class="token keyword">import</span> mnist_train
+
+<span class="token comment" spellcheck="true"># 每10秒加载一次最新模型。并进行一次测试</span>
+EVAL_INTERVAL_SEC <span class="token operator">=</span> <span class="token number">10</span>
+
+<span class="token keyword">def</span> <span class="token function">evaluate</span><span class="token punctuation">(</span>mnist<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> tf<span class="token punctuation">.</span>Graph<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>as_default<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> g<span class="token punctuation">:</span>
+        <span class="token comment" spellcheck="true"># 定义输入输出格式</span>
+        x <span class="token operator">=</span> tf<span class="token punctuation">.</span>placeholder<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>float32<span class="token punctuation">,</span> <span class="token punctuation">[</span>None<span class="token punctuation">,</span> mnist_inference<span class="token punctuation">.</span>INPUT_NODE<span class="token punctuation">]</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'x-input'</span><span class="token punctuation">)</span>
+        y_ <span class="token operator">=</span> tf<span class="token punctuation">.</span>placeholder<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>float32<span class="token punctuation">,</span> <span class="token punctuation">[</span>None<span class="token punctuation">,</span> mnist_inference<span class="token punctuation">.</span>OUTPUT_NODE<span class="token punctuation">]</span><span class="token punctuation">,</span> name<span class="token operator">=</span><span class="token string">'y-input'</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 5000个验证集导入</span>
+        validate_feed <span class="token operator">=</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span> mnist<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>images<span class="token punctuation">,</span>
+                         y_<span class="token punctuation">:</span> mnist<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>labels<span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true"># 调用封装好的函数计算前向传播结果，测试时不关注正则化损失的值</span>
+        y <span class="token operator">=</span> mnist_inference<span class="token punctuation">.</span>inference<span class="token punctuation">(</span>x<span class="token punctuation">,</span> None<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 使用tf.argmax(y, 1)得到输入样例的预测类别，判断预测和真实标签是否相等</span>
+        correct_prediction <span class="token operator">=</span> tf<span class="token punctuation">.</span>equal<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>y<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> tf<span class="token punctuation">.</span>argmax<span class="token punctuation">(</span>y_<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 计算预测的精确率</span>
+        accuracy <span class="token operator">=</span> tf<span class="token punctuation">.</span>reduce_mean<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>cast<span class="token punctuation">(</span>correct_prediction<span class="token punctuation">,</span> tf<span class="token punctuation">.</span>float32<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+        variable_averages <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>ExponentialMovingAverage<span class="token punctuation">(</span>mnist_train<span class="token punctuation">.</span>MOVING_AVERAGE_DECAY<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># variables_to_restore是Tensorflow为滑动模型提供</span>
+        <span class="token comment" spellcheck="true"># 可以指定载入的是对应的影子变量</span>
+        variables_to_restore <span class="token operator">=</span> variable_averages<span class="token punctuation">.</span>variables_to_restore<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 直接用影子变量的参数赋值给inference的变量</span>
+        saver <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>Saver<span class="token punctuation">(</span>variables_to_restore<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># 每隔10秒调用一次正确率的过程，观察训练过程中的正确率变化</span>
+        <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+            <span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+                <span class="token comment" spellcheck="true"># 通过checkpoint文件自动找到目录中最新模型的文件名</span>
+                ckpt <span class="token operator">=</span> tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>get_checkpoint_state<span class="token punctuation">(</span>mnist_train<span class="token punctuation">.</span>MODEL_SAVE_PATH<span class="token punctuation">)</span>
+                <span class="token keyword">if</span> ckpt <span class="token operator">and</span> ckpt<span class="token punctuation">.</span>model_checkpoint_path<span class="token punctuation">:</span>
+                    <span class="token comment" spellcheck="true"># 加载模型</span>
+                    saver<span class="token punctuation">.</span>restore<span class="token punctuation">(</span>sess<span class="token punctuation">,</span> ckpt<span class="token punctuation">.</span>model_checkpoint_path<span class="token punctuation">)</span>
+                    <span class="token comment" spellcheck="true"># 从模型保存文件里得到模型保存时的迭代轮数</span>
+                    global_step <span class="token operator">=</span> ckpt<span class="token punctuation">.</span>model_checkpoint_path<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'-'</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+                    accuracy_score <span class="token operator">=</span> sess<span class="token punctuation">.</span>run<span class="token punctuation">(</span>accuracy<span class="token punctuation">,</span> feed_dict<span class="token operator">=</span>validate_feed<span class="token punctuation">)</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"After %s training step(s), validation accuracy=%g"</span> <span class="token operator">%</span> <span class="token punctuation">(</span>global_step<span class="token punctuation">,</span> accuracy_score<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    <span class="token comment" spellcheck="true"># 说明并没有保存已经训练好的模型参数存储文件</span>
+                    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"No checkpoint file found"</span><span class="token punctuation">)</span>
+                    <span class="token keyword">return</span>
+            <span class="token comment" spellcheck="true"># 程序休眠10秒</span>
+            time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span>EVAL_INTERVAL_SEC<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    mnist <span class="token operator">=</span> mnist_inference<span class="token punctuation">.</span>mnist
+    evaluate<span class="token punctuation">(</span>mnist<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+   main<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>1、编码问题</p>
+<pre class=" language-python"><code class="language-python">SyntaxError<span class="token punctuation">:</span> Non<span class="token operator">-</span>ASCII character <span class="token string">'\xe4'</span> <span class="token keyword">in</span> file mnist_inference<span class="token punctuation">.</span>py on line <span class="token number">1</span><span class="token punctuation">,</span> but no encoding declared<span class="token punctuation">;</span> see http<span class="token punctuation">:</span><span class="token operator">//</span>python<span class="token punctuation">.</span>org<span class="token operator">/</span>dev<span class="token operator">/</span>peps<span class="token operator">/</span>pep<span class="token number">-0263</span><span class="token operator">/</span> <span class="token keyword">for</span> details</code></pre>
+<p>解决方法</p>
+<pre class=" language-python"><code class="language-python">在文件头追加：
+    <span class="token comment" spellcheck="true"># -*- coding: utf-8 -*</span></code></pre>
+<p>2、没有对应的模型输出</p>
+<pre class=" language-python"><code class="language-python">ImportError<span class="token punctuation">:</span> No module named tutorials<span class="token punctuation">.</span>mnist</code></pre>
+<p>我的电脑在<code>(tensorflow)  cyh@chenyonghuandeMacBook-Pro  ~/tensorflow/lib/python2.7/site-packages</code>目录下有文件夹tensorflow, tensorflow_core, tensorflow_estimator等文件夹。进入tensorflow_core文件夹，里面发现一个examples文件夹，但是文件夹下只有saved_model这个文件，没有找到tutorials。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf3fusge5uj30vs04kjxu.jpg" alt=""></p>
+<p>解决方法</p>
+<p>进入 <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">tensorflow主页</a> 下载缺失的tutorials文件。我是直接把整个下载下来，然后在下载文件的路径<code>tensorflow-master\tensorflow\examples\</code>这里找到了tutorials，把tutorials整个文件夹拷贝到上文中提到的<code>tensorflow_core\examples\</code>文件夹下。</p>
+<p>3、使用TensorFlow 从网上下载数据集到本地时，pycharm 没有写入权限</p>
+<pre class=" language-python"><code class="language-python">tensorflow<span class="token punctuation">.</span>python<span class="token punctuation">.</span>framework<span class="token punctuation">.</span>errors_impl<span class="token punctuation">.</span>PermissionDeniedError<span class="token punctuation">:</span> <span class="token operator">/</span>path<span class="token punctuation">;</span> Read<span class="token operator">-</span>only file system</code></pre>
+<p>解决方法</p>
+<pre class=" language-cmd"><code class="language-cmd">#使用终端 进入到编辑的项目
+cd /Users/cyh/doc/code/VGG16/tftest
+#使用命令 
+sudo python mnist_inference.py</code></pre>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Tensorflow/">
+                                    <span class="chip bg-color">Tensorflow</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '69981b3a8d9bb8970c58',
+        clientSecret: '2dced5add1e38f1190f6537ae3fc262808dbb905',
+        repo: 'gitalk',
+        owner: 'cyh756085049',
+        admin: "cyh756085049",
+        id: '2020-05-25T11-09-16',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'dkHeciAxwC6Al978y1RSxiqq-gzGzoHsz',
+        appKey: 'W1ENUD4DHJ1IfDpTEQ8JeBFW',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/05/30/spring-boot-xiang-mu-bu-shu-dao-fu-wu-qi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Spring Boot项目部署到服务器">
+                        
+                        <span class="card-title">Spring Boot项目部署到服务器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            SpringBoot项目部署到阿里云服务器
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-30
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring-Boot/">
+                        <span class="chip bg-color">Spring Boot</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/05/23/tensorflow-ji-chu-zhi-shi-xue-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Tensorflow基础知识学习">
+                        
+                        <span class="card-title">Tensorflow基础知识学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Tensorflow基础知识学习
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-05-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Python/" class="post-category">
+                                    Python
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Tensorflow/">
+                        <span class="chip bg-color">Tensorflow</span>
+                    </a>
+                    
+                    <a href="/tags/Numpy/">
+                        <span class="chip bg-color">Numpy</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="https://cyh756085049.github.io" target="_blank">cyh</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank"> hexo-theme-matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">174.7k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/cyh756085049" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:756085049@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=756085049" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 756085049" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title = "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+        <script src="//code.tidio.co/ppfzpxwqiaxotmryofkmshcnaz4vmxsv.js"></script>
+        <script> 
+            $(document).ready(function () {
+                setInterval(change_Tidio, 50);  
+                function change_Tidio() { 
+                    var tidio=$("#tidio-chat iframe");
+                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"85px":"20px";   
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";   
+                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    } 
+                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;   
+                        document.getElementById("tidio-chat-iframe").style.right="-15px"; 
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;   
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                    }
+                } 
+            }); 
+        </script>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
