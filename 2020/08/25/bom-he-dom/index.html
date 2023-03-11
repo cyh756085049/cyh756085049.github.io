@@ -1,0 +1,1604 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="BOM和DOM, Ramona">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', '');
+</script>
+
+
+    <title>BOM和DOM | Ramona</title>
+    <link rel="icon" type="image/jpeg" href="/favicon.jpeg">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+    
+<meta name="generator" content="Hexo 4.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/love flowers.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Ramona</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/love flowers.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Ramona</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">BOM和DOM</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/DOM/">
+                                <span class="chip bg-color">DOM</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-08-25
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    14 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>持续更新……</p>
+</blockquote>
+<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><p><em>概念</em>：<code>BOM（Brower Object Model）</code>是浏览器对象模型。主要处理浏览器窗口和框架，描述与浏览器进行交互的方法和接口，可以对浏览器窗口进行访问和操作，比如弹出新的窗口、回退历史记录等。</p>
+<h3 id="BOM对象"><a href="#BOM对象" class="headerlink" title="BOM对象"></a>BOM对象</h3><ul>
+<li><code>Window JavaScript</code>层级中的顶层对象，表示浏览器窗口。同时 window 也是网页中的全局对象。</li>
+<li><code>Navigator</code>代表当前浏览器的信息，通过该对象可以识别不同的浏览器。</li>
+<li><code>History</code>包含了浏览器窗口访问过的URL。</li>
+<li><code>Location</code>包含了当前URL的信息，通过 Location 可以获取地址栏信息，或者操作浏览器跳转页面。</li>
+<li><code>Screen</code>包含客户端显示屏的信息。</li>
+</ul>
+<blockquote>
+<p><em>注意</em>：这些 BOM 对象都是作为 window 对象的属性保存的，可以通过window对象来使用，也可以直接使用。比如，可以使用 <code>window.location.href</code>，也可以直接使用 <code>location.href</code>，二者是等价的。<code>document</code>也是在<code>window</code>中保存的</p>
+</blockquote>
+<h3 id="常用的对象"><a href="#常用的对象" class="headerlink" title="常用的对象"></a>常用的对象</h3><h4 id="1、navigator"><a href="#1、navigator" class="headerlink" title="1、navigator"></a>1、navigator</h4><p><strong>一般我们只会使用<code>navigator.userAgent</code>来获取浏览器的信息</strong>。</p>
+<p>代码示例如下：</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">&lt;</span>script<span class="token operator">></span>
+        <span class="token comment" spellcheck="true">// 获取当前浏览器的userAgent</span>
+        <span class="token keyword">var</span> UA <span class="token operator">=</span> navigator<span class="token punctuation">.</span>userAgent<span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'ramona当前浏览器的userAgent为：'</span> <span class="token operator">+</span> UA<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex">/firefox/i</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>UA<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'火狐浏览器'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex">/chrome/i</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>UA<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'Chrome浏览器'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex">/msie/i</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>UA<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'IE浏览器'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'ActiveXObject'</span> <span class="token keyword">in</span> window<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'IE 11 浏览器'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span></code></pre>
+<p>我们也可以直接在浏览器控制台上输入：<code>navigator.userAgent</code>，查看到如下结果：</p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gi31zliw3mj31fy01yt9f.jpg" alt="查看浏览器信息"></p>
+<p>另外我们还可以在电脑上模拟移动端浏览器的场景。如下图方式操作：</p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gi32c3j4r2j327y0lgdu6.jpg" alt="浏览器配置1"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gi32h8fbzuj327o0fwdjt.jpg" alt="浏览器配置2"></p>
+<blockquote>
+<h5 id="不同浏览器的userAgent"><a href="#不同浏览器的userAgent" class="headerlink" title="不同浏览器的userAgent"></a>不同浏览器的userAgent</h5><p><em>iOS 版微信浏览器：</em></p>
+<p>Mozilla/5.0 (iPhone; CPU iPhone OS 9_3 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13E233 MicroMessenger/6.3.15 NetType/WIFI Language/zh_CN</p>
+<p><em>Android 版微信浏览器：</em></p>
+<p>Mozilla/5.0 (Linux; Android 5.0.1; GT-I9502 Build/LRX22C; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/43.0.2357.121 Mobile Safari/537.36 MicroMessenger/6.1.0.78_r1129455.543 NetType/WIFI</p>
+<p><em>iOS 版本QQ浏览器：</em></p>
+<p>Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_2 like Mac OS X) AppleWebKit/604.4.7 (KHTML, like Gecko) Mobile/15C202 QQ/7.3.5.473 V1_IPH_SQ_7.3.5_1_APP_A Pixel/1125 Core/UIWebView Device/Apple(iPhone X) NetType/WIFI QBWebViewType/1</p>
+<p><em>Android 版 QQ浏览器：</em></p>
+<p>Mozilla/5.0 (Linux; Android 4.4.2; PE-TL20 Build/HuaweiPE-TL20; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/6.2 TBS/043807 Mobile Safari/537.36 V1_AND_SQ_7.3.2_762_YYB_D QQ/7.3.2.3350 NetType/WIFI WebP/0.3.0 Pixel/1080</p>
+</blockquote>
+<h4 id="2、History"><a href="#2、History" class="headerlink" title="2、History"></a>2、History</h4><p>History对象可以用来操作浏览器的向前或向后翻页。</p>
+<p>常见的属性和方法代码示例如下：</p>
+<pre class=" language-js"><code class="language-js">history<span class="token punctuation">.</span>length  <span class="token comment" spellcheck="true">// 获取浏览器历史列表中的 url 数量,只是统计当次的数量，如果浏览器关了，数量会重置为1</span>
+history<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 用来回退到上一个页面，作用和浏览器的「回退按钮」一样</span>
+history<span class="token punctuation">.</span><span class="token function">forward</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 用来跳转下一个页面，作用和浏览器的「前进按钮」一样</span>
+history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span> <span class="token number">1</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 向前跳转一个页面，相当于 history.forward()</span>
+history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span> <span class="token number">0</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 刷新当前页面</span>
+history<span class="token punctuation">.</span><span class="token function">go</span><span class="token punctuation">(</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 向后跳转一个页面，相当于 history.back()</span></code></pre>
+<h4 id="3、Location"><a href="#3、Location" class="headerlink" title="3、Location"></a>3、Location</h4><p>Location 对象封装了浏览器地址栏的 URL 信息。</p>
+<p>常见的属性和方法代码示例如下：</p>
+<pre class=" language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>location<span class="token punctuation">.</span>href<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 获取当前页面的url 路径</span>
+location<span class="token punctuation">.</span>href <span class="token operator">=</span> <span class="token string">'www.baidu.com'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 跳转到指定的页面链接。通俗理解就是：跳转到其他的页面</span>
+location<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+location<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 重新加载当前页面</span>
+location<span class="token punctuation">.</span><span class="token function">reload</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 在方法的参数中传递一个true，则会强制清空缓存刷新页面</span>
+ location<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 使用一个新的页面替换当前页面，调用完毕也会跳转页面。但不会生成历史记录，不能使用「后退按钮」后退</span></code></pre>
+<blockquote>
+<p>详情参考：<a href="https://github.com/huyaocode/webKnowledge/blob/master/前端基础/JS/BOM.md" target="_blank" rel="noopener">https://github.com/huyaocode/webKnowledge/blob/master/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JS/BOM.md</a></p>
+</blockquote>
+<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><p><em>概念</em>：通俗的说DOM就是浏览器为JavaScript提供的一系列接口（通过window,document提供的），通过这些接口我们可以操作web页面。比如让盒子移动、变色、轮播图等。DOM不是编程语言，是文档对象模型，该模型独立于编程语言。</p>
+<blockquote>
+<p>API (web 或 XML 页面) = DOM + JS (脚本语言)</p>
+</blockquote>
+<h4 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h4><p><strong>节点</strong>（Node）：构成 HTML 网页的最基本单元。网页中的每一个部分都可以称为是一个节点，比如：html标签、属性、文本、注释、整个文档等都是一个节点。</p>
+<p>虽然都是节点，但是实际上他们的具体类型是不同的。常见节点分为四类：</p>
+<ul>
+<li><p>文档节点（文档）：整个 HTML 文档。整个 HTML 文档就是一个文档节点。</p>
+</li>
+<li><p>元素节点（标签）：HTML标签。</p>
+</li>
+<li><p>属性节点（属性）：元素的属性。</p>
+</li>
+<li><p>文本节点（文本）：HTML标签中的文本内容（包括标签之间的空格、换行）。</p>
+</li>
+</ul>
+<p>节点的类型不同，属性和方法也都不尽相同。<strong>所有的节点都是Object</strong>。</p>
+<h4 id="DOM解析过程"><a href="#DOM解析过程" class="headerlink" title="DOM解析过程"></a>DOM解析过程</h4><p>HTML加载完毕，渲染引擎会在内存中把HTML文档，生成一个DOM树，getElementById是获取内中DOM上的元素节点。然后操作的时候修改的是该元素的<strong>属性</strong>。<strong>在HTML当中，一切都是节点</strong>。</p>
+<h4 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h4><h5 id="1、创建新节点"><a href="#1、创建新节点" class="headerlink" title="1、创建新节点"></a>1、创建新节点</h5><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>createDocumentFragment()</td>
+<td>创建一个 DOM 片段</td>
+</tr>
+<tr>
+<td>createElement()</td>
+<td>创建一个具体的元素</td>
+</tr>
+<tr>
+<td>createTextNode()</td>
+<td>创建一个文本节点</td>
+</tr>
+</tbody></table>
+<h5 id="2、修改节点"><a href="#2、修改节点" class="headerlink" title="2、修改节点"></a>2、修改节点</h5><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>appendChild()</td>
+<td>添加子元素</td>
+</tr>
+<tr>
+<td>removeChild()</td>
+<td>删除子元素</td>
+</tr>
+<tr>
+<td>replaceChild()</td>
+<td>替换子元素</td>
+</tr>
+<tr>
+<td>insertBefore()</td>
+<td>插入子元素</td>
+</tr>
+<tr>
+<td>cloneNode(true/false)</td>
+<td>复制/克隆节点（不带参数/带参数false：只复制节点本身，不复制子节点；带参数true：既复制节点本身，也复制其所有的子节点）</td>
+</tr>
+</tbody></table>
+<h5 id="3、DOM查找"><a href="#3、DOM查找" class="headerlink" title="3、DOM查找"></a>3、DOM查找</h5><h6 id="元素节点的获取"><a href="#元素节点的获取" class="headerlink" title="元素节点的获取"></a>元素节点的获取</h6><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>getElementsByTagName()</td>
+<td>通过标签名获取元素节点数组</td>
+</tr>
+<tr>
+<td>getElementsByName()</td>
+<td>通过元素的 Name 属性的值(IE 容错能力较强，会得到一个数组，其中包括 id 等于 name 值的)</td>
+</tr>
+<tr>
+<td>getElementById()</td>
+<td>通过元素 Id获取一个元素节点，唯一性</td>
+</tr>
+<tr>
+<td>querySelector()</td>
+<td>通过类名或元素Id (JQuery方法)</td>
+</tr>
+<tr>
+<td>getElementsByClassName()</td>
+<td>通过类名获取元素节点数组</td>
+</tr>
+</tbody></table>
+<h6 id="访问关系的获取"><a href="#访问关系的获取" class="headerlink" title="访问关系的获取"></a>访问关系的获取</h6><p>JS中的<strong>父子兄</strong>访问关系：</p>
+<p><img src="http://img.smyhvae.com/20180126_2145.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>节点.parentNode</td>
+<td>获取父节点</td>
+</tr>
+<tr>
+<td>节点.nextElementSibling || 节点.nextSibling</td>
+<td>获取下一个兄弟节点</td>
+</tr>
+<tr>
+<td>节点.previousElementSibling || 节点.previousSibling</td>
+<td>获取前一个兄弟节点</td>
+</tr>
+<tr>
+<td>节点自己.parentNode.children[index]</td>
+<td>获得任意一个兄弟节点</td>
+</tr>
+<tr>
+<td>节点.firstElementChild || 节点.firstChild</td>
+<td>第一个子元素节点</td>
+</tr>
+<tr>
+<td>节点.lastElementChild || 节点.lastChild</td>
+<td>最后一个子元素节点</td>
+</tr>
+<tr>
+<td>父节点.childNodes</td>
+<td>获取所有子节点（标准属性。返回的是指定元素的<strong>子节点</strong>的集合）</td>
+</tr>
+<tr>
+<td>父节点.children</td>
+<td>获取所有子节点（非标准属性。返回的是指定元素的<strong>子元素节点</strong>的集合）</td>
+</tr>
+</tbody></table>
+<h5 id="4、属性操作"><a href="#4、属性操作" class="headerlink" title="4、属性操作"></a>4、属性操作</h5><table>
+<thead>
+<tr>
+<th>属性/方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>元素节点.属性名  /  元素节点[属性名]</td>
+<td>获取节点的属性值</td>
+</tr>
+<tr>
+<td>getAttribute()</td>
+<td>获取属性</td>
+</tr>
+<tr>
+<td>setAttribute()</td>
+<td>设置属性</td>
+</tr>
+<tr>
+<td>hasAttribute()</td>
+<td>判断属性</td>
+</tr>
+<tr>
+<td>removeAttribute()</td>
+<td>移除属性</td>
+</tr>
+<tr>
+<td>hasAttributes()</td>
+<td>是否有属性设置</td>
+</tr>
+</tbody></table>
+<h6 id="nodeType属性"><a href="#nodeType属性" class="headerlink" title="nodeType属性"></a>nodeType属性</h6><ul>
+<li><p><strong>nodeType == 1  表示的是元素节点</strong>（标签）。</p>
+</li>
+<li><p>nodeType == 2  表示是属性节点。</p>
+</li>
+<li><p>nodeType == 3  是文本节点。</p>
+</li>
+</ul>
+<h6 id="nodeType、nodeName、nodeValue"><a href="#nodeType、nodeName、nodeValue" class="headerlink" title="nodeType、nodeName、nodeValue"></a>nodeType、nodeName、nodeValue</h6><p>我们那下面这个标签来举例：</p>
+<pre class=" language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>box<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>111<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>hello<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>上面这个标签就包含了三种节点：</p>
+<ul>
+<li><p>元素节点（标签）</p>
+</li>
+<li><p>属性节点</p>
+</li>
+<li><p>文本节点</p>
+</li>
+</ul>
+<p>获取这三个节点的方式如下：</p>
+<pre class=" language-javascript"><code class="language-javascript">    <span class="token keyword">var</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"box1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//获取元素节点（标签）</span>
+    <span class="token keyword">var</span> attribute <span class="token operator">=</span> element<span class="token punctuation">.</span><span class="token function">getAttributeNode</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//获取box1的属性节点</span>
+    <span class="token keyword">var</span> txt <span class="token operator">=</span> element<span class="token punctuation">.</span>firstChild<span class="token punctuation">;</span>                   <span class="token comment" spellcheck="true">//获取box1的文本节点</span>
+    <span class="token keyword">var</span> value <span class="token operator">=</span> element<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">//获取id的属性值</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// &lt;div id="box" value="111">hello&lt;/div></span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>attribute<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// id="box1"</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>txt<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// "hello"</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// box1</span></code></pre>
+<p>既然这三个都是节点，要想获取它们的nodeType、nodeName、nodeValue，代码如下：</p>
+<pre class=" language-javascript"><code class="language-javascript">    <span class="token keyword">var</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"box1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//获取元素节点（标签）</span>
+    <span class="token keyword">var</span> attribute <span class="token operator">=</span> element<span class="token punctuation">.</span><span class="token function">getAttributeNode</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//获取box1的属性节点</span>
+    <span class="token keyword">var</span> txt <span class="token operator">=</span> element<span class="token punctuation">.</span>firstChild<span class="token punctuation">;</span>                   <span class="token comment" spellcheck="true">//获取box1的文本节点</span>
+
+    <span class="token comment" spellcheck="true">//获取nodeType</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>nodeType<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//1</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>attribute<span class="token punctuation">.</span>nodeType<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//2</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>txt<span class="token punctuation">.</span>nodeType<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">//3</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"--------------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取nodeName</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>nodeName<span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment" spellcheck="true">//DIV</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>attribute<span class="token punctuation">.</span>nodeName<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//id</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>txt<span class="token punctuation">.</span>nodeName<span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token comment" spellcheck="true">//#text</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"--------------"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//获取nodeValue</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>nodeValue<span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment" spellcheck="true">//null</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>attribute<span class="token punctuation">.</span>nodeValue<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//box1</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>txt<span class="token punctuation">.</span>nodeValue<span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">//生命壹号</span></code></pre>
+<h4 id="innerHTML和innerText的区别"><a href="#innerHTML和innerText的区别" class="headerlink" title="innerHTML和innerText的区别"></a>innerHTML和innerText的区别</h4><ul>
+<li><p>value：标签的value属性。</p>
+</li>
+<li><p><strong>innerHTML</strong>：双闭合标签里面的内容（包含标签）。</p>
+</li>
+<li><p><strong>innerText</strong>：双闭合标签里面的内容（不包含标签）。（老版本的火狐用textContent）</p>
+</li>
+</ul>
+<p><strong>区别</strong>：</p>
+<p>获取内容：innerHTML会获取到标签本身，而innerText则不会</p>
+<p>修改内容：innerHTML会修改标签本身，而innerText则不会</p>
+<h4 id="documen-write-和-innerHTML-的区别"><a href="#documen-write-和-innerHTML-的区别" class="headerlink" title="documen.write 和 innerHTML 的区别"></a>documen.write 和 innerHTML 的区别</h4><ul>
+<li>document.write 只能重绘整个页面</li>
+<li>innerHTML 可以重绘页面的一部分</li>
+</ul>
+<h4 id="innerHTML-与-outerHTML-的区别？"><a href="#innerHTML-与-outerHTML-的区别？" class="headerlink" title="innerHTML 与 outerHTML 的区别？"></a>innerHTML 与 outerHTML 的区别？</h4><p>DOM 元素的 <code>innerHTML</code>, <code>outerHTML</code>, <code>innerText</code>, <code>outerText</code> 属性的区别也经常被面试官问到， 比如对于这样一个HTML元素：<code>&lt;div&gt;content&lt;br/&gt;&lt;/div&gt;</code>。</p>
+<ul>
+<li><code>innerHTML</code>：内部HTML，<code>content&lt;br/&gt;</code>；</li>
+<li><code>outerHTML</code>：外部HTML，<code>&lt;div&gt;content&lt;br/&gt;&lt;/div&gt;</code>；</li>
+<li><code>innerText</code>：内部文本，<code>content</code>；</li>
+<li><code>outerText</code>：内部文本，<code>content</code>；</li>
+</ul>
+<p>上述四个属性不仅可以读取，还可以赋值。<code>outerText</code> 和 <code>innerText</code> 的区别在于 <code>outerText</code> 赋值时会把标签一起赋值掉，另外 <code>xxText</code> 赋值时HTML特殊字符会被转义。</p>
+<h4 id="jQuery的html-与innerHTML的区别？"><a href="#jQuery的html-与innerHTML的区别？" class="headerlink" title="jQuery的html()与innerHTML的区别？"></a>jQuery的html()与innerHTML的区别？</h4><p>jQuery的 <code>.html()</code> 会调用<code>.innerHTML</code>来操作，但是会捕获异常，然后用 <code>.empty()</code>, <code>.append()</code> 重新操作。 这是因为IE8中有些元素的 <code>.innerHTML</code> 是只读的。见：<a href="http://stackoverflow.com/questions/3563107/jquery-html-vs-innerhtml" target="_blank" rel="noopener">http://stackoverflow.com/questions/3563107/jquery-html-vs-innerhtml</a></p>
+<h4 id="Window-对象-与-document-对象"><a href="#Window-对象-与-document-对象" class="headerlink" title="Window 对象 与 document 对象"></a>Window 对象 与 document 对象</h4><h5 id="window"><a href="#window" class="headerlink" title="window"></a>window</h5><ul>
+<li>Window 对象表示当前浏览器的窗口，是 JavaScript 的顶级对象。</li>
+<li>我们创建的所有对象、函数、变量都是 Window 对象的成员。</li>
+<li>Window 对象的方法和属性是在全局范围内有效的。</li>
+</ul>
+<h5 id="document"><a href="#document" class="headerlink" title="document"></a>document</h5><ul>
+<li>Document 对象是 HTML 文档的根节点与所有其他节点（元素节点，文本节点，属性节点, 注释节点）</li>
+<li>Document 对象使我们可以通过脚本对 HTML 页面中的所有元素进行访问</li>
+<li>Document 对象是 Window 对象的一部分，即 window.document</li>
+</ul>
+<h4 id="客户区坐标、页面坐标、屏幕坐标区别"><a href="#客户区坐标、页面坐标、屏幕坐标区别" class="headerlink" title="客户区坐标、页面坐标、屏幕坐标区别"></a>客户区坐标、页面坐标、屏幕坐标区别</h4><p>客户区坐标：<strong>鼠标指针在可视区中</strong>的水平坐标(clientX)和垂直坐标(clientY)</p>
+<p>页面坐标：<strong>鼠标指针在页面布局中</strong>的水平坐标(pageX)和垂直坐标(pageY)</p>
+<p>屏幕坐标：<strong>设备物理屏幕的</strong>水平坐标(screenX)和垂直坐标(screenY)</p>
+<h4 id="mouseover-mouseout-与-mouseenter-mouseleave-的区别与联系"><a href="#mouseover-mouseout-与-mouseenter-mouseleave-的区别与联系" class="headerlink" title="mouseover/mouseout 与 mouseenter/mouseleave 的区别与联系"></a>mouseover/mouseout 与 mouseenter/mouseleave 的区别与联系</h4><ol>
+<li>mouseover/mouseout 是标准事件，<strong>所有浏览器都支持</strong>；mouseenter/mouseleave 是 IE5.5 引入的特有事件后来被 DOM3 标准采纳，现代标准浏览器也支持</li>
+<li>mouseover/mouseout 是<strong>冒泡</strong>事件；mouseenter/mouseleave<strong>不冒泡</strong>。需要为<strong>多个元素监听鼠标移入/出事件时，推荐 mouseover/mouseout 托管，提高性能</strong></li>
+<li>标准事件模型中 event.target 表示发生移入/出的元素,<strong>vent.relatedTarget</strong>对应移出/如元素；在老 IE 中 event.srcElement 表示发生移入/出的元素，<strong>event.toElement</strong>表示移出的目标元素，<strong>event.fromElement</strong>表示移入时的来源元素</li>
+</ol>
+<h4 id="focus-blur-与-focusin-focusout-的区别与联系"><a href="#focus-blur-与-focusin-focusout-的区别与联系" class="headerlink" title="focus/blur 与 focusin/focusout 的区别与联系"></a>focus/blur 与 focusin/focusout 的区别与联系</h4><ol>
+<li>focus/blur 不冒泡，focusin/focusout 冒泡</li>
+<li>focus/blur 兼容性好，focusin/focusout 在除 FireFox 外的浏览器下都保持良好兼容性，如需使用事件托管，可考虑在 FireFox 下使用事件捕获 elem.addEventListener(‘focus’, handler, true)</li>
+</ol>
+<h3 id="DOM事件"><a href="#DOM事件" class="headerlink" title="DOM事件"></a>DOM事件</h3><h4 id="DOM-事件模型"><a href="#DOM-事件模型" class="headerlink" title="DOM 事件模型"></a>DOM 事件模型</h4><p> 先捕获，再到目标，再冒泡 。捕获是事件会从最外层开始发生，直到最具体的元素。冒泡是事件会从最内层的元素开始发生，一直向上传播，直到window对象。</p>
+<p><a href="https://github.com/huyaocode/webKnowledge/blob/master/img/dom事件模型.jpg" target="_blank" rel="noopener"><img src="https://github.com/huyaocode/webKnowledge/raw/master/img/dom%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B.jpg" alt="事件模型"></a></p>
+<h4 id="DOM-事件流"><a href="#DOM-事件流" class="headerlink" title="DOM 事件流"></a>DOM 事件流</h4><p>DOM 标准采用捕获+冒泡。两种事件流都会触发 DOM 的所有对象，从 window 对象开始，也在 window 对象结束。</p>
+<p>DOM 标准规定事件流包括三个阶段：事件捕获阶段；处于目标阶段；事件冒泡阶段。</p>
+<h4 id="描述-DOM-事件捕获的具体流程"><a href="#描述-DOM-事件捕获的具体流程" class="headerlink" title="描述 DOM 事件捕获的具体流程"></a>描述 DOM 事件捕获的具体流程</h4><p>从 window -&gt; document -&gt; html -&gt; body -&gt; … -&gt; 目标元素</p>
+<h4 id="Event-对象常见应用"><a href="#Event-对象常见应用" class="headerlink" title="Event 对象常见应用"></a>Event 对象常见应用</h4><table>
+<thead>
+<tr>
+<th>event对象</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>event.target</td>
+<td>触发事件的元素</td>
+</tr>
+<tr>
+<td>event.currentTarget</td>
+<td>绑定事件的元素</td>
+</tr>
+<tr>
+<td>event.preventDefault()</td>
+<td>阻止默认行为（event.cancelBubble()和 event.preventBubble 都已经废弃）</td>
+</tr>
+<tr>
+<td>event.stopPropagation()</td>
+<td>阻止在捕获阶段或冒泡阶段继续传播，而不是阻止冒泡</td>
+</tr>
+<tr>
+<td>event.stopImmediatePropagation()</td>
+<td>阻止事件冒泡并且阻止相同事件的其他侦听器被调用。</td>
+</tr>
+</tbody></table>
+<h4 id="事件的代理-委托"><a href="#事件的代理-委托" class="headerlink" title="事件的代理/委托"></a>事件的代理/委托</h4><p>事件委托是指将事件绑定目标元素的到父元素上，利用冒泡机制触发该事件</p>
+<p><em>优点</em>：</p>
+<ul>
+<li>可以减少事件注册，节省大量内存占用</li>
+<li>可以将事件应用于动态添加的子元素上</li>
+</ul>
+<p>但使用不当会造成事件在不应该触发时触发</p>
+<pre class=" language-js"><code class="language-js">ulEl<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>
+  <span class="token string">"click"</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> target <span class="token operator">=</span> event<span class="token punctuation">.</span>target <span class="token operator">||</span> event<span class="token punctuation">.</span>srcElement<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>target <span class="token operator">&amp;&amp;</span> target<span class="token punctuation">.</span>nodeName<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"LI"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>innerHTML<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token boolean">false</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h4 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h4><ul>
+<li>Event</li>
+<li>CustomEvent</li>
+</ul>
+<p>CustomEvent 不仅可以用来做自定义事件，还可以在后面跟一个 object 做参数</p>
+<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> evt <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Event</span><span class="token punctuation">(</span><span class="token string">"myEvent"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+someDom<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"myEvent"</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">//处理这个自定义事件</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+someDom<span class="token punctuation">.</span><span class="token function">dispatchEvent</span><span class="token punctuation">(</span>evt<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h5 id="IE-的事件处理和-W3C-的事件处理有哪些区别？"><a href="#IE-的事件处理和-W3C-的事件处理有哪些区别？" class="headerlink" title="IE 的事件处理和 W3C 的事件处理有哪些区别？"></a>IE 的事件处理和 W3C 的事件处理有哪些区别？</h5><p>绑定事件</p>
+<ul>
+<li>W3C: targetEl.addEventListener(‘click’, handler, false);</li>
+<li>IE: targetEl.attachEvent(‘onclick’, handler);</li>
+</ul>
+<p>删除事件</p>
+<ul>
+<li>W3C: targetEl.removeEventListener(‘click’, handler, false);</li>
+<li>IE: targetEl.detachEvent(event, handler);</li>
+</ul>
+<p>事件对象</p>
+<ul>
+<li>W3C: var e = arguments.callee.caller.arguments[0]</li>
+<li>IE: window.event</li>
+</ul>
+<p>事件目标</p>
+<ul>
+<li>W3C: e.target</li>
+<li>IE: window.event.srcElement</li>
+</ul>
+<p>阻止事件默认行为</p>
+<ul>
+<li>W3C: e.preventDefault()</li>
+<li>IE: window.event.returnValue = false’</li>
+</ul>
+<p>阻止事件传播</p>
+<ul>
+<li>W3C: e.stopPropagation()</li>
+<li>IE: window.event.cancelBubble = true</li>
+</ul>
+<blockquote>
+<p>参考：<a href="https://github.com/huyaocode/webKnowledge/blob/master/前端基础/JS/DOM.md" target="_blank" rel="noopener">https://github.com/huyaocode/webKnowledge/blob/master/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/JS/DOM.md</a></p>
+<p><a href="https://harttle.land/2015/10/01/javascript-dom-api.html" target="_blank" rel="noopener">https://harttle.land/2015/10/01/javascript-dom-api.html</a></p>
+</blockquote>
+<h2 id="BOM-与-DOM-的关系"><a href="#BOM-与-DOM-的关系" class="headerlink" title="BOM 与 DOM 的关系"></a>BOM 与 DOM 的关系</h2><ol>
+<li>javacsript 是通过访问 BOM 对象来访问、 控制、 修改浏览器</li>
+<li>BOM 的 window 包含了 document， 因此通过 window 对象的document 属性就可以访问、 检索、 修改文档内容与结构。</li>
+<li>document 对象又是 DOM 模型的根节点。</li>
+</ol>
+<p>因此， <strong>BOM 包含了 DOM， 浏览器提供出来给予访问的是 BOM 对象， 从 BOM 对象再访 问到 DOM 对象</strong>， 从而 js 可以操作浏览器以及浏览器读取到的文档。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/DOM/">
+                                    <span class="chip bg-color">DOM</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: '69981b3a8d9bb8970c58',
+        clientSecret: '2dced5add1e38f1190f6537ae3fc262808dbb905',
+        repo: 'gitalk',
+        owner: 'cyh756085049',
+        admin: "cyh756085049",
+        id: '2020-08-25T08-43-27',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'dkHeciAxwC6Al978y1RSxiqq-gzGzoHsz',
+        appKey: 'W1ENUD4DHJ1IfDpTEQ8JeBFW',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/10/30/javascript-shu-ju-lei-xing-pan-duan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="JavaScript数据类型判断">
+                        
+                        <span class="card-title">JavaScript数据类型判断</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            JavaScript数据类型判断
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-30
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/08/21/liu-lan-qi-xuan-ran-ji-zhi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="浏览器渲染机制">
+                        
+                        <span class="card-title">浏览器渲染机制</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            浏览器解析渲染页面过程及重绘、回流
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/">
+                        <span class="chip bg-color">浏览器</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="https://cyh756085049.github.io" target="_blank">cyh</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank"> hexo-theme-matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">174.7k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/cyh756085049" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:756085049@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=756085049" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 756085049" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.zhihu.com/" class="tooltipped" target="_blank" data-tooltip="关注我的知乎: https://www.zhihu.com/" data-position="top" data-delay="50">
+        <i class="fab fa-zhihu1">知</i>
+    </a>
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <script type="text/javascript"> var OriginTitile = document.title, st; document.addEventListener("visibilitychange", function () { document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title = "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () { document.title = OriginTitile }, 3e3)) }) </script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+        <script src="//code.tidio.co/ppfzpxwqiaxotmryofkmshcnaz4vmxsv.js"></script>
+        <script> 
+            $(document).ready(function () {
+                setInterval(change_Tidio, 50);  
+                function change_Tidio() { 
+                    var tidio=$("#tidio-chat iframe");
+                    if(tidio.css("display")=="block"&& $(window).width()>977 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"85px":"20px";   
+                        document.getElementById("tidio-chat-iframe").style.right="-15px";   
+                        document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    } 
+                    else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;   
+                        document.getElementById("tidio-chat-iframe").style.right="-15px"; 
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
+                        document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;   
+                        document.getElementById("tidio-chat-iframe").style.zIndex="997";
+                    }
+                    if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
+                        document.getElementById("tidio-chat-iframe").style.zIndex="998";
+                    }
+                } 
+            }); 
+        </script>
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
