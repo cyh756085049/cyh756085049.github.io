@@ -418,24 +418,24 @@
                 <h3 id="一、使用深度运算符"><a href="#一、使用深度运算符" class="headerlink" title="一、使用深度运算符"></a>一、使用深度运算符</h3><p>当要实现多深度关系节点查询时，可变数量的关系可以使用<code>-[:TYPE*minHops..maxHops]-&gt;</code>，查询示例语句如下：</p>
 <pre class=" language-cypher"><code class="language-cypher"># 如果在1到3的关系中存在路径，将返回开始点和结束点
 match data=(a:pest_category{pest_name:'病害'})-[*1..3]->(nb:insect_info) return data                                                         </code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd59eq126aj30n20bmjxb.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd59eq126aj30n20bmjxb.jpg" alt=""></p>
 <h3 id="二、直接拼接节点关系查询"><a href="#二、直接拼接节点关系查询" class="headerlink" title="二、直接拼接节点关系查询"></a>二、直接拼接节点关系查询</h3><p>查询示例语句如下：</p>
 <pre class=" language-cypher"><code class="language-cypher"># 直接通过某个名称查询所有的节点及关系
 match (a:pest_category)-[re]->(b:insect_category)-[re2]->(c:insect_info{insect_name:'黄蜘蛛'}) return a,re,b,re2,c</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd59h4wfzuj30n20bqta4.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd59h4wfzuj30n20bqta4.jpg" alt=""></p>
 <h3 id="三、使用with关键字查询"><a href="#三、使用with关键字查询" class="headerlink" title="三、使用with关键字查询"></a>三、使用<code>with</code>关键字查询</h3><p>使用<code>with</code>关键字可以将前面查询结果作为后面查询条件，查询语句示例如下：</p>
 <pre class=" language-cypher"><code class="language-cypher">match (a:pest_category)-[re]->(b:insect_category) where b.category_type = 1 WITH a,re,b match (b:insect_category)-[re2]->(c:insect_info) return a,re,b,re2,c</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd59kkj7spj30n20bomz3.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd59kkj7spj30n20bomz3.jpg" alt=""></p>
 <h3 id="四、通过where关键字查询"><a href="#四、通过where关键字查询" class="headerlink" title="四、通过where关键字查询"></a>四、通过<code>where</code>关键字查询</h3><p>通过<code>where</code>关键字查询，同时可以加入筛选条件，使用<code>contains</code>关键字进行模糊查询，查询语句示例如下：</p>
 <pre class=" language-cypher"><code class="language-cypher">match (a:pest_category)-[re]->(b:insect_category)-[re2]->(c:insect_info) where c.insect_name contains('黄') return a,re,b,re2,c</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd59r7j3vzj30n20bojtz.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd59r7j3vzj30n20bojtz.jpg" alt=""></p>
 <p>加入<code>or</code> 和<code>and</code>进行查询：</p>
 <pre class=" language-cypher"><code class="language-cypher">match (a:pest_category)-[re]->(b:insect_category)-[re2]->(c:insect_info) where c.insect_name contains('黄') or a.pest_name contains('病') return a,re,b,re2,c</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd59txhvqvj30n20cmjwy.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd59txhvqvj30n20cmjwy.jpg" alt=""></p>
 <pre class=" language-cypher"><code class="language-cypher">match (a:pest_category)-[re]->(b:insect_category)-[re2]->(c:insect_info) where c.insect_name contains('黄') or a.pest_name contains('病') or b.category_name contains('螨') return a,re,b,re2,c</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd59uqqw5nj30n20ckq8t.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd59uqqw5nj30n20ckq8t.jpg" alt=""></p>
 <pre class=" language-cypher"><code class="language-cypher">match (a:pest_category)-[re]->(b:insect_category)-[re2]->(c:insect_info) where c.insect_name contains('') and a.pest_name contains('') and b.category_name contains('螨') return a,re,b,re2,c</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd59vkr34fj30n40bowgd.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd59vkr34fj30n40bowgd.jpg" alt=""></p>
 <blockquote>
 <p>参考：</p>
 <p><a href="https://blog.csdn.net/u013946356/article/details/81739079" target="_blank" rel="noopener">https://blog.csdn.net/u013946356/article/details/81739079</a></p>

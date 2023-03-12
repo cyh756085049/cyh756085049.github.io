@@ -415,20 +415,20 @@
 <h4 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h4><p>jdk1.8及以上</p>
 <p>mysql</p>
 <h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p>1、首先通过maven打包成jar包，如下图所示。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfah5hl0fsj31gl0u0wtg.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gfah5hl0fsj31gl0u0wtg.jpg" alt=""></p>
 <p>2、将jar包传送到服务器某一目录下。</p>
 <pre class=" language-cmd"><code class="language-cmd">scp pest-0.0.1-SNAPSHOT.jar root@123.57.245.4:/home</code></pre>
 <p>3、在服务器对应的目录下执行命令</p>
 <pre class=" language-cmd"><code class="language-cmd"># 这种方法会把日志文件输入到你指定的文件中，没有则会自动创建。进程会在后台运行。
 nohup java -jar pest-0.0.1-SNAPSHOT.jar >tmp.txt &</code></pre>
 <p>查看日志：<code>cat tmp.txt</code>，项目已经成功启动</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfahca9mplj313a0n2dl1.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gfahca9mplj313a0n2dl1.jpg" alt=""></p>
 <p>4、在阿里云服务器上开放项目设置的对应端口（我的项目端口是8083）</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfdxmz8n7lj32640fgjty.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gfdxmz8n7lj32640fgjty.jpg" alt=""></p>
 <p>5、浏览器输入对应的IP地址及端口号进行查看。</p>
 <h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><p>在Spring 启动时，报错<code>No active profile set, falling back to default profiles default</code>这是Spring程序启动时没有找到默认的配置文件所引发的错误，默认文件<code>application.yml</code>，一般在项目中都会有多个，如有正式环境、测试环境等。</p>
 <h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p>因为我原来只有一个配置文件<code>application.yml</code>，之后又新增了一个配置文件<code>application-dev.yml</code>，然后在<code>application.yml</code>中进行配置，如下图所示。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfahgyq293j318k08idhg.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gfahgyq293j318k08idhg.jpg" alt=""></p>
 <p>然后再次打包，重新启动，此时正常运行（如上日志文件标注）。</p>
 <h4 id="linux-下查看进程及端口"><a href="#linux-下查看进程及端口" class="headerlink" title="linux 下查看进程及端口"></a>linux 下查看进程及端口</h4><pre class=" language-shell"><code class="language-shell">查看程序对应的进程号： ps -ef | grep 进程名字
 
@@ -436,11 +436,11 @@ nohup java -jar pest-0.0.1-SNAPSHOT.jar >tmp.txt &</code></pre>
 
 ubuntu :查看进程占用端口号：netstat -anp | grep pid</code></pre>
 <p><code>查看java进程：ps -ef|grep java</code></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfdxjndmi5j30wa03sgma.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gfdxjndmi5j30wa03sgma.jpg" alt=""></p>
 <p><code>查看进程号所占用的端口号： netstat -nltp | grep  进程号</code></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfdxjscjthj30wi0303yp.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gfdxjscjthj30wi0303yp.jpg" alt=""></p>
 <p><code>关闭java进程：kill -9 30141(PID)</code></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfdxjx4re0j30wg03omxn.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gfdxjx4re0j30wg03omxn.jpg" alt=""></p>
 <p>阿里云服务器安装tensorflow</p>
 <pre><code>pip3 install tensorflow==1.13.1
 pip3 install numpy==1.16.2

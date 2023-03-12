@@ -475,7 +475,7 @@ client<span class="token punctuation">.</span><span class="token function">addTr
 <p>王卫东：<a href="https://blog.csdn.net/wwd0501/article/details/79203040" target="_blank" rel="noopener">https://blog.csdn.net/wwd0501/article/details/79203040</a></p>
 </blockquote>
 <h3 id="二、接口开发"><a href="#二、接口开发" class="headerlink" title="二、接口开发"></a>二、接口开发</h3><p>图书管理系统接口开发数据准备：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2s0io5h9j327y0jcjz3.jpg" alt="图书信息"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2s0io5h9j327y0jcjz3.jpg" alt="图书信息"></p>
 <h4 id="1、查询接口开发"><a href="#1、查询接口开发" class="headerlink" title="1、查询接口开发"></a>1、查询接口开发</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 查询接口</span>
     <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/get/book/novel"</span><span class="token punctuation">)</span>
     <span class="token keyword">public</span> ResponseEntity <span class="token function">get</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"id"</span><span class="token punctuation">,</span> defaultValue <span class="token operator">=</span> <span class="token string">""</span><span class="token punctuation">)</span> String id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -489,7 +489,7 @@ client<span class="token punctuation">.</span><span class="token function">addTr
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span><span class="token function">getSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> HttpStatus<span class="token punctuation">.</span>OK<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span></code></pre>
 <p>接口测试：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2ru1gid2j31r00l8n03.jpg" alt="查询接口测试"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2ru1gid2j31r00l8n03.jpg" alt="查询接口测试"></p>
 <h4 id="2、增加接口开发"><a href="#2、增加接口开发" class="headerlink" title="2、增加接口开发"></a>2、增加接口开发</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 增加接口</span>
     <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/add/book/novel"</span><span class="token punctuation">)</span>
     <span class="token keyword">public</span> ResponseEntity <span class="token function">add</span><span class="token punctuation">(</span>
@@ -518,11 +518,11 @@ client<span class="token punctuation">.</span><span class="token function">addTr
 
     <span class="token punctuation">}</span></code></pre>
 <p>接口测试：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2sl28icqj31qq0paadt.jpg" alt="增加接口测试"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2sl28icqj31qq0paadt.jpg" alt="增加接口测试"></p>
 <p><strong>遇到的问题：</strong></p>
 <p>使用Postman测试接口，可以看到在使用默认的form-data类型时出现了<code>HTTP Status 400 - Required String parameter ‘xx’ is not present</code>这个错误(如下图)，更换成x-www-form-urlencoded类型时返回成功。</p>
 <p>如果使用@RequestBody接收参数，同@RequestParam一样，都是需要设置x-www-form-urlencoded类型才能正确返回。</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2sjgtn7mj318p0u0k6v.jpg" alt="错误页"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2sjgtn7mj318p0u0k6v.jpg" alt="错误页"></p>
 <p><strong>原因：</strong></p>
 <p>@RequestBody这个一般处理的是在ajax请求中声明contentType: “application/json; charset=utf-8”时候。也就是json数据或者xml。<br>@RequestParam这个一般就是在ajax里面没有声明contentType的时候，为默认的urlencode格式时，用这个。</p>
 <blockquote>
@@ -537,7 +537,7 @@ client<span class="token punctuation">.</span><span class="token function">addTr
         <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span><span class="token function">getResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> HttpStatus<span class="token punctuation">.</span>OK<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span></code></pre>
 <p>接口测试：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2t1tf12kj31qy0h4tbk.jpg" alt="删除接口测试"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2t1tf12kj31qy0h4tbk.jpg" alt="删除接口测试"></p>
 <h4 id="4、更新接口开发"><a href="#4、更新接口开发" class="headerlink" title="4、更新接口开发"></a>4、更新接口开发</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 更新接口</span>
     <span class="token annotation punctuation">@PutMapping</span><span class="token punctuation">(</span><span class="token string">"/update/book/novel"</span><span class="token punctuation">)</span>
     <span class="token annotation punctuation">@ResponseBody</span>
@@ -576,7 +576,7 @@ client<span class="token punctuation">.</span><span class="token function">addTr
 
     <span class="token punctuation">}</span></code></pre>
 <p>接口测试：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2tb7umuij31r00koq5u.jpg" alt="更新接口测试"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2tb7umuij31r00koq5u.jpg" alt="更新接口测试"></p>
 <h4 id="4、复合查询开发"><a href="#4、复合查询开发" class="headerlink" title="4、复合查询开发"></a>4、复合查询开发</h4><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 复合查询</span>
     <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"query/book/novel"</span><span class="token punctuation">)</span>
     <span class="token annotation punctuation">@ResponseBody</span>
@@ -617,7 +617,7 @@ client<span class="token punctuation">.</span><span class="token function">addTr
 
     <span class="token punctuation">}</span></code></pre>
 <p>接口测试：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2tlto83jj31db0u0aga.jpg" alt="复合查询接口测试"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2tlto83jj31db0u0aga.jpg" alt="复合查询接口测试"></p>
 <blockquote>
 <p>本文完整代码示例：<a href="https://github.com/cyh756085049/ElasticSearch-java" target="_blank" rel="noopener">https://github.com/cyh756085049/ElasticSearch-java</a></p>
 </blockquote>

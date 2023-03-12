@@ -501,7 +501,7 @@ With tf<span class="token punctuation">.</span>Session<span class="token punctua
             <span class="token comment" spellcheck="true">#导入指定路径下的模型</span>
             saver<span class="token punctuation">.</span>restore<span class="token punctuation">(</span>sess<span class="token punctuation">,</span> <span class="token string">"path/to/model/model.ckpt"</span><span class="token punctuation">)</span></code></pre>
 <h3 id="滑动平均模型"><a href="#滑动平均模型" class="headerlink" title="滑动平均模型"></a>滑动平均模型</h3><p>滑动平均模型可以使模型在测试数据上更健壮，适合基于梯度下降算法训练神经网络的过程。在TensorFlow中提供了该模型: <code>tf.train.ExponentialMovingAverage</code></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf3e5gptfkj30v60a2ac7.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gf3e5gptfkj30v60a2ac7.jpg" alt=""></p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#定义一个变量</span>
 v1 <span class="token operator">=</span> tf<span class="token punctuation">.</span>Variab1e<span class="token punctuation">(</span><span class="token number">0</span>， dtype<span class="token operator">=</span>tf<span class="token punctuation">.</span>f1oat32<span class="token punctuation">)</span>
 <span class="token comment" spellcheck="true"># num_updates变量更新次数</span>
@@ -514,7 +514,7 @@ With tf<span class="token punctuation">.</span>Session<span class="token punctua
             <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
             sess<span class="token punctuation">.</span> run<span class="token punctuation">(</span>maintain_averages_op<span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 运行滑动平均模型</span></code></pre>
 <h3 id="学习速率衰减"><a href="#学习速率衰减" class="headerlink" title="学习速率衰减"></a>学习速率衰减</h3><p>训练前期使用较大的学习率加速，让模型快速收敛,训练过程中主键减小学习速率，到训练后期使用较小的学习率,使模型在训练后期更稳定。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf3edh3v2qj30p003eaas.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gf3edh3v2qj30p003eaas.jpg" alt=""></p>
 <pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># TensorFlow支持的学习速率衰减策略</span>
 exponential_decay
 tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>exponential_decay<span class="token punctuation">(</span>learning_rate<span class="token punctuation">,</span><span class="token comment" spellcheck="true"># 初始学习率</span>
@@ -539,7 +539,7 @@ With tf<span class="token punctuation">.</span>control_dependencies<span class="
 <li>定义神经网络的前向传播过程</li>
 </ul>
 <h4 id="MNIST数据集"><a href="#MNIST数据集" class="headerlink" title="MNIST数据集"></a>MNIST数据集</h4><p>MNIST是一个手写体数字识别数据集，它的训练数据集包含60000张图片，测试数据集包含10000张图片，其中每一-张图片都代表0~9中的一个数字。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf3ejn502pj30qk0dmwhk.jpg" alt="手写数字识别数据集" style="zoom:50%;">
+<img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gf3ejn502pj30qk0dmwhk.jpg" alt="手写数字识别数据集" style="zoom:50%;">
 
 <h4 id="1、导入Mnist数据集"><a href="#1、导入Mnist数据集" class="headerlink" title="1、导入Mnist数据集"></a>1、导入Mnist数据集</h4><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># -*- coding: utf-8 -*</span>
 <span class="token comment" spellcheck="true"># 从Tensorflow里边加载MNIST数据集</span>
@@ -721,7 +721,7 @@ EVAL_INTERVAL_SEC <span class="token operator">=</span> <span class="token numbe
 <p>2、没有对应的模型输出</p>
 <pre class=" language-python"><code class="language-python">ImportError<span class="token punctuation">:</span> No module named tutorials<span class="token punctuation">.</span>mnist</code></pre>
 <p>我的电脑在<code>(tensorflow)  cyh@chenyonghuandeMacBook-Pro  ~/tensorflow/lib/python2.7/site-packages</code>目录下有文件夹tensorflow, tensorflow_core, tensorflow_estimator等文件夹。进入tensorflow_core文件夹，里面发现一个examples文件夹，但是文件夹下只有saved_model这个文件，没有找到tutorials。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf3fusge5uj30vs04kjxu.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gf3fusge5uj30vs04kjxu.jpg" alt=""></p>
 <p>解决方法</p>
 <p>进入 <a href="https://github.com/tensorflow/tensorflow" target="_blank" rel="noopener">tensorflow主页</a> 下载缺失的tutorials文件。我是直接把整个下载下来，然后在下载文件的路径<code>tensorflow-master\tensorflow\examples\</code>这里找到了tutorials，把tutorials整个文件夹拷贝到上文中提到的<code>tensorflow_core\examples\</code>文件夹下。</p>
 <p>3、使用TensorFlow 从网上下载数据集到本地时，pycharm 没有写入权限</p>

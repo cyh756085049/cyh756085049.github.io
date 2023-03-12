@@ -413,10 +413,10 @@
             <div id="articleContent">
                 <p><code>Strings are constant; their values cannot be changed after they are created. String buffers support mutable strings.Because String objects are immutable they can be shared.</code></p>
 <p>String 字符串是常量，其值在实例创建后就不能被修改，但字符串缓冲区（StringBuffer）支持可变的字符串，由于String对象是不可变的，因此可以共享它们。</p>
-<h2 id="String-的结构"><a href="#String-的结构" class="headerlink" title="String    的结构"></a><code>String</code>    的结构</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf1214ef3pj30uc07awes.jpg" alt=""></p>
+<h2 id="String-的结构"><a href="#String-的结构" class="headerlink" title="String    的结构"></a><code>String</code>    的结构</h2><p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gf1214ef3pj30uc07awes.jpg" alt=""></p>
 <h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="包名"><a href="#包名" class="headerlink" title="包名"></a>包名</h3><p><code>package java.lang</code></p>
 <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>我们常常听人说，HashMap 的 key 建议使用不可变类，比如说 String 这种不可变类。这里说的不可变指的是类值一旦被初始化，就不能再被改变了，如果被修改，将会是新的类，比如有这样的例子： <code>String s = “hello”; s = “world”</code>，看到这里也许会有人疑惑，String 初始化以后好像可以被修改。其实这里的赋值并不是对 <code>s</code>内容的修改，而是将<code>s</code>指向了新的字符串。从 debug 的日志来看，其实已经把 s 的引用指向了新的 String，如下图所示：</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfxsd1q3y9j311g080gow.jpg" alt="image-20200619184230724"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gfxsd1q3y9j311g080gow.jpg" alt="image-20200619184230724"></p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">String</span> <span class="token keyword">implements</span> <span class="token class-name">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>Serializable</span><span class="token punctuation">,</span> Comparable<span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">,</span> CharSequence <span class="token punctuation">{</span>
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">}</span></code></pre>

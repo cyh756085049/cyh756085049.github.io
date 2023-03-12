@@ -434,9 +434,9 @@
 <blockquote>
 <p>下载链接：<a href="https://www.elastic.co/downloads/past-releases/elasticsearch-5-5-2" target="_blank" rel="noopener">https://www.elastic.co/downloads/past-releases/elasticsearch-5-5-2</a></p>
 </blockquote>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2jiwp7jlj31t60qm0x2.jpg" alt="下载"><br><strong>2、运行</strong></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2jiwp7jlj31t60qm0x2.jpg" alt="下载"><br><strong>2、运行</strong></p>
 <pre class=" language-shell"><code class="language-shell">cyh@chenyonuandembp bin % sh elasticsearch</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2jk5obmuj30vo0h615j.jpg" alt="运行界面"><br><strong>3、在浏览器打开<code>127.0.0.1:9200</code>:</strong><br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2jkog6hbj30sg0hstbe.jpg" alt="浏览器界面"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2jk5obmuj30vo0h615j.jpg" alt="运行界面"><br><strong>3、在浏览器打开<code>127.0.0.1:9200</code>:</strong><br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2jkog6hbj30sg0hstbe.jpg" alt="浏览器界面"></p>
 <h3 id="插件Head安装"><a href="#插件Head安装" class="headerlink" title="插件Head安装"></a>插件Head安装</h3><p><strong>1、下载</strong></p>
 <blockquote>
 <p>下载链接：<a href="https://github.com/mobz/elasticsearch-head#running-with-built-in-server" target="_blank" rel="noopener">Github下载地址：elasticsearch-head</a></p>
@@ -454,8 +454,8 @@ http.cors.allow-origin: "*"</code></pre>
 <pre class=" language-yml"><code class="language-yml">elasticsearch: sh elasticsearch-5.5.2/bin/elasticsearch
 
 elasticsearch-head: npm run start</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2jmlv7vcj30vo0euwn4.jpg" alt="运行界面"><br><strong>5、<code>http://localhost:9100</code>浏览器运行</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2jmzsk3vj327s0fm0xc.jpg" alt="浏览器界面"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2jmlv7vcj30vo0euwn4.jpg" alt="运行界面"><br><strong>5、<code>http://localhost:9100</code>浏览器运行</strong></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2jmzsk3vj327s0fm0xc.jpg" alt="浏览器界面"></p>
 <h3 id="分布式安装"><a href="#分布式安装" class="headerlink" title="分布式安装"></a>分布式安装</h3><p><strong>1、主节点配置</strong></p>
 <p>在<code>cyh@chenyonuandembp elasticsearch-5.5.2 % vim config/elasticsearch.yml</code>主节点中配置:</p>
 <pre class=" language-yml"><code class="language-yml">cluster.name: cyh
@@ -463,8 +463,8 @@ node.name: master
 node.master: true
 network.host: 127.0.0.1</code></pre>
 <p><strong>2、分别启动服务运行并浏览（同上）</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2jol0delj30nq0c60ui.jpg" alt=""></p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2joxxv7yj31bi08ajtb.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2jol0delj30nq0c60ui.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2joxxv7yj31bi08ajtb.jpg" alt=""></p>
 <p><strong>3、分布式安装</strong></p>
 <p>复制两份elasticsearch-5.5.2在两个文件夹中，做分布式安装：</p>
 <pre class=" language-yml"><code class="language-yml">cyh@chenyonuandembp software % cp -r elasticsearch-5.5.2 es_slave1
@@ -487,7 +487,7 @@ network.host: 127.0.0.1
 http.port: 8000
 discovery.zen.ping.unicast.hosts: ["127.0.0.1"]</code></pre>
 <p><strong>5、浏览器运行</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2l61s5gej31j00jowih.jpg" alt="多节点分布式效果图"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2l61s5gej31j00jowih.jpg" alt="多节点分布式效果图"></p>
 <h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><p>在分布式安装子节点时遇到的问题：</p>
 <pre class=" language-java"><code class="language-java">failed to join <span class="token punctuation">{</span>master<span class="token punctuation">}</span><span class="token punctuation">{</span>省略配置信息输出<span class="token punctuation">}</span>
 # 主要是下面的错误信息

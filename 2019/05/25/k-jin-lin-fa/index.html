@@ -411,7 +411,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="第三章-K近邻法"><a href="#第三章-K近邻法" class="headerlink" title="第三章 K近邻法"></a>第三章 K近邻法</h3><h4 id="1、思维导图："><a href="#1、思维导图：" class="headerlink" title="1、思维导图："></a>1、思维导图：</h4><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd0cgf8w06j30v70u04qp.jpg" alt="K近邻法思维导图"></p>
+                <h3 id="第三章-K近邻法"><a href="#第三章-K近邻法" class="headerlink" title="第三章 K近邻法"></a>第三章 K近邻法</h3><h4 id="1、思维导图："><a href="#1、思维导图：" class="headerlink" title="1、思维导图："></a>1、思维导图：</h4><p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd0cgf8w06j30v70u04qp.jpg" alt="K近邻法思维导图"></p>
 <h4 id="2、K近邻算法与K-means聚类算法的区别"><a href="#2、K近邻算法与K-means聚类算法的区别" class="headerlink" title="2、K近邻算法与K-means聚类算法的区别"></a>2、K近邻算法与K-means聚类算法的区别</h4><table>
 <thead>
 <tr>
@@ -444,7 +444,7 @@
 <p>仅仅在kd树上进行BBF算法的改进，仍然还是不能够避免一些结构本身存在的弊端，当处理不均匀分布的数据集时便会呈现出一个基本冲突：既要求树有完美的平衡结构，又要求待查找的区域近似方形，但不管是近似方形，还是矩形，甚至正方形，都不是最好的使用形状，因为他们都有角。</p>
 <p>其实这个问题的实质是因为，我们对于距离的度量使用的是圆形，也就是欧氏距离，如果是我们之前提到的像切比雪夫距离这种方形的，就可以在一定程度上减少这个冲突。因为无论是你的模板和样本，其度量标准是一致的，也就是要么是方形的，都是方形的，要是圆形的，都是圆形的。</p>
 <p>例如下面这个就是球树：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd1w5xnvskj31100nw3zw.jpg" alt="球树"> </p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd1w5xnvskj31100nw3zw.jpg" alt="球树"> </p>
 <p>从球中选择一个离球的中心最远的点，然后选择第二个点离第一个点最远，将球中所有的点分配到离这两个聚类中心最近的一个上，然后计算每个聚类的中心，以及聚类能够包含它所有数据点所需的最小半径。这种方法的优点是分裂一个包含n个殊绝点的球的成本只是随n呈线性增加。</p>
 <p>使用球树找出给定目标点的最近邻方法是，首先自上而下贯穿整棵树找出包含目标点所在的叶子，并在这个球里找出与目标点最靠近的点，这将确定出目标点距离它的最近邻点的一个上限值，然后跟KD树查找一样，检查同胞结点，如果目标点到同胞结点中心的距离超过同胞结点的半径与当前的上限值之和，那么同胞结点里不可能存在一个更近的点；否则的话，必须进一步检查位于同胞结点以下的子树。 </p>
 <blockquote>

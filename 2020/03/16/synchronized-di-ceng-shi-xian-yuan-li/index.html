@@ -604,8 +604,8 @@ C_thread2_SyncObjectMethod1_End: 10:26:38</code></pre><h2 id="synchronized底层
 <li>实例数据</li>
 <li>对齐填充</li>
 </ul>
-<p><strong>对象头的结构：</strong><br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9t6nyepj314c07g41i.jpg" alt="**对象头的结构"></p>
-<p><strong>Mark word</strong><br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9tbb0rcj30zu0cuaei.jpg" alt="Mark word"></p>
+<p><strong>对象头的结构：</strong><br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gcz9t6nyepj314c07g41i.jpg" alt="**对象头的结构"></p>
+<p><strong>Mark word</strong><br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gcz9tbb0rcj30zu0cuaei.jpg" alt="Mark word"></p>
 <blockquote>
 <p>Monitor :每个Java对象天生自带了一把看不见的锁</p>
 </blockquote>
@@ -613,8 +613,8 @@ C_thread2_SyncObjectMethod1_End: 10:26:38</code></pre><h2 id="synchronized底层
 <blockquote>
 <p>源码地址：<a href="https://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/8f2780b3e4fa/src/share/vm/runtime/objectMonitor.hpp" target="_blank" rel="noopener">https://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/8f2780b3e4fa/src/share/vm/runtime/objectMonitor.hpp</a></p>
 </blockquote>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd8s4ot006j32200u0wlo.jpg" alt="源码"></p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9tkd1isj31000j0dou.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd8s4ot006j32200u0wlo.jpg" alt="源码"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gcz9tkd1isj31000j0dou.jpg" alt=""></p>
 <p>代码示例：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SyncBlockAndMethod</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">syncsTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -629,8 +629,8 @@ C_thread2_SyncObjectMethod1_End: 10:26:38</code></pre><h2 id="synchronized底层
 <p>使用以下命令对代码进行编译并查看字节码：</p>
 <pre class=" language-shell"><code class="language-shell">javac SyncBlockAndMethod.java
 javap -verbose SyncBlockAndMethod.class</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd8snzh217j31pc0sigpx.jpg" alt="同步代码块"></p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd8sp2uvkrj31ok0gi419.jpg" alt="同步方法"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd8snzh217j31pc0sigpx.jpg" alt="同步代码块"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd8sp2uvkrj31ok0gi419.jpg" alt="同步方法"></p>
 <h3 id="什么是重入"><a href="#什么是重入" class="headerlink" title="什么是重入"></a>什么是重入</h3><p>从互斥锁的设计上来说，当一个线程试图操作一个由其他线程持有的对象锁的临界资源时,将会处于阻塞状态,但当一个线程再次请求自己持有对象锁的临界资源时,这种情况属于重入。</p>
 <p>代码示例：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">syncsTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -685,7 +685,7 @@ javap -verbose SyncBlockAndMethod.class</code></pre>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>StringBuffer源码：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd8t11tamhj314s0ac0ud.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd8t11tamhj314s0ac0ud.jpg" alt=""></p>
 <h4 id="锁粗化"><a href="#锁粗化" class="headerlink" title="锁粗化"></a>锁粗化</h4><ul>
 <li>通过扩大加锁的范围,避免反复加锁和解锁</li>
 </ul>
@@ -715,11 +715,11 @@ javap -verbose SyncBlockAndMethod.class</code></pre>
 <p>若存在同一时间访问同一锁的情况,就会导致轻量级锁膨胀为重量级锁</p>
 <p><strong>轻量级锁的加锁过程：</strong></p>
 <p>（1）在代码进入同步块的时候，如果同步对象锁状态为无锁状态（锁标志位为“01”状态），虚拟机首先将在当前线程的栈帧中建立一个名为锁记录（LockRecord）的空间，用于存储锁对象目前的Mark Word的拷贝，官方称之为Displaced Mark Word。这时候线程堆栈与对象头的状态如下图所示：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9f9c9vqjj30dw06rt8s.jpg" alt="img"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9f9c9vqjj30dw06rt8s.jpg" alt="img"></p>
 <p>（2）拷贝对象头中的Mark Word复制到锁记录中。</p>
 <p>（3）拷贝成功后，虚拟机将使用CAS操作尝试将对象的Mark Word更新为指向Lock Record的指针,并将Lock record里的owner指针指向object mark word。如果更新成功，则执行步骤4，否则执行步骤5。</p>
 <p>（4）如果这个更新动作成功了，那么这个线程就拥有了该对象的锁，并且对象Mark Word的锁标志位设置为“00”，即表示此对象处于轻量级锁定状态，这时候线程堆栈与对象头的状态如下图所示：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9faqcd1vj30dw09iaa9.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9faqcd1vj30dw09iaa9.jpg" alt=""></p>
 <p>（5）如果这个更新操作失败了，虚拟机首先会检查对象的Mark Word是否指向当前线程的栈帧，如果是就说明当前线程已经拥有了这个对象的锁，那就可以直接进入同步块继续执行。否则说明多个线程竞争锁，轻量级锁就要膨胀为重量级锁，锁标志的状态值变为“10”，Mark Word中存储的就是指向重量级锁（互斥量）的指针，后面等待锁的线程也要进入阻塞状态。而当前线程便尝试使用自旋来获取锁，自旋咱们前面讲过，就是为了不让线程阻塞，而采用循环去获取锁的过程。</p>
 <p><strong>轻量级锁的解锁过程：</strong></p>
 <ol>
@@ -729,8 +729,8 @@ javap -verbose SyncBlockAndMethod.class</code></pre>
 </ol>
 <p><strong>锁的内存语义</strong></p>
 <p>当线程释放锁时，Java内存模型会把该线程对应的本地内存中的共享变量刷新到主内存中;<br>而当线程获取锁时, Java内存模型会把该线程对应的本地内存置为无效,从而使得被监视器保护的临界区代码必须从主内存中读取共享变量。</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9fm8podwj30lw0hct9j.jpg" alt=""></p>
-<h4 id="偏向锁、轻量级锁、重量级锁的汇总"><a href="#偏向锁、轻量级锁、重量级锁的汇总" class="headerlink" title="偏向锁、轻量级锁、重量级锁的汇总"></a>偏向锁、轻量级锁、重量级锁的汇总</h4><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9fhgz7kdj316o0jcwic.jpg" alt="偏向锁、轻量级锁、重量级锁总结"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9fm8podwj30lw0hct9j.jpg" alt=""></p>
+<h4 id="偏向锁、轻量级锁、重量级锁的汇总"><a href="#偏向锁、轻量级锁、重量级锁的汇总" class="headerlink" title="偏向锁、轻量级锁、重量级锁的汇总"></a>偏向锁、轻量级锁、重量级锁的汇总</h4><p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9fhgz7kdj316o0jcwic.jpg" alt="偏向锁、轻量级锁、重量级锁总结"></p>
 <h3 id="synchronized和ReentrantLock的区别"><a href="#synchronized和ReentrantLock的区别" class="headerlink" title="synchronized和ReentrantLock的区别"></a>synchronized和ReentrantLock的区别</h3><h4 id="ReentrantLock-再入锁"><a href="#ReentrantLock-再入锁" class="headerlink" title="ReentrantLock (再入锁)"></a>ReentrantLock (再入锁)</h4><ul>
 <li>位于java.util.concurrent.locks包</li>
 <li>和CountDownLatch、Future Task、Semaphore一 样基于AQS实现</li>
@@ -815,7 +815,7 @@ Thread-1 get lock
 <li>机制: sync操作Mark Word , lock调用Unsafe类的park()方法</li>
 </ul>
 <h2 id="什么是Java内存模型中的happens-before"><a href="#什么是Java内存模型中的happens-before" class="headerlink" title="什么是Java内存模型中的happens-before"></a>什么是Java内存模型中的happens-before</h2><h3 id="Java内存模型JMM"><a href="#Java内存模型JMM" class="headerlink" title="Java内存模型JMM"></a>Java内存模型JMM</h3><p>Java内存模型(即Java Memory Model ,简称JMM)本身是一种抽象的概念，并不真实存在,它描述的是一组规则或规范,通过这组规范定义了程序中各个变量(包括实例字段,静态字段和构成数组对象的元素)的访问方式。</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9f04wgvnj30ii0ff76e.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9f04wgvnj30ii0ff76e.jpg" alt=""></p>
 <h3 id="JMM中的主内存和工作内存"><a href="#JMM中的主内存和工作内存" class="headerlink" title="JMM中的主内存和工作内存"></a>JMM中的主内存和工作内存</h3><h4 id="JMM中的主内存"><a href="#JMM中的主内存" class="headerlink" title="JMM中的主内存"></a>JMM中的主内存</h4><ul>
 <li>存储Java实例对象</li>
 <li>包括成员变量、类信息、常量、静态变量等</li>
@@ -836,7 +836,7 @@ Thread-1 get lock
 <li>成员变量、static变量、 类信息均会被存储在主内存中</li>
 <li>主内存共享的方式是线程各拷贝- -份数据到工作内存,操作完成后刷新回主内存</li>
 </ul>
-<h3 id="JMM如何解决可见性问题"><a href="#JMM如何解决可见性问题" class="headerlink" title="JMM如何解决可见性问题"></a>JMM如何解决可见性问题</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9et7eppxj317k0imk11.jpg" alt="Java内存模型与硬件内存架构的关系"></p>
+<h3 id="JMM如何解决可见性问题"><a href="#JMM如何解决可见性问题" class="headerlink" title="JMM如何解决可见性问题"></a>JMM如何解决可见性问题</h3><p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9et7eppxj317k0imk11.jpg" alt="Java内存模型与硬件内存架构的关系"></p>
 <blockquote>
 <p>优秀博客：<a href="https://blog.csdn.net/javazejian/article/details/72772461" target="_blank" rel="noopener">https://blog.csdn.net/javazejian/article/details/72772461</a></p>
 </blockquote>
@@ -867,8 +867,8 @@ Thread-1 get lock
 <li>禁止指令重排序优化</li>
 <li>使用volatile不能保证线程安全，需要变量的操作满足原子性</li>
 </ul>
-<h4 id="volatile的可见性"><a href="#volatile的可见性" class="headerlink" title="volatile的可见性"></a>volatile的可见性</h4><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9gf0at91j30zi0aqn4b.jpg" alt=""></p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9gg6tqypj30pc0ein41.jpg" alt=""></p>
+<h4 id="volatile的可见性"><a href="#volatile的可见性" class="headerlink" title="volatile的可见性"></a>volatile的可见性</h4><p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9gf0at91j30zi0aqn4b.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9gg6tqypj30pc0ein41.jpg" alt=""></p>
 <h4 id="volatile变量为何立即可见？"><a href="#volatile变量为何立即可见？" class="headerlink" title="volatile变量为何立即可见？"></a>volatile变量为何立即可见？</h4><ul>
 <li>当写一个volatile变量时，JMM会把该线程对应的工作内存中的共享变量值刷新到主内存中；</li>
 <li>当读取一个volatile变量时，JMM会把该线程对应的工作内存置为无效，那么就需要从主内存中重新读取该变量。</li>
@@ -885,7 +885,7 @@ Thread-1 get lock
 <li><p>强制刷出各种CPU的缓存数据，因此任何CPU上的线程都能读取到这些数据的最新版本</p>
 </li>
 </ul>
-<h4 id="单例的双重检测实现"><a href="#单例的双重检测实现" class="headerlink" title="单例的双重检测实现"></a>单例的双重检测实现</h4><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9glnntzej322q0rmkis.jpg" alt=""></p>
+<h4 id="单例的双重检测实现"><a href="#单例的双重检测实现" class="headerlink" title="单例的双重检测实现"></a>单例的双重检测实现</h4><p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9glnntzej322q0rmkis.jpg" alt=""></p>
 <h3 id="volatile和synchronized的区别"><a href="#volatile和synchronized的区别" class="headerlink" title="volatile和synchronized的区别"></a>volatile和synchronized的区别</h3><ol>
 <li>volatile本质是在告诉JVM当前变量在寄存器(工作内存)中的值是不确定的，需要从主存中读取; synchronized则是锁定当前变量， 只有当前线程可以访问该变量,其他线程被阻塞住直到该线程完成变量操作为止</li>
 <li>volatile仅能使用在变量级别; syr shronized则可以使用在变量、方法和类级别</li>
@@ -933,7 +933,7 @@ Thread-1 get lock
 <blockquote>
 <p>working-stealing算法：某个线程从其他线程的任务队列里窃取任务来执行</p>
 </blockquote>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9nlaz69xj31560ick3u.jpg" alt="Fork/Join框架"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9nlaz69xj31560ick3u.jpg" alt="Fork/Join框架"></p>
 <h4 id="为什么要使用线程池"><a href="#为什么要使用线程池" class="headerlink" title="为什么要使用线程池?"></a>为什么要使用线程池?</h4><ol>
 <li>减低资源消耗，避免频繁地创建和销毁线程</li>
 <li>提高线程的可管理性，例如可控的线程数量，线程状态的监控和统一创建/销毁线程</li>
@@ -943,9 +943,9 @@ Thread-1 get lock
 <li>ExecutorService：具备管理执行器和任务生命周期的方法，提交任务机制更完善</li>
 <li>ScheduleExecutorService：支持Future和定期执行任务</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9o1blp7bj31680n0n5f.jpg" alt="Executor框架"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9o1blp7bj31680n0n5f.jpg" alt="Executor框架"></p>
 <p>ThreadPoolExecutor:</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9o6skp98j31780nw12s.jpg" alt="线程池执行任务流程图"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9o6skp98j31780nw12s.jpg" alt="线程池执行任务流程图"></p>
 <h4 id="ThreadPoolExecutor的构造函数"><a href="#ThreadPoolExecutor的构造函数" class="headerlink" title="ThreadPoolExecutor的构造函数"></a>ThreadPoolExecutor的构造函数</h4><ul>
 <li>corePoolSize :核心线程数量</li>
 <li>maximumPoolSize :线程不够用时能够创建的最大线程数</li>
@@ -961,7 +961,7 @@ Thread-1 get lock
 <li>如果设置的corePoolSize和maximumPoolSize相同,则创建的线程池的大小是固定的,这时如果有新任务提交,若workQueue未满,则将请求放入workQueue中,等待有空闲的线程去从workQueue中取任务并处理;</li>
 <li>如果运行的线程数量大于等于maximumPoolSize ,这时如果workQueue已经满了.则通过handler所指定的策略来处理任务;</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9osoodhbj30n50le3zj.jpg" alt="execute执行流程图"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9osoodhbj30n50le3zj.jpg" alt="execute执行流程图"></p>
 <h4 id="线程池的状态"><a href="#线程池的状态" class="headerlink" title="线程池的状态"></a>线程池的状态</h4><ul>
 <li>RUNNING：能接受新提交的任务，并且也能处理阻塞队列中的任务</li>
 <li>SHUTDOWN：不再接受新提交的任务，但可以处理存量任务（调用shutdown方法）</li>
@@ -969,9 +969,9 @@ Thread-1 get lock
 <li>TIDYING：所有的任务都已终止</li>
 <li>TERMINATED：terminated() 方法执行完后进入该状态</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9oz8hcy4j30qn0ai3zi.jpg" alt="线程池的状态转换过程"></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9oz8hcy4j30qn0ai3zi.jpg" alt="线程池的状态转换过程"></p>
 <p>工作线程的生命周期：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd9p0tjzh4j30no0ii0t8.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd9p0tjzh4j30no0ii0t8.jpg" alt=""></p>
 <h4 id="线程池大小如何选定"><a href="#线程池大小如何选定" class="headerlink" title="线程池大小如何选定"></a>线程池大小如何选定</h4><ul>
 <li>CPU密集型任务：线程数 = 按照CPU核心数或者CPU核心数 + 1设定</li>
 <li>I/O密集型任务：线程数 = CPU核心数 * (1 + 平均等待时间 / 平均工作时间)</li>

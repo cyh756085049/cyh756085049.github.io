@@ -331,9 +331,9 @@
 <li>所有与进程相关的资源,都被记录在PCB中</li>
 <li>进程是抢占处理机的调度单位;线程属于某个进程,共享其资源</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9r3wqvsj30ly08w406.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gcz9r3wqvsj30ly08w406.jpg" alt=""></p>
 <ul>
-<li>线程只由堆栈寄存器、程序计数器和TCB组成<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9rcz3v8j30f008ggpf.jpg" alt=""></li>
+<li>线程只由堆栈寄存器、程序计数器和TCB组成<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gcz9rcz3v8j30f008ggpf.jpg" alt=""></li>
 </ul>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
 <li>线程不能看做独立应用,而进程可看做独立应用</li>
@@ -354,7 +354,7 @@
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Current Thread: "</span> <span class="token operator">+</span> Thread<span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="2、Thread中的start和run方法的区别"><a href="#2、Thread中的start和run方法的区别" class="headerlink" title="2、Thread中的start和run方法的区别"></a>2、Thread中的start和run方法的区别</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9rkssdyj30si05igmd.jpg" alt=""></p>
+<h2 id="2、Thread中的start和run方法的区别"><a href="#2、Thread中的start和run方法的区别" class="headerlink" title="2、Thread中的start和run方法的区别"></a>2、Thread中的start和run方法的区别</h2><p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gcz9rkssdyj30si05igmd.jpg" alt=""></p>
 <ul>
 <li>调用start()方法会创建一个新的子线程并启动</li>
 <li>run()方法只是Thread的一 个普通方法的调用</li>
@@ -382,10 +382,10 @@
 Fight
 Current Thread is : main
 Fight
-Current Thread is : Thread-0</code></pre><p>使用start是调用外部类：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9ruyitsj30r804yjrq.jpg" alt=""><br>在<code>openjdk</code>网页中查找源码（<a href="https://hg.openjdk.java.net/jdk8u/jdk8u/jdk/file/6f7370a85071/src/share/native/java/lang/Thread.c" target="_blank" rel="noopener">链接🔗</a>）：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9s152tmj31de0p4tel.jpg" alt=""><br>从<code>Tread.c</code>文件中查找<code>start0</code>，发现引入了<code>jvm</code>文件，再去查询对应的方法(<a href="https://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/b4fd7e078c54/src/share/vm/prims/jvm.cpp" target="_blank" rel="noopener">链接🔗</a>)：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9s8uc3vj310t0u0aj0.jpg" alt=""></p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcz9sezr8wj315u0ckace.jpg" alt=""></p>
+Current Thread is : Thread-0</code></pre><p>使用start是调用外部类：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gcz9ruyitsj30r804yjrq.jpg" alt=""><br>在<code>openjdk</code>网页中查找源码（<a href="https://hg.openjdk.java.net/jdk8u/jdk8u/jdk/file/6f7370a85071/src/share/native/java/lang/Thread.c" target="_blank" rel="noopener">链接🔗</a>）：</p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gcz9s152tmj31de0p4tel.jpg" alt=""><br>从<code>Tread.c</code>文件中查找<code>start0</code>，发现引入了<code>jvm</code>文件，再去查询对应的方法(<a href="https://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/b4fd7e078c54/src/share/vm/prims/jvm.cpp" target="_blank" rel="noopener">链接🔗</a>)：</p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gcz9s8uc3vj310t0u0aj0.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gcz9sezr8wj315u0ckace.jpg" alt=""></p>
 <h2 id="3、Thread和Runnable是什么关系"><a href="#3、Thread和Runnable是什么关系" class="headerlink" title="3、Thread和Runnable是什么关系"></a>3、Thread和Runnable是什么关系</h2><ul>
 <li>Thread是实现了 Runnable接口的类,使得run支持多线程</li>
 <li>因类的单一继承原则,推荐多使用Runnable接口</li>

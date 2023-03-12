@@ -429,11 +429,11 @@
 <h3 id="2、创建索引"><a href="#2、创建索引" class="headerlink" title="2、创建索引"></a>2、创建索引</h3><ul>
 <li><strong>非结构化创建</strong></li>
 </ul>
-<p>先创建索引：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2lz90wo3j327o0titfk.jpg" alt=""><br>查看概览：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2lzh4fxaj327u0q20zu.jpg" alt=""><br>查看索引数据（非结构化索引）：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2lzrx2cjj31dp0u0thi.jpg" alt=""></p>
+<p>先创建索引：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2lz90wo3j327o0titfk.jpg" alt=""><br>查看概览：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2lzh4fxaj327u0q20zu.jpg" alt=""><br>查看索引数据（非结构化索引）：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2lzrx2cjj31dp0u0thi.jpg" alt=""></p>
 <ul>
 <li><strong>结构化创建</strong></li>
 </ul>
-<p>通过复合查询编写结构化索引提交请求：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m00qbvgj31ta0u0dmp.jpg" alt=""><br>刷新刚刚提交的请求并查看结构化索引：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m07sq7yj31s50u011h.jpg" alt=""></p>
+<p>通过复合查询编写结构化索引提交请求：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m00qbvgj31ta0u0dmp.jpg" alt=""><br>刷新刚刚提交的请求并查看结构化索引：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m07sq7yj31s50u011h.jpg" alt=""></p>
 <p>为了方便，可以在postman中进行添加索引数据：</p>
 <pre class=" language-json"><code class="language-json">url<span class="token operator">:</span> <span class="token number">127.0</span>.<span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9200</span>/people
 method<span class="token operator">:</span> PUT</code></pre>
@@ -462,8 +462,8 @@ method<span class="token operator">:</span> PUT</code></pre>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m0q7m2ej316g0u0tgk.jpg" alt=""><br>请求发送成功之后，可以在浏览器上进行刷新检验，结果如下：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m11at1dj31rv0u0dp9.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m0q7m2ej316g0u0tgk.jpg" alt=""><br>请求发送成功之后，可以在浏览器上进行刷新检验，结果如下：</p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m11at1dj31rv0u0dp9.jpg" alt=""></p>
 <h3 id="3、插入"><a href="#3、插入" class="headerlink" title="3、插入"></a>3、插入</h3><ul>
 <li><strong>指定文档id插入</strong><pre class=" language-json"><code class="language-json">url<span class="token operator">:</span> <span class="token number">127.0</span>.<span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9200</span>/people/man/<span class="token number">1</span>
 method<span class="token operator">:</span> POST</code></pre>
@@ -473,9 +473,9 @@ method<span class="token operator">:</span> POST</code></pre>
   <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">18</span><span class="token punctuation">,</span>
   <span class="token property">"date"</span><span class="token operator">:</span> <span class="token string">"2020-01-23"</span>
 <span class="token punctuation">}</span></code></pre>
-指定文档id插入数据：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m1eps0cj31ie0u0jwl.jpg" alt=""><br>插入成功之后浏览：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m1n6f0nj31k80jgtcw.jpg" alt=""></li>
+指定文档id插入数据：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m1eps0cj31ie0u0jwl.jpg" alt=""><br>插入成功之后浏览：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m1n6f0nj31k80jgtcw.jpg" alt=""></li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m1tdgk4j327y0me7bd.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m1tdgk4j327y0me7bd.jpg" alt=""></p>
 <ul>
 <li><strong>自动产生文档id插入</strong><pre class=" language-json"><code class="language-json">url<span class="token operator">:</span> <span class="token number">127.0</span>.<span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9200</span>/people/man
 method<span class="token operator">:</span> POST</code></pre>
@@ -485,7 +485,7 @@ method<span class="token operator">:</span> POST</code></pre>
   <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
   <span class="token property">"date"</span><span class="token operator">:</span> <span class="token string">"2020-01-24"</span>
 <span class="token punctuation">}</span></code></pre>
-自动产生文档id插入数据：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m26xk0yj31iu0u0n2w.jpg" alt=""><br>插入成功之后浏览：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m2du5aqj327w0midn4.jpg" alt=""></li>
+自动产生文档id插入数据：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m26xk0yj31iu0u0n2w.jpg" alt=""><br>插入成功之后浏览：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m2du5aqj327w0midn4.jpg" alt=""></li>
 </ul>
 <h3 id="4、修改"><a href="#4、修改" class="headerlink" title="4、修改"></a>4、修改</h3><ul>
 <li><p><strong>直接修改文档</strong></p>
@@ -498,7 +498,7 @@ method<span class="token operator">:</span> POST</code></pre>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p>指定文档修改数据：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m3vrv7xj31ob0u078m.jpg" alt=""><br>修改成功之后浏览：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m459tz1j327y0ly45v.jpg" alt=""></p>
+<p>指定文档修改数据：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m3vrv7xj31ob0u078m.jpg" alt=""><br>修改成功之后浏览：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m459tz1j327y0ly45v.jpg" alt=""></p>
 </li>
 <li><p><strong>脚本修改文档</strong></p>
 <pre class=" language-json"><code class="language-json">url<span class="token operator">:</span> <span class="token number">127.0</span>.<span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9200</span>/people/man/<span class="token number">1</span>/_update
@@ -519,19 +519,19 @@ method<span class="token operator">:</span> POST</code></pre>
       <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p>脚本修改数据：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m4fgz47j31k60u0dkw.jpg" alt=""><br>修改成功之后浏览：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m4laadgj327y0lwtg3.jpg" alt=""></p>
+<p>脚本修改数据：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m4fgz47j31k60u0dkw.jpg" alt=""><br>修改成功之后浏览：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m4laadgj327y0lwtg3.jpg" alt=""></p>
 </li>
 </ul>
 <h3 id="5、删除"><a href="#5、删除" class="headerlink" title="5、删除"></a>5、删除</h3><ul>
 <li><strong>删除文档</strong><pre class=" language-json"><code class="language-json">url<span class="token operator">:</span> <span class="token number">127.0</span>.<span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9200</span>/people/man/<span class="token number">1</span>
 method<span class="token operator">:</span> DELETE</code></pre>
-<img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m4yomlwj31qy0qy783.jpg" alt=""></li>
+<img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m4yomlwj31qy0qy783.jpg" alt=""></li>
 <li><strong>删除索引</strong></li>
 </ul>
 <p>（1）通过接口删除</p>
 <pre class=" language-json"><code class="language-json">url<span class="token operator">:</span> <span class="token number">127.0</span>.<span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9200</span>/people
 method<span class="token operator">:</span> DELETE</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m5a0c4mj31qw0iiq5a.jpg" alt=""><br>（2）在浏览器上删除<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m5fz1stj327y0mqqb5.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m5a0c4mj31qw0iiq5a.jpg" alt=""><br>（2）在浏览器上删除<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m5fz1stj327y0mqqb5.jpg" alt=""></p>
 <h3 id="6、查询"><a href="#6、查询" class="headerlink" title="6、查询"></a>6、查询</h3><p>先创建book索引</p>
 <pre class=" language-json"><code class="language-json">url<span class="token operator">:</span> <span class="token number">127.0</span>.<span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9200</span>/book
 method<span class="token operator">:</span> PUT</code></pre>
@@ -561,14 +561,14 @@ method<span class="token operator">:</span> PUT</code></pre>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>插入数据：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m5xrcr3j327w0jctgw.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m5xrcr3j327w0jctgw.jpg" alt=""></p>
 <ul>
 <li><strong>简单查询</strong></li>
 </ul>
 <p>1、查询索引中的一条数据：</p>
 <pre class=" language-json"><code class="language-json">url<span class="token operator">:</span> <span class="token number">127.0</span>.<span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9200</span>/book/novel/<span class="token number">1</span>
 method<span class="token operator">:</span> GET</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m691iv2j31r20qqdjv.jpg" alt=""><br>2、所有数据的查询（默认显示前10条）：</p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m691iv2j31r20qqdjv.jpg" alt=""><br>2、所有数据的查询（默认显示前10条）：</p>
 <pre class=" language-json"><code class="language-json">url<span class="token operator">:</span> <span class="token number">127.0</span>.<span class="token number">0.1</span><span class="token operator">:</span><span class="token number">9200</span>/book/_search
 method<span class="token operator">:</span> POST</code></pre>
 <pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
@@ -576,7 +576,7 @@ method<span class="token operator">:</span> POST</code></pre>
         <span class="token property">"match_all"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m6hh52ij318y0u0ahj.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m6hh52ij318y0u0ahj.jpg" alt=""></p>
 <ul>
 <li><strong>条件查询</strong></li>
 </ul>
@@ -623,7 +623,7 @@ method<span class="token operator">:</span> POST</code></pre>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m706csij31960u07c5.jpg" alt=""><br>字段统计聚合：</p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m706csij31960u07c5.jpg" alt=""><br>字段统计聚合：</p>
 <pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"aggs"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"grades_word_count"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -633,7 +633,7 @@ method<span class="token operator">:</span> POST</code></pre>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m7906noj312u09475a.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m7906noj312u09475a.jpg" alt=""></p>
 <pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"aggs"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"grades_word_count"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -643,7 +643,7 @@ method<span class="token operator">:</span> POST</code></pre>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gd2m7i9vz9j30qw04k74o.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gd2m7i9vz9j30qw04k74o.jpg" alt=""></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {

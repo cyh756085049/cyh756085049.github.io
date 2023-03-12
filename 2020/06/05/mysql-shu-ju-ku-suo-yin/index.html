@@ -422,7 +422,7 @@
 <li>可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。</li>
 </ol>
 <h2 id="3、为什么索引能提高查询速度？"><a href="#3、为什么索引能提高查询速度？" class="headerlink" title="3、为什么索引能提高查询速度？"></a>3、为什么索引能提高查询速度？</h2><p>MySQL的基本存储结构是页，记录都存在页里边。</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfkss75ytfj30u00yvncb.jpg" alt="" style="zoom:50%;">
+<img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gfkss75ytfj30u00yvncb.jpg" alt="" style="zoom:50%;">
 
 <ul>
 <li><p><strong>各个数据页可以组成一个双向链表</strong></p>
@@ -440,7 +440,7 @@
 <p>很明显，在数据量很大的情况下这样查找会很慢！这样的时间复杂度为O（n）。</p>
 <h4 id="使用索引之后"><a href="#使用索引之后" class="headerlink" title="使用索引之后"></a>使用索引之后</h4><p>底层结构就是B+树，B+树作为树的一种实现，能够让我们很快地查找出对应的记录。</p>
 <p>如果我们要找到id为8的记录，步骤如下：</p>
-<img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfksw4epksj31kl0u0e81.jpg" alt="" style="zoom:50%;">
+<img src="https://i0.wp.com/tva1.sinaimg.cn/large/007S8ZIlly1gfksw4epksj31kl0u0e81.jpg" alt="" style="zoom:50%;">
 
 <p>从上述查找过程可以看出，没有用索引时，我们是需要遍历双向链表来定位对应的页，现在通过 <strong>“目录”</strong> 就可以很快地定位到对应的页上了！（二分查找，时间复杂度近似为O(logn)）</p>
 <h2 id="4、Mysql索引主要使用的两种数据结构"><a href="#4、Mysql索引主要使用的两种数据结构" class="headerlink" title="4、Mysql索引主要使用的两种数据结构"></a>4、Mysql索引主要使用的两种数据结构</h2><h3 id="哈希索引"><a href="#哈希索引" class="headerlink" title="哈希索引"></a>哈希索引</h3><p>哈希索引底层的数据结构就是哈希（Hash）表，在绝大多数需求为单条记录查询的时候，可以选择哈希索引，查询性能最快，能够在很短的时间内，根据Hash函数定位到数据所在的位置；其余大部分场景，建议选择BTree索引。</p>

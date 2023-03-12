@@ -500,7 +500,7 @@ spring<span class="token operator">:</span>
 <p>（API文档：<code>https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html#0</code>）</p>
 <p>可以申请测试号进行测试：<br><code>https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Requesting_an_API_Test_Account.html</code></p>
 <p>配置网页授权回调域名：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdir0km6d3j31ba0u0q7u.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gdir0km6d3j31ba0u0q7u.jpg" alt=""></p>
 <p>（1）用户同意授权，获取code</p>
 <pre><code>// scope为snsapi_base (不弹出授权页面，直接跳转，只能获取用户openid)
 https://open.weixin.qq.com/connect/oauth2/authorize?appid=自己的appID&amp;redirect_uri=http://localhost:8080/sell/wexin/auth&amp;response_type=code&amp;scope=snsapi_base&amp;state=123#wechat_redirect
@@ -550,7 +550,7 @@ response={
 "expires_in":7200,
 "refresh_token":"27_5ETuxubgACyTbAzItUs--NRyHU-j-_f5SeJrx65vYTddgOm54OmNCNL-xp9u37kj8vn98kfiuyrCuzGzQGqGIoYPOAlOvCyjX1exvdLNmlw",
 "openid":"o37zu07P4j_zpb9_qQhmeuEwPwc0",
-"scope":"snsapi_userinfo"}</code></pre><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdir0qm8qqj31we0ean22.jpg" alt=""></p>
+"scope":"snsapi_userinfo"}</code></pre><p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gdir0qm8qqj31we0ean22.jpg" alt=""></p>
 <p><strong>二、微信订单支付</strong></p>
 <p>发起支付、异步通知、微信退款</p>
 <p>微信支付sdk:<br><code>https://github.com/Pay-Group/best-pay-sdk</code></p>
@@ -568,12 +568,12 @@ response={
 <span class="token punctuation">}</span></code></pre>
 <p><strong>三、内网穿透工具</strong></p>
 <p>（1）进行域名的获取（<code>https://natapp.cn/</code>）：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdir0wmy9lj327y0qm4qp.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gdir0wmy9lj327y0qm4qp.jpg" alt=""></p>
 <p>（2）启动<code>natapp</code>,把其分配的域名映射到本地的地址：</p>
 <pre><code>cd /Users/cyh/Documents/software 
-./natapp -authtoken=b59a864636737ad6</code></pre><p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdir11m07wj30vo0kadlk.jpg" alt=""></p>
+./natapp -authtoken=b59a864636737ad6</code></pre><p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gdir11m07wj30vo0kadlk.jpg" alt=""></p>
 <p>（3）对端口进行测试：<br><code>http://ehsqrc.natappfree.cc/sell/buyer/product/list</code></p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdir15z7csj31ja0u0n6x.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gdir15z7csj31ja0u0n6x.jpg" alt=""></p>
 <h3 id="14、枚举问题"><a href="#14、枚举问题" class="headerlink" title="14、枚举问题"></a>14、枚举问题</h3><p>我们一般在设计枚举类是在数据库中存的数字编码，然后对应到枚举状态，而当我们需要在页面显示的时候，往往是需要返回编码对应的信息的，因此，需要编写枚举工具类进行转换。</p>
 <p>枚举工具类：</p>
 <pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">CodeEnum</span> <span class="token punctuation">{</span>
@@ -610,7 +610,7 @@ response={
     <span class="token keyword">return</span> EnumUtil<span class="token punctuation">.</span><span class="token function">getByCode</span><span class="token punctuation">(</span>productStatus<span class="token punctuation">,</span> ProductStatusEnum<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <h3 id="15、项目刷新"><a href="#15、项目刷新" class="headerlink" title="15、项目刷新"></a>15、项目刷新</h3><p>如果前端使用freemarker模版，若想当模版中的信息修改后，不需要重新启动项目，只需要进行<code>Build Project</code>就可以刷新。</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdir1c0toaj327g0d2na6.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gdir1c0toaj327g0d2na6.jpg" alt=""></p>
 <h3 id="16、微信模版推送消息"><a href="#16、微信模版推送消息" class="headerlink" title="16、微信模版推送消息"></a>16、微信模版推送消息</h3><blockquote>
 <p><strong>小技巧</strong>：一般在业务逻辑中编写代码呢，像优先级或者重要程度一般的消息逻辑在判断时如果有错误，一般打印错误日志即可，不需要抛出异常，因为这种消息模块逻辑是要加在某块重要的业务逻辑代码中的，而且该代码会涉及到事务处理，如果消息逻辑抛出异常的化则重要的业务逻辑代码不能继续执行，将会回滚，这样会影响主要的业务逻辑。</p>
 </blockquote>
@@ -656,7 +656,7 @@ response={
 <h3 id="17、卖家端扫码登录开发"><a href="#17、卖家端扫码登录开发" class="headerlink" title="17、卖家端扫码登录开发"></a>17、卖家端扫码登录开发</h3><p>微信开放平台微信登录文档:</p>
 <pre><code>https://developers.weixin.qq.com/doc/oplatform/Website_App/WeChat_Login/Wechat_Login.html</code></pre><h3 id="18、微信登录AOP身份认证"><a href="#18、微信登录AOP身份认证" class="headerlink" title="18、微信登录AOP身份认证"></a>18、微信登录AOP身份认证</h3><p>微信登录时进行AOP实现身份认证以及登录登出功能实现。</p>
 <h3 id="19、webSocket消息推送"><a href="#19、webSocket消息推送" class="headerlink" title="19、webSocket消息推送"></a>19、webSocket消息推送</h3><h3 id="20、异常捕获"><a href="#20、异常捕获" class="headerlink" title="20、异常捕获"></a>20、异常捕获</h3><p>创建订单时商品不存在的异常：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdir2plhjfj31il0u0dlu.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gdir2plhjfj31il0u0dlu.jpg" alt=""></p>
 <p>在创建订单的时候，如果加入的商品不存在，则会报出异常，但此时想要让异常打印出一定规范的json格式，同商品添加成功时格式一致，并且也可以设置状态码，则可以添加代码如下：</p>
 <pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@ControllerAdvice</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SellExceptionHandler</span> <span class="token punctuation">{</span>
@@ -670,9 +670,9 @@ response={
 <span class="token punctuation">}</span></code></pre>
 <p>最终显示效果：</p>
 <p>创建订单成功时的接口返回数据格式：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdir32oj9rj31if0u0q8e.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gdir32oj9rj31if0u0q8e.jpg" alt=""></p>
 <p>同订单成功返回接口格式一致的异常捕获：</p>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdir3akghhj31l90u0dl0.jpg" alt=""><br><img src="https://user-gold-cdn.xitu.io/2019/11/12/16e5f4bc437fa3a7?w=2182&amp;h=640&amp;f=png&amp;s=101158" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gdir3akghhj31l90u0dl0.jpg" alt=""><br><img src="https://user-gold-cdn.xitu.io/2019/11/12/16e5f4bc437fa3a7?w=2182&amp;h=640&amp;f=png&amp;s=101158" alt=""></p>
 <h3 id="21、JPA和Mybatis选择"><a href="#21、JPA和Mybatis选择" class="headerlink" title="21、JPA和Mybatis选择"></a>21、JPA和Mybatis选择</h3><p>（1）建表用sql,不用jpa建表</p>
 <p>（2）慎用<code>@OneToMany</code>和<code>@ManyToOne</code>,表与表之间的关系最好在建库时加上。</p>
 <h3 id="22、mybatis注解使用"><a href="#22、mybatis注解使用" class="headerlink" title="22、mybatis注解使用"></a>22、mybatis注解使用</h3><ul>
@@ -736,7 +736,7 @@ response={
   level:
     # com.edu.cn.dishsell.mapper为mapper对应的包名
     com.edu.cn.dishsell.mapper: trace</code></pre>
-<p>日志打印结果：<br><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdir413npuj31y10u0ti3.jpg" alt=""></p>
+<p>日志打印结果：<br><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gdir413npuj31y10u0ti3.jpg" alt=""></p>
 <h3 id="23、用压测模拟并发的简易工具Apache-ab"><a href="#23、用压测模拟并发的简易工具Apache-ab" class="headerlink" title="23、用压测模拟并发的简易工具Apache ab"></a>23、用压测模拟并发的简易工具<code>Apache ab</code></h3><p>使用方法：</p>
 <pre class=" language-xml"><code class="language-xml">// -n 100 表示发送100个请求，-c 100 表示模拟100个并发
 ab -n 100 -c 100 http://www.baidu.com/
@@ -833,7 +833,7 @@ ab -t 60 -c 100 http://www.baidu.com/
 <p>技巧：下载插件（<code>GenerateSerialVersionUID</code>）并设置快捷键：</p>
 <pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">// 使用快捷键control + command + i</span>
     <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> 5404115822959335572L<span class="token punctuation">;</span></code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gdir52spo3j316q0u0aek.jpg" alt=""></p>
+<p><img src="https://i0.wp.com/tva1.sinaimg.cn/large/00831rSTly1gdir52spo3j316q0u0aek.jpg" alt=""></p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
